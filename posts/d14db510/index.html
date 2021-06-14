@@ -1,0 +1,344 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Docker使用和MySQL安装 | violet7pan Blog</title><meta name="keywords" content="Linux,Docker"><meta name="author" content="violet7pan"><meta name="copyright" content="violet7pan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Docker的介绍，介绍安装MySQL快速入门Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker使用和MySQL安装">
+<meta property="og:url" content="https://violet7pan.gitee.io/posts/d14db510/index.html">
+<meta property="og:site_name" content="violet7pan Blog">
+<meta property="og:description" content="Docker的介绍，介绍安装MySQL快速入门Docker">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-16.webp">
+<meta property="article:published_time" content="2021-02-20T13:19:49.000Z">
+<meta property="article:modified_time" content="2021-06-14T03:47:35.635Z">
+<meta property="article:author" content="violet7pan">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-16.webp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://violet7pan.gitee.io/posts/d14db510/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"PKY3F5HAHD","apiKey":"5e175a241d1eb8b01147dbb78d77842d","indexName":"prod_blog","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Docker使用和MySQL安装',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-14 11:47:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/custom.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/index.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="//at.alicdn.com/t/font_2405210_6tovfl8ipqu.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-16.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">violet7pan Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Docker使用和MySQL安装</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-20T13:19:49.000Z" title="发表于 2021-02-20 21:19:49">2021-02-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.635Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Docker使用和MySQL安装"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Docker介绍">Docker介绍</h1>
+<h2 id="Docker是什么？">Docker是什么？</h2>
+<p>Docker是一个基于虚拟化技术的平台，利用容器能将操作系统层虚拟化，容器可以表示软件的一个标准化单元，加上自身隔离于宿主机，具有便携性和灵活性<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。</p>
+<h2 id="Docker为什么会流行">Docker为什么会流行</h2>
+<blockquote>
+<p>In conclusion, Docker is popular because it has revolutionized development<br>
+Docker, and the containers it makes possible, has revolutionized the software industry and in five short years their popularity as a tool and platform has skyrocketed.</p>
+<p>The main reason is that containers create vast economies of scale. Systems that used to require expensive, dedicated hardware resources can now share hardware with other systems. Another is that containers are self-contained and portable. If a container works on one host, it will work just as well on any other, as long as that host provides a compatible runtime.<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></p>
+</blockquote>
+<p>docker优势：</p>
+<ul>
+<li>便携的和自我隔离的；</li>
+<li>docker的应用使系统（尤其是那些需要昂贵和专用硬件资源的系统）可以分享硬件资源给其他系统。</li>
+</ul>
+<p>第一点你可以理解为docker在OS层虚拟化<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>。如果说虚拟机是虚拟化硬件，那么docker是让服务/应用虚拟化。就虚拟机，我的理解是操作系统的运行是依托硬件，因此我说虚拟机是虚拟化硬件。比如你可以把Linux装在VM中，然后打包放在其他机器上运行，只要你拥有VM和VMware Workstation。就docker，以MySQL为例，你可以将使用了很久的MySQL的docker镜像打包，然后到其他机器，只要你拥有Docker应用。因此便携性和隔离性都体现出虚拟化技术的优势。</p>
+<p>再讲一点，虚拟化可以保证运行的程式隔离于宿主机。比如XXX同学MySQL装不上，可能是错误的安装步骤，或者参数设置有问题，端口占用等等因素，从OS运行环境看，每台宿主机的环境都是不一样的，而docker可以将docker内的服务与外界隔离，这样就排除了外界环境的干扰。如果每个同学都用docker安装MySQL，安装干扰会少很多。</p>
+<p>这点可以延伸了提高了企业交付速度，比如XXX应用经过测试OK，就应用放到docker，然后发给甲方(付款方)，或者跑到甲方运行docker然后测试，不管如何从速度上，都是有优势的。</p>
+<p>第二点更能带来经济优势。</p>
+<p>See also: <a target="_blank" rel="noopener" href="https://js.plainenglish.io/top-reasons-why-docker-is-popular-31cc6056e82a">Top Reasons Why Docker is Popular | by Binal Prajapati | JavaScript in Plain English</a>。</p>
+<p>名词Docker有两种含义<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>：</p>
+<ul>
+<li>Docker项目，指的是整一个Docker平台，可用于开发者和管理员开发，打包和运行应用。</li>
+<li>Docker引擎，指的是docker守护进程，用于管理镜像和容器。</li>
+</ul>
+<p>Container(容器)<sup class="footnote-ref"><a href="#fn4" id="fnref4:1">[4:1]</a></sup>：</p>
+<p>容器指的是Docker镜像的一个运行实例。这个术语需要注意两点：实例来自Docker镜像；实例是正在运行的。</p>
+<h2 id="Docker如何运作">Docker如何运作</h2>
+<p>Docker是C/S架构的。</p>
+<p>Docker客户端是用来与Docker Daemon进行沟通的。Docker Daemon又叫Docker Sever。</p>
+<p>Docker客户端实际上是docker CLI，用于与Docker Daemon进行沟通。</p>
+<p>比如&quot;docker run&quot;, &quot;docker push&quot;等命令都是由docker CLI提供。docker开头的命令都是Docker CLI。</p>
+<p>用层级关系表示，图解大概是这样：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d14db510/dockers-architecture-6c296cdac053f794eabed5ddda5c04ba7110c746687a0e8b88ba6df919415175.jpg" class="" title="Image result for what is docker CLI">
+<p>下图展示了Docker客户端如何与Docker主机进行沟通：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d14db510/docker-client-host-registry-fc0858b5191e042ce19437fd6b52ba214d1e429bf646374f633598ebaac1a4ab.jpg" class="" title="blog&#x2F;docker-client-host-registry.jpg">
+<p>docker pull命令通过Docker CLI发送给Docker daemon，然后Docker daemon从远端拉取镜像到Docker主机。</p>
+<p>Refer：<a target="_blank" rel="noopener" href="https://nickjanetakis.com/blog/understanding-how-the-docker-daemon-and-docker-cli-work-together">Understanding How the Docker Daemon and Docker CLI Work Together — Nick Janetakis</a>。</p>
+<h1 id="Linux安装Docker">Linux安装Docker</h1>
+<p>可以使用yum安装或者离线安装<sup class="footnote-ref"><a href="#fn4" id="fnref4:2">[4:2]</a></sup>，我使用yum安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum list installed | grep docker	<span class="comment">#坚持本地是否安装docker</span></span><br><span class="line">yum -y install docker	<span class="comment">#yum安装docker</span></span><br><span class="line">systemctl start docker	<span class="comment">#开启docker</span></span><br><span class="line">systemctl status docker	<span class="comment">#查看docker状态</span></span><br><span class="line">docker version	<span class="comment">#查看docker版本详情</span></span><br><span class="line">docker images	<span class="comment">#查看本地docker镜像</span></span><br></pre></td></tr></table></figure>
+<h1 id="Docker中安装MySQL">Docker中安装MySQL</h1>
+<p>可以在MySQL docker镜像库查找要拉取的MySQL版本：<a target="_blank" rel="noopener" href="https://hub.docker.com/_/mysql?tab=tags&amp;page=1&amp;ordering=last_updated%E3%80%82">https://hub.docker.com/_/mysql?tab=tags&amp;page=1&amp;ordering=last_updated。</a></p>
+<p>由于在国内拉取速度太慢了，我们需要选择国内docker镜像源。</p>
+<p>我选择的是阿里云进行镜像源加速。实现步骤：</p>
+<p>登录阿里云容器镜像服务：<a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/">https://cr.console.aliyun.com/</a></p>
+<p>创建容器仓库后，获得镜像加速地址。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d14db510/Ali-Container-Repo.jpg" class="" title="Ali-Container-Repo">
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d14db510/Ali-Container-Repo-2.jpg" class="" title="Ali-Container-Repo-2">
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d14db510/Ali-Container-Speeder.jpg" class="" title="Ali-Container-Speeder">
+<p>按照说明文档提示配置/etc/docker/daemon.json后，然后执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br><span class="line">docker info</span><br></pre></td></tr></table></figure>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d14db510/Docker-Info.jpg" class="" title="Docker-Info">
+<p>这样就成功了。</p>
+<p>我选择安装MySQL 5.7.33 Docker镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:5.7.33</span><br></pre></td></tr></table></figure>
+<p>查看镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">docker.io/mysql     5.7.33              a70d36bc331a        4 weeks ago         449 MB</span><br></pre></td></tr></table></figure>
+<h1 id="运行Docker中的MySQL实例">运行Docker中的MySQL实例</h1>
+<p>基本的docker run命令格式如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>-i</code> : Keep STDIN open even if not attached。开放标准输入流。</p>
+<p><code>-t</code> : Allocate a pseudo-tty。允许终端通信。</p>
+<p><code>-it</code> : 允许我们通过命令行的方式与容器进行沟通。</p>
+<p><code>-d</code> : Detached。<code>-d=true</code>与<code>-d</code>等价，表示让容器允许在独立(隔离)模式。</p>
+<p><code>--name</code> : 标识一个容器，就简单地就是给容器取一个独一无二的名称。因此该选项后面紧跟着名称(identifier)。如果不设置该选项，那么docker run后会自动为这个容器生成一个名称。</p>
+<p><code>-p</code> : Publish a container’s port or a range of ports to the host。主机端口与容器端口绑定。</p>
+<p>比如：-p 3312:3306表示主机3312端口与容器3306绑定。</p>
+<p><code>-e</code> : Set any environment variable in the container。为容器设置环境变量。</p>
+<p>若要设置多个环境变量，格式为：-e key1=value1 -e key2=value2。</p>
+<p><code>-v</code> : 绑定挂载卷。使用该选项可以让主机指定目录挂载到实例的某个目录，这与mount命令类似。'-v’的使用方法如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-v, --volume&#x3D;[host-src:]container-dest[:&lt;options&gt;]</span><br></pre></td></tr></table></figure>
+<p>比如：-v /opt/docker_v/mysql/conf:/etc/mysql/conf.d等价于–volume=/opt/docker_v/mysql/conf:/etc/mysql/conf.d。意思是将主机指定的文件(/opt/docker_v/mysql/conf)挂载到容器指定的文件(/etc/mysql/conf.d)中</p>
+<p>See also: <a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/commandline/run/">docker run | Docker Documentation</a></p>
+</blockquote>
+<p>为了让你更好理解这些选项，我们看下面一个例子</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name test_mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql</span><br></pre></td></tr></table></figure>
+<p>上述命令运行一个mysql实例，“IMAGE&quot;为mysql”，允许命令行通信，容器名称&quot;test_mysql&quot;，容器端口3307映射到主机端口3307，设置一个环境变量MYSQL_ROOT_PASSWORD，相等于为MySQL设置管理员密码。</p>
+<p>接下来我们运行一个MySQL容器：</p>
+<p>首先创建目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p &#x2F;storage&#x2F;docker&#x2F;mysql-data</span><br><span class="line">mkdir -p &#x2F;root&#x2F;docker&#x2F;test_mysql&#x2F;conf.d</span><br></pre></td></tr></table></figure>
+<p>运行容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">-p 3306:3306 \</span><br><span class="line">--name=test_mysql \</span><br><span class="line">--volume=/root/docker/test_mysql/conf.d:/etc/mysql/conf.d \</span><br><span class="line">--volume=/storage/docker/mysql-data:/var/lib/mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 \</span><br><span class="line">-d \</span><br><span class="line">--privileged \</span><br><span class="line">mysql:5.7.33</span><br></pre></td></tr></table></figure>
+<p>&quot;–privileged&quot;保证MySQL有权限读写挂载文件。</p>
+<p>&quot;–volume&quot;将mysql自定义配置和数据库数据持久化到Docker主机，这样删除容器后不会出现数据丢失的情况。</p>
+<p>See also: <a target="_blank" rel="noopener" href="https://phoenixnap.com/kb/mysql-docker-container#:~:text=By%20default%2C%20Docker%20stores%20data%20in%20its%20internal%20volume.&amp;text=You%20will%20see%20the%20%2Fvar,access%20the%20volumes%20when%20needed.">How to Set Up &amp; Configure a MySQL Docker Container {Tutorial}</a>。</p>
+<p>查看容器信息，默认以JSON格式打印出来：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# docker inspect test_mysql</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>使用docker ps查看容器运行情况：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES</span><br><span class="line">da9b17dbc337        mysql:5.7.33        &quot;docker-entrypoint...&quot;   11 seconds ago      Up 9 seconds        0.0.0.0:3306-&gt;3306/tcp, 33060/tcp   test_mysql</span><br></pre></td></tr></table></figure>
+<p>&quot;0.0.0.0:3306-&gt;3306/tcp&quot;表示本机的3306端口绑定到容器的3306端口。</p>
+<p>利用&quot;docker port [容器] 容器的端口号&quot;查询容器端口是否绑定了主机的端口：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# docker port test_mysql</span><br><span class="line">3306/tcp -&gt; 0.0.0.0:3306</span><br><span class="line">[root@localhost ~]# docker port test_mysql 3307</span><br><span class="line">Error: No public port &#x27;3307/tcp&#x27; published for test_mysql</span><br></pre></td></tr></table></figure>
+<h1 id="连接MySQL实例">连接MySQL实例</h1>
+<h2 id="本地连接MySQL实例">本地连接MySQL实例</h2>
+<p>docker exec用于运行命令行来与容器进行通信。</p>
+<p>docker exec命令格式如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec [OPTIONS] CONTAINER COMMAND [ARG...]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>[OPTIONS]</code> - 请参考<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/commandline/exec/">docker exec | Docker Documentation</a>。</p>
+<p><code>CONTAINER</code> - 容器名称。</p>
+<p><code>COMMAND</code> - 命令。这里应该是宿主机上的可用命令。对于Linux来说，可使用pwd，bash等等。</p>
+</blockquote>
+<p>下面例子展示如何本地连接MySQL实例。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /work/blog]# docker exec -it test_mysql bash</span><br><span class="line">root@b4b7c5c8ba56:/# mysql -u root -p</span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 3</span><br><span class="line">Server version: 5.7.33 MySQL Community Server (GPL)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2021, Oracle and/or its affiliates.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type &#x27;help;&#x27; or &#x27;\h&#x27; for help. Type &#x27;\c&#x27; to clear the current input statement.</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> </span></span><br></pre></td></tr></table></figure>
+<h2 id="远程连接MySQL实例-使用Navicat">远程连接MySQL实例(使用Navicat)</h2>
+<p>我们先查看哪些用户允许远程登录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use mysql;</span><br><span class="line">...</span><br><span class="line">mysql&gt; select user, host from user</span><br><span class="line">    -&gt; ;</span><br><span class="line">+---------------+-----------+</span><br><span class="line">| user          | host      |</span><br><span class="line">+---------------+-----------+</span><br><span class="line">| root          | %         |</span><br><span class="line">| mysql.session | localhost |</span><br><span class="line">| mysql.sys     | localhost |</span><br><span class="line">| root          | localhost |</span><br><span class="line">+---------------+-----------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>我们看host一列：'%'表示允许任何主机连接到MySQL；&quot;localhost&quot;表示只允许本地连接到MySQL。</p>
+<p>由user表可知，root用户可用于远程登录。不过我还是记录下创建普通用户用于远程登录：</p>
+<p>先在本地连接的MySQL的命令行中创建一个远程用户。首先，进入mysql数据库：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br></pre></td></tr></table></figure>
+<p>然后，创建远程用户：</p>
+<p>格式为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on *.* to 用户名@&quot;%&quot; identified by &quot;密码&quot; with grant option;</span><br></pre></td></tr></table></figure>
+<p>我创建的远程用户如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; grant all privileges on *.* to violet@&quot;%&quot; identified by &quot;123456&quot; with grant option;</span><br><span class="line">Query OK, 0 rows affected, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>最后，刷新权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; flush privileges;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
+<p>再次查看user表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select user, host from user;</span><br><span class="line">+---------------+-----------+</span><br><span class="line">| user          | host      |</span><br><span class="line">+---------------+-----------+</span><br><span class="line">| root          | %         |</span><br><span class="line">| violet        | %         |</span><br><span class="line">| mysql.session | localhost |</span><br><span class="line">| mysql.sys     | localhost |</span><br><span class="line">| root          | localhost |</span><br><span class="line">+---------------+-----------+</span><br><span class="line">5 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>接着我们使用Navicat连接MySQL实例：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d14db510/Linux-Docker-MySQL-Navicat-Connection-1.jpg" class="" title="Linux-Docker-MySQL-Navicat-Connection-1">
+<h1 id="Docker管理">Docker管理</h1>
+<h2 id="列出-停止-删除容器-镜像">列出,停止,删除容器/镜像</h2>
+<p>下面例子展示如何列出，停止删除容器以及列出，删除镜像：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# docker container ls -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES</span><br><span class="line">8ef927bcfc25        mysql:5.7           &quot;docker-entrypoint...&quot;   3 minutes ago       Created                                 test_mysql</span><br><span class="line">[root@localhost /]# docker stop 8ef927bcfc25</span><br><span class="line">8ef927bcfc25</span><br><span class="line">[root@localhost /]# docker rm 8ef927bcfc25</span><br><span class="line">8ef927bcfc25</span><br><span class="line">[root@localhost /]# docker container ls -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">[root@localhost /]# docker image ls</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">docker.io/mysql     5.7                 a70d36bc331a        4 weeks ago         449 MB</span><br><span class="line">[root@localhost /]# docker image rm a70d36bc331a</span><br><span class="line">Untagged: docker.io/mysql:5.7</span><br><span class="line">Untagged: docker.io/mysql@sha256:b3d1eff023f698cd433695c9506171f0d08a8f92a0c8063c1a4d9db9a55808df</span><br><span class="line">Deleted: sha256:a70d36bc331a13d297f882d3d63137d24b804f29fa67158c40ad91d5050c39c5</span><br><span class="line">Deleted: sha256:50c77bf7bcddd1f1d97789d80ac2404eec22c860c104e858620d2a2e321f0ef7</span><br><span class="line">Deleted: sha256:14244329b83dfc8982398ee4104a548385652d2bffb957798ff86a419013efd6</span><br><span class="line">Deleted: sha256:6d990477f90af28473eb601a9bca22253f6381e053c5a8edda0a4f027e124a3c</span><br><span class="line">Deleted: sha256:ee0449796df204071589162fc16f8d65586312a40c68d1ba156c93c56f5e5ce8</span><br><span class="line">Deleted: sha256:d08533f1e2acc40ad561a46fc6a76b54c739e6b24f077c183c5709e0a6885312</span><br><span class="line">Deleted: sha256:4f9d91a4728e833d1062fb65a792f06e22e425f63824f260c8b5a64b776ddc38</span><br><span class="line">Deleted: sha256:20bf4c759d1b0d0e6286d2145453af4e0e1b7ba3d4efa3b8bce46817ad4109de</span><br><span class="line">Deleted: sha256:a9371bbdf16ac95cc72555c6ad42f79b9f03a82d964fe89d52bdc5f335a5f42a</span><br><span class="line">Deleted: sha256:5b02130e449d94f51e8ff6e5f7d24802246198749ed9eb064631e63833cd8f1d</span><br><span class="line">Deleted: sha256:ab74465b38bc1acb16c23091df32c5b7033ed55783386cb57acae8efff9f4b37</span><br><span class="line">Deleted: sha256:cb42413394c4059335228c137fe884ff3ab8946a014014309676c25e3ac86864</span><br></pre></td></tr></table></figure>
+<h2 id="如何运行停止的容器">如何运行停止的容器</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start `docker ps -q -l`</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>-l</code> - 显示最新创建的容器</p>
+<p><code>-q</code> - 只显示容器ID</p>
+</blockquote>
+<p>See also: <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/21928691/how-to-continue-a-docker-container-which-has-exited%E3%80%82">https://stackoverflow.com/questions/21928691/how-to-continue-a-docker-container-which-has-exited。</a></p>
+<h2 id="挂载权限问题解决">挂载权限问题解决</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# systemctl status docker</span><br><span class="line">● docker.service - Docker Application Container Engine</span><br><span class="line">   Loaded: loaded (&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;docker.service; disabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since Sat 2021-02-20 20:26:29 CST; 17min ago</span><br><span class="line">     Docs: http:&#x2F;&#x2F;docs.docker.com</span><br><span class="line"> Main PID: 1834 (dockerd-current)</span><br><span class="line">    Tasks: 24</span><br><span class="line">   Memory: 10.5M</span><br><span class="line">   CGroup: &#x2F;system.slice&#x2F;docker.service</span><br><span class="line">           ├─1834 &#x2F;usr&#x2F;bin&#x2F;dockerd-current --add-runtime docker-runc&#x3D;&#x2F;usr&#x2F;libexec&#x2F;docker&#x2F;docker-runc-current --default-runtime&#x3D;docker-runc --exec-opt native.cgroupdrive...</span><br><span class="line">           └─1840 &#x2F;usr&#x2F;bin&#x2F;docker-containerd-current -l unix:&#x2F;&#x2F;&#x2F;var&#x2F;run&#x2F;docker&#x2F;libcontainerd&#x2F;docker-containerd.sock --metrics-interval&#x3D;0 --start-timeout 2m --state-dir ...</span><br><span class="line"></span><br><span class="line">Feb 20 20:26:29 localhost.localdomain dockerd-current[1834]: time&#x3D;&quot;2021-02-20T20:26:29.579501459+08:00&quot; level&#x3D;info msg&#x3D;&quot;Daemon has completed initialization&quot;</span><br><span class="line">Feb 20 20:26:29 localhost.localdomain dockerd-current[1834]: time&#x3D;&quot;2021-02-20T20:26:29.579610063+08:00&quot; level&#x3D;info msg&#x3D;&quot;Docker daemon&quot; commit&#x3D;&quot;0be3e21&#x2F;1.13.1&quot; g...n&#x3D;1.13.1</span><br><span class="line">Feb 20 20:26:29 localhost.localdomain dockerd-current[1834]: time&#x3D;&quot;2021-02-20T20:26:29.583592776+08:00&quot; level&#x3D;info msg&#x3D;&quot;API listen on &#x2F;var&#x2F;run&#x2F;docker.sock&quot;</span><br><span class="line">Feb 20 20:26:29 localhost.localdomain systemd[1]: Started Docker Application Container Engine.</span><br><span class="line">Feb 20 20:26:36 localhost.localdomain dockerd-current[1834]: 2021-02-20 12:26:36+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.33-1debian10 started.</span><br><span class="line">Feb 20 20:26:36 localhost.localdomain dockerd-current[1834]: 2021-02-20 12:26:36+00:00 [ERROR] [Entrypoint]: mysqld failed while attempting to check config</span><br><span class="line">Feb 20 20:26:36 localhost.localdomain dockerd-current[1834]:         command was: mysqld --verbose --help</span><br><span class="line">Feb 20 20:26:36 localhost.localdomain dockerd-current[1834]:         mysqld: Can&#39;t read dir of &#39;&#x2F;etc&#x2F;mysql&#x2F;conf.d&#x2F;&#39; (Errcode: 13 - Permission denied)</span><br><span class="line">Feb 20 20:26:36 localhost.localdomain dockerd-current[1834]: mysqld: [ERROR] Fatal error in defaults handling. Program aborted!</span><br><span class="line">Feb 20 20:26:36 localhost.localdomain dockerd-current[1834]: time&#x3D;&quot;2021-02-20T20:26:36.709981942+08:00&quot; level&#x3D;warning msg&#x3D;&quot;155b85aebe93f507939911baf4ea8e3ee18be...rgument&quot;</span><br><span class="line">Hint: Some lines were ellipsized, use -l to show in full.</span><br></pre></td></tr></table></figure>
+<p>Refer: <a target="_blank" rel="noopener" href="https://github.com/docker-library/mysql/issues/714%E3%80%82">https://github.com/docker-library/mysql/issues/714。</a></p>
+<p>更换挂载目录权限，因为docker mysql需要更高的权限。</p>
+<p>删除出问题的容器，然后加入&quot;–privileged&quot;选项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">-p 3307:3307 \</span><br><span class="line">--name&#x3D;test_mysql \</span><br><span class="line">--volume&#x3D;&#x2F;root&#x2F;docker&#x2F;test_mysql&#x2F;conf.d:&#x2F;etc&#x2F;mysql&#x2F;conf.d \</span><br><span class="line">--volume&#x3D;&#x2F;storage&#x2F;docker&#x2F;mysql-data:&#x2F;var&#x2F;lib&#x2F;mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD&#x3D;123456 \</span><br><span class="line">-d \</span><br><span class="line">--privileged \</span><br><span class="line">mysql:5.7.33</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~&#x2F;docker&#x2F;test_mysql&#x2F;conf.d]# docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                         NAMES</span><br><span class="line">b4b7c5c8ba56        mysql:5.7.33        &quot;docker-entrypoint...&quot;   2 minutes ago       Up 2 minutes        3306&#x2F;tcp, 33060&#x2F;tcp, 0.0.0.0:3307-&gt;3307&#x2F;tcp   test_mysql</span><br></pre></td></tr></table></figure>
+<p>第二种解决方法：</p>
+<p>修改挂载文件的读写权限。</p>
+<p>友情提示：为了避免莫名其妙的错误，请把swap分区和RAM加大。</p>
+<h1 id="常用命令Doc">常用命令Doc</h1>
+<table>
+<thead>
+<tr>
+<th>参考</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/commandline/ps/">docker ps | Docker Documentation</a></td>
+<td>列出容器信息</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/commandline/run/">docker run | Docker Documentation</a></td>
+<td>运行一个新的容器</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/commandline/network/">docker network | Docker Documentation</a></td>
+<td>管理Docker网络</td>
+</tr>
+</tbody>
+</table>
+<p><a target="_blank" rel="noopener" href="https://yeasy.gitbook.io/docker_practice/">Docker —— 从入门到实践</a></p>
+<hr>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Docker">Docker - 维基百科，自由的百科全书</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p><a target="_blank" rel="noopener" href="https://raygun.com/blog/what-is-docker/#:~:text=In%20conclusion%2C%20Docker%20is%20popular,create%20vast%20economies%20of%20scale.">What is Docker, and why is it so popular? · Raygun Blog</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Docker">Docker - 维基百科，自由的百科全书</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p><a target="_blank" rel="noopener" href="https://docs.docker.com/glossary/">Glossary | Docker Documentation</a> <a href="#fnref4" class="footnote-backref">↩︎</a> <a href="#fnref4:1" class="footnote-backref">↩︎</a> <a href="#fnref4:2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Docker使用和MySQL安装</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://violet7pan.gitee.io/posts/d14db510/">https://violet7pan.gitee.io/posts/d14db510/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>violet7pan</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-02-20</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2021-06-14</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/Docker/">Docker</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/7821e3ee/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-5.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">CentOS6,7/Ubuntu镜像下载与安装至VM虚拟机</div></div></a></div><div class="next-post pull-right"><a href="/posts/dbca0d35/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-8.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">用于测试Hexo Markdown</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/c2e31e6/" title="CentOS7系统优化脚本"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-2.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-20</div><div class="title">CentOS7系统优化脚本</div></div></a></div><div><a href="/posts/9bbe274e/" title="Linux如何配置网络"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-16.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-20</div><div class="title">Linux如何配置网络</div></div></a></div><div><a href="/posts/7821e3ee/" title="CentOS6,7/Ubuntu镜像下载与安装至VM虚拟机"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-5.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-20</div><div class="title">CentOS6,7/Ubuntu镜像下载与安装至VM虚拟机</div></div></a></div><div><a href="/posts/887a2cdf/" title="Linux find命令的使用"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-21.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-20</div><div class="title">Linux find命令的使用</div></div></a></div><div><a href="/posts/7b277ce5/" title="Linux-Command-tar"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-9.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-19</div><div class="title">Linux-Command-tar</div></div></a></div><div><a href="/posts/ff26220a/" title="Linux-UserManagement"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-18</div><div class="title">Linux-UserManagement</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">violet7pan</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/violet7pan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">Docker介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">Docker是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%B5%81%E8%A1%8C"><span class="toc-number">1.2.</span> <span class="toc-text">Docker为什么会流行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C"><span class="toc-number">1.3.</span> <span class="toc-text">Docker如何运作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E5%AE%89%E8%A3%85Docker"><span class="toc-number">2.</span> <span class="toc-text">Linux安装Docker</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker%E4%B8%AD%E5%AE%89%E8%A3%85MySQL"><span class="toc-number">3.</span> <span class="toc-text">Docker中安装MySQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E8%A1%8CDocker%E4%B8%AD%E7%9A%84MySQL%E5%AE%9E%E4%BE%8B"><span class="toc-number">4.</span> <span class="toc-text">运行Docker中的MySQL实例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5MySQL%E5%AE%9E%E4%BE%8B"><span class="toc-number">5.</span> <span class="toc-text">连接MySQL实例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E8%BF%9E%E6%8E%A5MySQL%E5%AE%9E%E4%BE%8B"><span class="toc-number">5.1.</span> <span class="toc-text">本地连接MySQL实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5MySQL%E5%AE%9E%E4%BE%8B-%E4%BD%BF%E7%94%A8Navicat"><span class="toc-number">5.2.</span> <span class="toc-text">远程连接MySQL实例(使用Navicat)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">Docker管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E5%87%BA-%E5%81%9C%E6%AD%A2-%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8-%E9%95%9C%E5%83%8F"><span class="toc-number">6.1.</span> <span class="toc-text">列出,停止,删除容器&#x2F;镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E5%81%9C%E6%AD%A2%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="toc-number">6.2.</span> <span class="toc-text">如何运行停止的容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="toc-number">6.3.</span> <span class="toc-text">挂载权限问题解决</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4Doc"><span class="toc-number">7.</span> <span class="toc-text">常用命令Doc</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/3b4634fc/" title="Hexo使用"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-20.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo使用"/></a><div class="content"><a class="title" href="/posts/3b4634fc/" title="Hexo使用">Hexo使用</a><time datetime="2021-06-07T12:08:35.000Z" title="发表于 2021-06-07 20:08:35">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/24caea6b/" title="Hexo常用命令"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-11.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo常用命令"/></a><div class="content"><a class="title" href="/posts/24caea6b/" title="Hexo常用命令">Hexo常用命令</a><time datetime="2021-06-07T06:10:13.000Z" title="发表于 2021-06-07 14:10:13">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo隐藏文章"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo隐藏文章"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo隐藏文章">Hexo隐藏文章</a><time datetime="2021-06-04T11:00:41.000Z" title="发表于 2021-06-04 19:00:41">2021-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-12.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo贴文Front-Matter用法"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法">Hexo贴文Front-Matter用法</a><time datetime="2021-06-01T11:37:37.000Z" title="发表于 2021-06-01 19:37:37">2021-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的Buttefly主题魔改历程"/></a><div class="content"><a class="title" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程">我的Buttefly主题魔改历程</a><time datetime="2021-06-01T08:52:32.000Z" title="发表于 2021-06-01 16:52:32">2021-06-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By violet7pan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/algolia.js"></script><div class="js-pjax"></div><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

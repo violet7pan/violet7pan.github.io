@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CentOS6,7/Ubuntu镜像下载与安装至VM虚拟机 | violet7pan Blog</title><meta name="keywords" content="Linux"><meta name="author" content="violet7pan"><meta name="copyright" content="violet7pan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux镜像下载，CentOS6和7的安装，Ubuntu的安装，以及VMware Tools的安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS6,7&#x2F;Ubuntu镜像下载与安装至VM虚拟机">
+<meta property="og:url" content="https://violet7pan.gitee.io/posts/7821e3ee/index.html">
+<meta property="og:site_name" content="violet7pan Blog">
+<meta property="og:description" content="Linux镜像下载，CentOS6和7的安装，Ubuntu的安装，以及VMware Tools的安装">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-5.webp">
+<meta property="article:published_time" content="2021-02-20T14:54:29.000Z">
+<meta property="article:modified_time" content="2021-06-14T03:47:35.623Z">
+<meta property="article:author" content="violet7pan">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-5.webp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://violet7pan.gitee.io/posts/7821e3ee/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"PKY3F5HAHD","apiKey":"5e175a241d1eb8b01147dbb78d77842d","indexName":"prod_blog","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CentOS6,7/Ubuntu镜像下载与安装至VM虚拟机',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-14 11:47:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/custom.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/index.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="//at.alicdn.com/t/font_2405210_6tovfl8ipqu.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-5.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">violet7pan Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CentOS6,7/Ubuntu镜像下载与安装至VM虚拟机</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-20T14:54:29.000Z" title="发表于 2021-02-20 22:54:29">2021-02-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.623Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CentOS6,7/Ubuntu镜像下载与安装至VM虚拟机"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linux镜像下载">Linux镜像下载</h1>
+<table>
+<thead>
+<tr>
+<th>标题</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://archive.kernel.org/centos-vault/">CentOS</a></td>
+<td>国外CentOS源(推荐使用，获取链接后使用迅雷下载即可)</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/ubuntu-releases/">中科大Ubuntu源</a></td>
+<td>国内Ubuntu源</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/ubuntu-releases/">阿里云Ubuntu源</a></td>
+<td>国内Ubuntu源</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://mirrors.163.com/">网易开源镜像站</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>下载方法：进入上述任意链接后，选择版本号，然后下载iso镜像。</p>
+<p>举个例子：</p>
+<p>进入<a target="_blank" rel="noopener" href="https://archive.kernel.org/centos-vault/7.7.1908/isos/x86_64/">https://archive.kernel.org/centos-vault/7.7.1908/isos/x86_64/</a>下载&quot;CentOS-7-x86_64-DVD-1908.iso&quot;，通过右键复制链接，然后粘贴到迅雷下载中即可。</p>
+<p>如何选择镜像：一般选择.iso镜像中带有&quot;DVD&quot;, &quot;bin-DVD1&quot;后缀的，大小在4GB左右。</p>
+<h1 id="安装Linux到VM">安装Linux到VM</h1>
+<p>有了Linux镜像后，需要将镜像安装到VMware中的Virtual Machine上。</p>
+<h2 id="span-id-vm-install-ubuntu1804-虚拟机上安装Ubuntu-18-04-span"><span id="vm_install_ubuntu1804">虚拟机上安装Ubuntu 18.04</span></h2>
+<h3 id="创建虚拟机">创建虚拟机</h3>
+<p>1.选择虚拟机配置类型。选择“自定义”。如图所示选择：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-1.png" class="" title="Linux-Ubuntu-1">
+<p>2.选择虚拟机硬件兼容性。如图所示选择：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-2.png" class="" title="Linux-Ubuntu-2">
+<p>3.稍后安装OS。如图所示：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-3.png" class="" title="Linux-Ubuntu-3">
+<p>4.选择OS信息。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-4.png" class="" title="Linux-Ubuntu-4">
+<p>5.虚拟机名称。推荐命名时，说明是什么Linux，版本号，以及86位还是64位。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-5.png" class="" title="Linux-Ubuntu-5">
+<p>6.处理器配置。这里安装你当前CPU所支持核心数和处理器数进行填写。一般<strong>默认</strong>即可。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-6.png" class="" title="Linux-Ubuntu-6">
+<p>7.为虚拟机分配内存。这里安装个人配置决定。分配1~4GB都没问题。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-7.png" class="" title="Linux-Ubuntu-7">
+<p>8.选择网络连接。你可以选择NAT，或者桥接方式。由于我稍后要使用XShell终端工具连接Linux，所以我选择的“桥接”方式。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-8.png" class="" title="Linux-Ubuntu-8">
+<p>9.IO控制器类型。默认即可。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-9.png" class="" title="Linux-Ubuntu-9">
+<p>10.磁盘类型。默认即可。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-10.png" class="" title="Linux-Ubuntu-10">
+<p>11.虚拟磁盘选择。创建新的一个虚拟磁盘。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-11.png" class="" title="Linux-Ubuntu-11">
+<p>12.配置磁盘容量。这里将虚拟磁盘作为单个文件存储。分配20GB可以满足一般的学习需求。如图所示：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-12.png" class="" title="Linux-Ubuntu-12">
+<p>13.磁盘名称。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-13.png" class="" title="Linux-Ubuntu-13">
+<p>14.打开“自定义硬件”，在弹出的窗口中设置OS镜像后，然后结束&quot;New Virtual Machine Wizard&quot;窗口。如图所示：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-14.png" class="" title="Linux-Ubuntu-14">
+<p>在&quot;New CD/DVD&quot;中插入Ubuntu的镜像，我选用的是18.04的镜像。</p>
+<p>当然是用其他镜像的也问题。比如插入CentOS，那么就需要在第4步“4.选择OS信息”中修改OS信息为CentOS。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-14-2.png" class="" title="Linux-Ubuntu-14-2">
+<p>然后关闭这个界面窗口，然后点击&quot;New Virtual Machine Wizard&quot;窗口的“Finish”按钮。</p>
+<p>15.接下来启动虚拟机。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-Ubuntu-15.png" class="" title="Linux-Ubuntu-15">
+<p>如果你可以正常打开刚配置好的虚拟机，可以跳到<a href="#install_ubuntu">安装环节</a>进行Ubuntu的安装。</p>
+<h3 id="span-id-install-ubuntu-安装环节-span"><span id="install_ubuntu">安装环节</span></h3>
+<p>1.语言选择。可以选择语言为中文，但推荐选择英文，因为若出现错误消息，消息是英文时才方便参阅相关解决方法。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Ubuntu-1.png" class="" title="Ubuntu-1">
+<p>2.键盘选择。这里选择为英语(美国)。后面Ubuntu安装完成后，也可以添加汉语键盘。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Ubuntu-2.png" class="" title="Ubuntu-2">
+<p>3.安装选择。选择“最小安装”和“为图形或无线硬件，以及其他媒体格式安装第三方软件”。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Ubuntu-3.png" class="" title="Ubuntu-3">
+<p>4.安装类型。选择“清除整个磁盘并安装Ubuntu”。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Ubuntu-4.png" class="" title="Ubuntu-4">
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Ubuntu-5.png" class="" title="Ubuntu-5">
+<p>5.地区选择。输入“Shanghai”。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Ubuntu-6.png" class="" title="Ubuntu-6">
+<p>6.设置密码和主机域名。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Ubuntu-7.png" class="" title="Ubuntu-7">
+<p>如果只是学习用，那么密码设置为123456（密码很简单）就可以了。</p>
+<p>7.等待安装完成。</p>
+<p>8.安装完成后，在重启Ubuntu之前，先取消“CD/DVD”设备的连接。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Ubuntu-8.png" class="" title="Ubuntu-8">
+<p>8.重启虚拟机。</p>
+<p>9.安装完成。登录密码。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Ubuntu-9.png" class="" title="Ubuntu-9">
+<p>安装VMware Tools</p>
+<h2 id="虚拟机上安装CentOS-6-6">虚拟机上安装CentOS 6.6</h2>
+<p>安装过程与<a href="#vm_install_ubuntu1804">虚拟机上安装Ubuntu 18.04</a>大同小异，如果是初学者可以参考网上相关教程。</p>
+<p>分区划分</p>
+<table>
+<thead>
+<tr>
+<th>部分</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/boot</td>
+<td>标准分区。划分100-200MiB或者大一点。ext4</td>
+</tr>
+<tr>
+<td>/swap</td>
+<td>标准分区。划分为内存容量的1.5倍。swap</td>
+</tr>
+<tr>
+<td>/</td>
+<td>标准分区。余下容量。ext4</td>
+</tr>
+</tbody>
+</table>
+<p>See also：<a target="_blank" rel="noopener" href="https://blog.csdn.net/lazy_moon/article/details/83350400">https://blog.csdn.net/lazy_moon/article/details/83350400</a></p>
+<p>登录CentOS的方法：用户名为root 密码为123456（这密码是安装时设置的密码）</p>
+<h2 id="虚拟机上安装CentOS-7">虚拟机上安装CentOS 7</h2>
+<p>安装过程与<a href="#vm_install_ubuntu1804">虚拟机上安装Ubuntu 18.04</a>大同小异，如果是初学者可以参考网上相关教程。</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yaok430/p/10097418.html">centos7系统分区方案 - 风行天下-2080 - 博客园</a></p>
+<p>其中各分区可选xfs文件系统。</p>
+<p>登录CentOS的方法：用户名为root 密码为123456（这密码是安装时设置的密码）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">TYPE&#x3D;Ethernet</span><br><span class="line">PROXY_METHOD&#x3D;none</span><br><span class="line">BROWSER_ONLY&#x3D;no</span><br><span class="line">BOOTPROTO&#x3D;none</span><br><span class="line">DEFROUTE&#x3D;yes</span><br><span class="line">IPV4_FAILURE_FATAL&#x3D;no</span><br><span class="line">IPV6INIT&#x3D;no</span><br><span class="line">IPV6_AUTOCONF&#x3D;yes</span><br><span class="line">IPV6_DEFROUTE&#x3D;yes</span><br><span class="line">IPV6_FAILURE_FATAL&#x3D;no</span><br><span class="line">IPV6_ADDR_GEN_MODE&#x3D;stable-privacy</span><br><span class="line">NAME&#x3D;ens33</span><br><span class="line">UUID&#x3D;cf9792d8-f216-4aef-a5ad-fa56432fd437</span><br><span class="line">DEVICE&#x3D;ens33</span><br><span class="line">ONBOOT&#x3D;no</span><br><span class="line">IPADDR&#x3D;10.0.0.5</span><br><span class="line">PREFIX&#x3D;24</span><br><span class="line">GATEWAY&#x3D;10.0.0.2</span><br><span class="line">DNS1&#x3D;223.5.5.5</span><br><span class="line">IPV6_PRIVACY&#x3D;no</span><br></pre></td></tr></table></figure>
+<h2 id="安装时关于VMware的常见问题">安装时关于VMware的常见问题</h2>
+<h3 id="启动虚拟机时可能出现的问题">启动虚拟机时可能出现的问题</h3>
+<p>在Vmware16中，可能会出现如下错误提示框：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Unable to open kernel device &#39;\\.\VMCIDev\VMX&#39;: Overlapped I&#x2F;O operation is in progress. Did you reboot after installing VMware Workstation? </span><br><span class="line">Module &#39;DevicePowerOn&#39; power on failed.</span><br><span class="line">Failed to start the virtual machine.</span><br></pre></td></tr></table></figure>
+<p>![Unable to open kernel device](Linux-InstallLinuxInVM/Unable to open kernel device.png)</p>
+<p>在<a target="_blank" rel="noopener" href="https://communities.vmware.com/t5/VMware-Workstation-Pro/Unable-to-open-kernel-device-quot-VMCIDev-VMX-quot/td-p/342553">Unable to open kernel device “\.\VMCIDev\VMX” - VMware Technology Network VMTN</a>中提到的解决方法：</p>
+<blockquote>
+<p>在镜像安装目录中找到<code>.vmx</code>文件并打开，将<code>vmci0.present</code>修改为<code>FALSE</code>，然后保存。</p>
+</blockquote>
+<h3 id="刚安装完Linux后，应当关闭IDE连接">刚安装完Linux后，应当关闭IDE连接</h3>
+<p>这一步的目的是防止VMware默认IDE启动为第一Boot时，虚拟机开启后自动进入IDE中存在的ISO镜像。具体关闭方法如下：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/VMware-Linux-IDE-Disconnect.png" class="" title="VMware-Linux-IDE-Disconnect">
+<h1 id="实现Windows内容粘贴到虚拟机中">实现Windows内容粘贴到虚拟机中</h1>
+<p>如何实现Windows内容粘贴到Linuix VM中？</p>
+<p>按照以下步骤实现Windows内容复制并粘贴到Linux VM中：(以粘贴&quot;/etc/default/grub&quot;为例)</p>
+<ul>
+<li>在Windows上复制内容</li>
+<li>切换到VM中，按下CTRL+ALT，然后可以看到鼠标形状变成五指</li>
+</ul>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-VMware-PasteToLinuxVM-1.png" class="" title="Linux-VMware-PasteToLinuxVM-1">
+<ul>
+<li>在鼠标形状变成五指的状态下，CTRL+V实现粘贴。</li>
+</ul>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/7821e3ee/Linux-VMware-PasteToLinuxVM-2.png" class="" title="Linux-VMware-PasteToLinuxVM-2">
+<hr>
+<h1 id="安装VMware-Tools">安装VMware Tools</h1>
+<p>如何按照VMware Tools，请参考VMware官网英文文档，讲得明明白白的：<a target="_blank" rel="noopener" href="https://docs.vmware.com/en/VMware-Workstation-Pro/15.0/com.vmware.ws.using.doc/GUID-08BB9465-D40A-4E16-9E15-8C016CC8166F.html">Manually Installing VMware Tools on a Linux Virtual Machine</a>。</p>
+<p>安装了VMware Tools可以在VM上设置共享目录，方便Linux和Windows数据共享。</p>
+<p>设置成功后默认挂载在Linux的/mnt/hgfs/[共享目录名]下。</p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>CentOS6,7/Ubuntu镜像下载与安装至VM虚拟机</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://violet7pan.gitee.io/posts/7821e3ee/">https://violet7pan.gitee.io/posts/7821e3ee/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>violet7pan</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-02-20</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2021-06-14</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/9bbe274e/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-16.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Linux如何配置网络</div></div></a></div><div class="next-post pull-right"><a href="/posts/d14db510/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-16.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Docker使用和MySQL安装</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/c2e31e6/" title="CentOS7系统优化脚本"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-2.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-20</div><div class="title">CentOS7系统优化脚本</div></div></a></div><div><a href="/posts/9bbe274e/" title="Linux如何配置网络"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-16.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-20</div><div class="title">Linux如何配置网络</div></div></a></div><div><a href="/posts/887a2cdf/" title="Linux find命令的使用"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-21.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-20</div><div class="title">Linux find命令的使用</div></div></a></div><div><a href="/posts/7b277ce5/" title="Linux-Command-tar"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-9.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-19</div><div class="title">Linux-Command-tar</div></div></a></div><div><a href="/posts/ff26220a/" title="Linux-UserManagement"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-18</div><div class="title">Linux-UserManagement</div></div></a></div><div><a href="/posts/60bc5e22/" title="Linux awk命令"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-16.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-22</div><div class="title">Linux awk命令</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">violet7pan</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/violet7pan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E9%95%9C%E5%83%8F%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.</span> <span class="toc-text">Linux镜像下载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Linux%E5%88%B0VM"><span class="toc-number">2.</span> <span class="toc-text">安装Linux到VM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#span-id-vm-install-ubuntu1804-%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85Ubuntu-18-04-span"><span class="toc-number">2.1.</span> <span class="toc-text">虚拟机上安装Ubuntu 18.04</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-number">2.1.1.</span> <span class="toc-text">创建虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#span-id-install-ubuntu-%E5%AE%89%E8%A3%85%E7%8E%AF%E8%8A%82-span"><span class="toc-number">2.1.2.</span> <span class="toc-text">安装环节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85CentOS-6-6"><span class="toc-number">2.2.</span> <span class="toc-text">虚拟机上安装CentOS 6.6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8A%E5%AE%89%E8%A3%85CentOS-7"><span class="toc-number">2.3.</span> <span class="toc-text">虚拟机上安装CentOS 7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%97%B6%E5%85%B3%E4%BA%8EVMware%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">2.4.</span> <span class="toc-text">安装时关于VMware的常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%97%B6%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.4.1.</span> <span class="toc-text">启动虚拟机时可能出现的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9A%E5%AE%89%E8%A3%85%E5%AE%8CLinux%E5%90%8E%EF%BC%8C%E5%BA%94%E5%BD%93%E5%85%B3%E9%97%ADIDE%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.4.2.</span> <span class="toc-text">刚安装完Linux后，应当关闭IDE连接</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0Windows%E5%86%85%E5%AE%B9%E7%B2%98%E8%B4%B4%E5%88%B0%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD"><span class="toc-number">3.</span> <span class="toc-text">实现Windows内容粘贴到虚拟机中</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85VMware-Tools"><span class="toc-number">4.</span> <span class="toc-text">安装VMware Tools</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/3b4634fc/" title="Hexo使用"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-20.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo使用"/></a><div class="content"><a class="title" href="/posts/3b4634fc/" title="Hexo使用">Hexo使用</a><time datetime="2021-06-07T12:08:35.000Z" title="发表于 2021-06-07 20:08:35">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/24caea6b/" title="Hexo常用命令"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-11.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo常用命令"/></a><div class="content"><a class="title" href="/posts/24caea6b/" title="Hexo常用命令">Hexo常用命令</a><time datetime="2021-06-07T06:10:13.000Z" title="发表于 2021-06-07 14:10:13">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo隐藏文章"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo隐藏文章"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo隐藏文章">Hexo隐藏文章</a><time datetime="2021-06-04T11:00:41.000Z" title="发表于 2021-06-04 19:00:41">2021-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-12.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo贴文Front-Matter用法"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法">Hexo贴文Front-Matter用法</a><time datetime="2021-06-01T11:37:37.000Z" title="发表于 2021-06-01 19:37:37">2021-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的Buttefly主题魔改历程"/></a><div class="content"><a class="title" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程">我的Buttefly主题魔改历程</a><time datetime="2021-06-01T08:52:32.000Z" title="发表于 2021-06-01 16:52:32">2021-06-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By violet7pan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/algolia.js"></script><div class="js-pjax"></div><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

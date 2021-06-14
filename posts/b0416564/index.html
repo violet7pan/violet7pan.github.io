@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AutoCAD-文本篇 | violet7pan Blog</title><meta name="keywords" content="AutoCAD"><meta name="author" content="violet7pan"><meta name="copyright" content="violet7pan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="🔙AutoCAD导航贴 多行文本 MText T + Space调用多行文本命令。 一般情况下，我们设置文字样式为Standard，字体就按需选择即可，在字体下拉列表中，有三种类型的字体，如图所示  纵向字体、系统字体和AutoCAD字体。 系统字体：若系统为Windows，那么这类字体是Windows自带的，如果需要更多字体，你也可以去下载更多的Windows字体。 纵向字体(Vertical">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AutoCAD-文本篇">
+<meta property="og:url" content="https://violet7pan.gitee.io/posts/b0416564/index.html">
+<meta property="og:site_name" content="violet7pan Blog">
+<meta property="og:description" content="🔙AutoCAD导航贴 多行文本 MText T + Space调用多行文本命令。 一般情况下，我们设置文字样式为Standard，字体就按需选择即可，在字体下拉列表中，有三种类型的字体，如图所示  纵向字体、系统字体和AutoCAD字体。 系统字体：若系统为Windows，那么这类字体是Windows自带的，如果需要更多字体，你也可以去下载更多的Windows字体。 纵向字体(Vertical">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-17.webp">
+<meta property="article:published_time" content="2021-05-08T06:21:53.000Z">
+<meta property="article:modified_time" content="2021-06-14T03:47:35.615Z">
+<meta property="article:author" content="violet7pan">
+<meta property="article:tag" content="AutoCAD">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-17.webp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://violet7pan.gitee.io/posts/b0416564/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"PKY3F5HAHD","apiKey":"5e175a241d1eb8b01147dbb78d77842d","indexName":"prod_blog","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'AutoCAD-文本篇',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-14 11:47:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/custom.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/index.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="//at.alicdn.com/t/font_2405210_6tovfl8ipqu.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-17.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">violet7pan Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">AutoCAD-文本篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-08T06:21:53.000Z" title="发表于 2021-05-08 14:21:53">2021-05-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.615Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/AutoCAD/">AutoCAD</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="AutoCAD-文本篇"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>🔙<a href="/posts/12466d65/" title="AutoCAD导航贴">AutoCAD导航贴</a></p>
+<h1 id="多行文本-MText">多行文本 MText</h1>
+<p><kbd>T</kbd> + <kbd>Space</kbd>调用多行文本命令。</p>
+<p>一般情况下，我们设置文字样式为<code>Standard</code>，字体就按需选择即可，在字体下拉列表中，有三种类型的字体，如图所示</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/b0416564/AutoCAD-Text-Fonts.jpg" class="" title="AutoCAD-Text-Fonts">
+<p>纵向字体、系统字体和AutoCAD字体。</p>
+<p><code>系统字体</code>：若系统为Windows，那么这类字体是Windows自带的，如果需要更多字体，你也可以去下载更多的Windows字体。</p>
+<p><code>纵向字体(Vertically-oriented Fonts)</code>：这类字体通常以<code>@</code>开头，这类字体由于是纵向分布，可用于垂直版面的打印。<a target="_blank" rel="noopener" href="https://devblogs.microsoft.com/oldnewthing/20120719-00/?p=7093">ref.</a></p>
+<p><code>AutoCAD字体</code>：这类字体文件是以<code>.shx</code>为后缀，它们存放在AutoCAD安装目录下的Fonts文件夹中。当AutoCAD图纸有用到这些文字时，AutoCAD才会加载这类字体。</p>
+<p>多行文本的内容输入完成后，可以按下<kbd>Ctrl</kbd> + <kbd>Enter</kbd>进行确认。</p>
+<h1 id="单行文本-Text">单行文本 Text</h1>
+<p>单行文本默认没有设置文字样式的，单行文本如果想要有显示效果，需要手动设置文字样式。</p>
+<h1 id="多行文本和单行文本的区别">多行文本和单行文本的区别</h1>
+<ul>
+<li>
+<p>格式排版选项数量不一。</p>
+<ul>
+<li>单行文本命令可使用的选项比多行文本命令少。如果单行文本要设置字体，只能通过文字样式。</li>
+<li>多行文本提供段落或多行写作，有更多格式编排特性，比如字体，段落，符号，项目符号，行间距等。</li>
+</ul>
+</li>
+<li>
+<p>是否可使用爆破命令分解对象。</p>
+<ul>
+<li>单行文本不可被分解。</li>
+<li>多行文本可被分解为单个或多个单行文对象。</li>
+</ul>
+</li>
+</ul>
+<h1 id="文字样式-Style">文字样式 Style</h1>
+<p><kbd>ST</kbd> + <kbd>Space</kbd>调用文字样式管理命令。</p>
+<p>在文字样式管理中新建文字样式：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/b0416564/AutoCAD-Text-Style.png" class="" title="AutoCAD-Text-Style">
+<p><code>新建</code>：新建文字样式。</p>
+<p><code>高度</code>：按需修改。若该文字样式用于标注，那么这个高度参数不要设定值，一旦设定后，标注将无法修改高度。</p>
+<p>可以利用AutoCAD字体新建大字体，如下图所示</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/b0416564/AutoCAD-Text-Style-BigFont.png" class="" title="AutoCAD-Text-Style-BigFont">
+<p>这种字体和使用的仿宋字体不一样，如下图所示</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/b0416564/AutoCAD-ShxFont_SimSum.png" class="" title="AutoCAD-ShxFont_SimSum">
+<p>仿宋字体放大后，这类线条是经过填充的，应用这类字体的文本内容如果字体大小设置得较小，则打印后会变模糊。</p>
+<p>txt.shx字体的每个字线条很细，这样的字体在建筑图纸中常用使用。由于线条较小，这类字体的文本内容即使字较小，也能打印得很清晰。</p>
+<h1 id="SHX字体和大字体">SHX字体和大字体</h1>
+<p>SHX字体和大字体可以用数学集合中真子集的概念来描述，这样我们使用<code>Venn diagram</code>来描述：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/b0416564/AutoCAD-Font-MathematicalSet.png" class="" title="AutoCAD-Font-MathematicalSet">
+<h1 id="缺少字体文件的解决方法">缺少字体文件的解决方法</h1>
+<p>遇到这个提示框该怎么？</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/b0416564/AutoCAD-MissingSHXFiles.png" class="" title="AutoCAD-MissingSHXFiles">
+<p>点击提示框右上角的’X’关闭提示框。</p>
+<p>在浏览图纸时，看到文字出现许多问号，可以先选中它</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/b0416564/AutoCAD-MissingFont-1.png" class="" title="AutoCAD-MissingFont-1">
+<h2 id="缺少系统字体">缺少系统字体</h2>
+<p class='p left h4'>确定缺少的字体</p>
+<p>然后按下<kbd>STY</kbd> + <kbd>Space</kbd>进入文本样式管理面板：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/b0416564/AutoCAD-MissingWindowsFont-1.png" class="" title="AutoCAD-MissingWindowsFont-1">
+<p>选择刚才特性面板确定的样式，发现这个字体为系统字体，但是由于系统缺少这个字体，所以图标变成代表“缺少系统字体”的图标。</p>
+<p class='p left h4'>下载安装系统字体</p>
+<p>可以去网上下载指定的Windows字体，字体文件后缀名为<code>.ttf</code>，也有些字体文件后缀为<code>.otf</code>，双击字体文件就可以安装了。</p>
+<p>下载途径：<a target="_blank" rel="noopener" href="https://www.wfonts.com/">Windows fonts - Download free fonts</a>，百度搜索。</p>
+<p>下载了仿宋字体后，得到chinese.simfang.ttf的字体文件，双击安装</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/b0416564/InstallWindowsFont.png" class="" title="InstallWindowsFont">
+<p>在安装界面可以安装的名称为<span class='p red'>仿宋</span>。</p>
+<p>字体文件是安装到<code>C:\Windows\Fonts</code>中。通过<kbd>Win</kbd>+<kbd>R</kbd>打开运行窗口，输入<code>shell:fonts时</code>进入，在文件夹中查看是否存在指定字体。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/b0416564/Windows-CheckFontList.png" class="" title="Windows-CheckFontList">
+<p class='p left h4'>选择合适的新字体</p>
+<p>安装好后，回到AutoCAD，重新打开“文字样式”管理面板：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/b0416564/AutoCAD-MissingWindowsFont-2.png" class="" title="AutoCAD-MissingWindowsFont-2">
+<p>选择刚安装的仿宋，发现字体还是显示许多问号，这时我们输入<kbd>REGEN</kbd> + <kbd>Space</kbd>对图纸内容进行重绘后文字就正常显示了，也可以切换到其他字体/样式，然后切换回到原来的字体/样式，文字就正常显示了。</p>
+<h2 id="缺少SHX字体">缺少SHX字体</h2>
+<p>方法一：打开“文字样式”管理面板，确定缺少的.shx文件，然后下载和安装对应.shx文件，然后输入<kbd>REGEN</kbd> + <kbd>Space</kbd>对图纸内容进行重绘，文字就正常显示。</p>
+<p>方法二：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/54553293">修改字体映射文件</a></p>
+<p>方法三：打开“文字样式”管理面板</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/b0416564/AutoCAD-MissingSHXFont.png" class="" title="AutoCAD-MissingSHXFont">
+<p>SHX字体选择txt.shx，大字体选择gcbbig.shx，然后输入<kbd>REGEN</kbd> + <kbd>Space</kbd>对图纸内容进行重绘，文字就正常显示。</p>
+<p>其中方法一最优。</p>
+<h1 id="过时的单行文本-DText">过时的单行文本 DText</h1>
+<p>DText是一种过时的动态文本，在AutoCAD 2000中得到引入。DText不支持脚本编程和LISP语言。</p>
+<details ><summary> References </summary>
+              <div class='content'>
+              <blockquote><p>While create a new customize linetype using mkltype command. we can only select dtext object. <a target="_blank" rel="noopener" href="https://www.quora.com/What-is-the-difference-between-a-text-and-an-MText-in-AutoCAD#:~:text=Text%20is%20also%20known%20as,we%20can%20use%20text%20command.&amp;text=Mtext%20is%20multiline%20text%20used,%2C%20symblols%2C%20bullets%2C%20linespacing.">ref.</a></p></blockquote><blockquote><p>“D” in Dtext stands for Dynamic text and both commands were unified in AutoCAD 2000. Just one addition. Dtext command can not be scripted or used through Lisp. Text command can. If used through the script or Lisp it still exhibits old scriptable non-dynamic behavior. <a target="_blank" rel="noopener" href="https://forums.autodesk.com/t5/autocad-forum/difference-between-dtext-and-text/td-p/1149519">ref.</a></p></blockquote>
+              </div>
+            </details>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>AutoCAD-文本篇</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://violet7pan.gitee.io/posts/b0416564/">https://violet7pan.gitee.io/posts/b0416564/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>violet7pan</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-05-08</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2021-06-14</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AutoCAD/">AutoCAD</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/12466d65/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">AutoCAD导航贴</div></div></a></div><div class="next-post pull-right"><a href="/posts/e930026c/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-15.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">AutoCAD-图块</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/8b51d436/" title="AutoCAD-标注篇"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-21.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-11</div><div class="title">AutoCAD-标注篇</div></div></a></div><div><a href="/posts/c85f7852/" title="AutoCAD-基础篇"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-19.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-09</div><div class="title">AutoCAD-基础篇</div></div></a></div><div><a href="/posts/e930026c/" title="AutoCAD-图块"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-15.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-07</div><div class="title">AutoCAD-图块</div></div></a></div><div><a href="/posts/bea64242/" title="AutoCAD-设计中心"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-9.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-10</div><div class="title">AutoCAD-设计中心</div></div></a></div><div><a href="/posts/751a9a73/" title="AutoCAD-绘图篇"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-17.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-06</div><div class="title">AutoCAD-绘图篇</div></div></a></div><div><a href="/posts/5a8a6c8d/" title="AutoCAD-图层篇"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-19.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-06</div><div class="title">AutoCAD-图层篇</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">violet7pan</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/violet7pan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC-MText"><span class="toc-number">1.</span> <span class="toc-text">多行文本 MText</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E8%A1%8C%E6%96%87%E6%9C%AC-Text"><span class="toc-number">2.</span> <span class="toc-text">单行文本 Text</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E5%92%8C%E5%8D%95%E8%A1%8C%E6%96%87%E6%9C%AC%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.</span> <span class="toc-text">多行文本和单行文本的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E5%AD%97%E6%A0%B7%E5%BC%8F-Style"><span class="toc-number">4.</span> <span class="toc-text">文字样式 Style</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SHX%E5%AD%97%E4%BD%93%E5%92%8C%E5%A4%A7%E5%AD%97%E4%BD%93"><span class="toc-number">5.</span> <span class="toc-text">SHX字体和大字体</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%BA%E5%B0%91%E5%AD%97%E4%BD%93%E6%96%87%E4%BB%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">缺少字体文件的解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%BA%E5%B0%91%E7%B3%BB%E7%BB%9F%E5%AD%97%E4%BD%93"><span class="toc-number">6.1.</span> <span class="toc-text">缺少系统字体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%BA%E5%B0%91SHX%E5%AD%97%E4%BD%93"><span class="toc-number">6.2.</span> <span class="toc-text">缺少SHX字体</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%87%E6%97%B6%E7%9A%84%E5%8D%95%E8%A1%8C%E6%96%87%E6%9C%AC-DText"><span class="toc-number">7.</span> <span class="toc-text">过时的单行文本 DText</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/3b4634fc/" title="Hexo使用"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-20.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo使用"/></a><div class="content"><a class="title" href="/posts/3b4634fc/" title="Hexo使用">Hexo使用</a><time datetime="2021-06-07T12:08:35.000Z" title="发表于 2021-06-07 20:08:35">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/24caea6b/" title="Hexo常用命令"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-11.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo常用命令"/></a><div class="content"><a class="title" href="/posts/24caea6b/" title="Hexo常用命令">Hexo常用命令</a><time datetime="2021-06-07T06:10:13.000Z" title="发表于 2021-06-07 14:10:13">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo隐藏文章"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo隐藏文章"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo隐藏文章">Hexo隐藏文章</a><time datetime="2021-06-04T11:00:41.000Z" title="发表于 2021-06-04 19:00:41">2021-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-12.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo贴文Front-Matter用法"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法">Hexo贴文Front-Matter用法</a><time datetime="2021-06-01T11:37:37.000Z" title="发表于 2021-06-01 19:37:37">2021-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的Buttefly主题魔改历程"/></a><div class="content"><a class="title" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程">我的Buttefly主题魔改历程</a><time datetime="2021-06-01T08:52:32.000Z" title="发表于 2021-06-01 16:52:32">2021-06-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By violet7pan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/algolia.js"></script><div class="js-pjax"></div><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

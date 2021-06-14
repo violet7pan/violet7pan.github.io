@@ -1,0 +1,303 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>XYplorer-搜索篇(Search) | violet7pan Blog</title><meta name="keywords" content="XYplorer"><meta name="author" content="violet7pan"><meta name="copyright" content="violet7pan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="返回:  XYplorer使用指南 XYplorer的搜索及最佳搜索替换工具Everything | Search | Find 1. XYplorer的搜索 1.1 搜索功能有哪些 使用List All Commands...命令，通过键盘依次按下Alt-&gt;H-&gt;O呼出，然后输入关键词find，得到相关的命令如下： 12345678#260	Edit | Find Files...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XYplorer-搜索篇(Search)">
+<meta property="og:url" content="https://violet7pan.gitee.io/posts/5c0966ce/index.html">
+<meta property="og:site_name" content="violet7pan Blog">
+<meta property="og:description" content="返回:  XYplorer使用指南 XYplorer的搜索及最佳搜索替换工具Everything | Search | Find 1. XYplorer的搜索 1.1 搜索功能有哪些 使用List All Commands...命令，通过键盘依次按下Alt-&gt;H-&gt;O呼出，然后输入关键词find，得到相关的命令如下： 12345678#260	Edit | Find Files...">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-21.webp">
+<meta property="article:published_time" content="2021-03-09T07:28:53.000Z">
+<meta property="article:modified_time" content="2021-06-14T03:47:35.735Z">
+<meta property="article:author" content="violet7pan">
+<meta property="article:tag" content="XYplorer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-21.webp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://violet7pan.gitee.io/posts/5c0966ce/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"PKY3F5HAHD","apiKey":"5e175a241d1eb8b01147dbb78d77842d","indexName":"prod_blog","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'XYplorer-搜索篇(Search)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-14 11:47:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/custom.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/index.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="//at.alicdn.com/t/font_2405210_6tovfl8ipqu.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-21.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">violet7pan Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">XYplorer-搜索篇(Search)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-09T07:28:53.000Z" title="发表于 2021-03-09 15:28:53">2021-03-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.735Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/XYplorer/">XYplorer</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="XYplorer-搜索篇(Search)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>返回:  <a href="/posts/8949c74c/" title="XYplorer使用指南">XYplorer使用指南</a></p>
+<h1 id="XYplorer的搜索及最佳搜索替换工具Everything-Search-Find">XYplorer的搜索及最佳搜索替换工具Everything | Search | Find</h1>
+<h2 id="1-span-id-xyplorer-search-XYplorer的搜索-span">1. <span id="xyplorer_search">XYplorer的搜索</span></h2>
+<h3 id="1-1-搜索功能有哪些">1.1 搜索功能有哪些</h3>
+<p>使用<code>List All Commands...</code>命令，通过键盘依次按下Alt-&gt;H-&gt;O呼出，然后输入关键词find，得到相关的命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#260	Edit | Find Files...	 (Ctrl+F)</span><br><span class="line">#261	Edit | Find Now	 (Ctrl+Alt+F)</span><br><span class="line">#615	Tools | List Management | Find Files: Name...</span><br><span class="line">#616	Tools | List Management | Find Files: Location...</span><br><span class="line">#617	Tools | List Management | Find Files: Excluded Items...</span><br><span class="line">#1058	Miscellaneous | Select Info Panel Tab | Find Files	 (Ctrl+7)</span><br><span class="line">#1026	Miscellaneous | Find Files | Open Find Files and Reset	 (Ctrl+Shift+F)</span><br><span class="line">#1030	Miscellaneous | Find Files | Search All Tabs</span><br></pre></td></tr></table></figure>
+<p>继续输入关键词search，其中与搜索有关的命令有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#262	Edit | Repeat Last Search</span><br><span class="line">#266	Edit | Quick Search...	 (F3)</span><br><span class="line">#268	Edit | Toggle Quick Search	 (Ctrl+Shift+F3)</span><br><span class="line">#267	Edit | Repeat Last Quick Search	 (Shift+F3)</span><br><span class="line">#638	Tools | List Management | Quick Search...</span><br><span class="line">#1030	Miscellaneous | Find Files | Search All Tabs</span><br></pre></td></tr></table></figure>
+<p>继续输入关键词Live Filter Box，其中与搜索有关的命令有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#675	Window | Show Live Filter Box	 (Alt+F3)</span><br><span class="line">#694	Window | Arrangement | Live Filter Box in Status Bar</span><br><span class="line">#1080	Miscellaneous | Focus Functions | Focus Live Filter Box	 (Ctrl+Alt+X)</span><br></pre></td></tr></table></figure>
+<p>注意：使用<code>List All Commands...</code>命令搜索到的命令项目通过鼠标左键双击可以启动命令。</p>
+<p>使用<code>Customize Toolbar...</code>命令，通过键盘依次按下Alt-&gt;T-&gt;B呼出，然后在左侧或右侧的搜索框输入关键词组Find by，得到相关的工具栏有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Find by Tags</span><br><span class="line">Find by Label</span><br></pre></td></tr></table></figure>
+<p>这两个按钮是特有的搜索关于Label(标签)和Tags(标注)的内容的按钮。</p>
+<p>-XYplorer的搜索<u>主要体现</u>在四处: Find Files, Quick Search, Live Filter Box, 文件列表关键词匹配。</p>
+<h3 id="1-2-Find-Files">1.2 Find Files</h3>
+<p>1.<code>Edit-&gt;Find Files(Ctrl +F)</code></p>
+<p>需要指定搜索目录，关键字。其他过滤条件可选。但搜索速度慢，长时间运行可能会很卡。</p>
+<h4 id="什么是Find-Files-Tab">什么是Find Files Tab</h4>
+<p>首先介绍什么是Find Files Tab，如下图所示：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/FindFilesTab-1.png" class="" title="FindFilesTab-1">
+<p>Find Files Tab可以通过<kbd>Ctrl+F</kbd>呼出，也可通过在键盘依次按下Alt-&gt;E-&gt;F呼出。</p>
+<h4 id="Find-Files-Tab使用帮助">Find Files Tab使用帮助</h4>
+<p>地址栏输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rtfm &quot;idh_find.htm&quot;;</span><br></pre></td></tr></table></figure>
+<p>了解了Find Files Tab后，我们可以开始讲解Search Template了。</p>
+<h4 id="Search-Template">Search Template</h4>
+<h5 id="什么是Search-Template">什么是Search Template</h5>
+<p>首先，Template在XY语境中应该翻译为“模板”。那么Search Template就是用于Find Files Tab中搜索功能的一个模板。</p>
+<p>那么Search Template保存的是什么呢？我们看Find Files Tab那张图片，可以看到有许多选项卡，比如Name &amp; Location, Size, Date, Attributes, Tag, Contents, Dupes, Exclude。每个选项卡都是有参数可以勾选的，而这些参数都保存Search Template中。</p>
+<h5 id="Search-Template的保存">Search Template的保存</h5>
+<p>如下图所示，这些勾选和添加的参数我都想要保存起来，并且会经常使用这些参数，我想要将其参数保存到Search Template中，下次打开Find Files Tab后，我可以很快地加载这些参数，而不用一个一个地设置它们。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/FindFilesTab-SearchTemplate-1.png" class="" title="FindFilesTab-SearchTemplate-1">
+<p>那么我该如何保存？</p>
+<p>Search Template命令在菜单栏Edit-&gt;Search Templates…中，可以通过按键依次按下Alt-&gt;E-&gt;A呼出。</p>
+<p>如下图所示为Search Template的界面：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/FindFilesTab-SearchTemplate-UI.png" class="" title="FindFilesTab-SearchTemplate-UI">
+<p>呼出Search Template界面后，点击Save to Template…：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/FindFilesTab-SearchTemplate-Save.png" class="" title="FindFilesTab-SearchTemplate-Save">
+<p>这里我命名为Find:Everywhere-Label:Red-Excluded:C,D。</p>
+<h5 id="Search-Template的载入">Search Template的载入</h5>
+<p>好了，我们点击Find Files Tab中的&quot;Reset Filters&quot;，如下图所示：</p>
+<p>![FindFilesTab-Reset Filters](XYplorer-Search/FindFilesTab-Reset Filters.png)</p>
+<p>这样&quot;Reset Filters&quot;按钮下方的Applied filters条件参数全部清空。</p>
+<p>现在该如何加载每个选项卡的参数呢？</p>
+<p>同样，我们先通过按键依次按下Alt-&gt;E-&gt;A呼出Search Template界面，然后选中对应的Search Template后点击&quot;Load Template&quot;按钮：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/FindFilesTab-SearchTemplate-LoadTemplate.png" class="" title="FindFilesTab-SearchTemplate-LoadTemplate">
+<p>这样就可以看到Find Files Tab加载了各个选项卡的参数了。</p>
+<h4 id="Find-Files-Tab的使用">Find Files Tab的使用</h4>
+<p>子选项卡和&quot;Applied filters&quot;的对应关系如下图所示</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/FindFilesTab-Subtabs&AppliedFilters.png" class="" title="FindFilesTab-Subtabs&amp;AppliedFilters">
+<p>Find Files Tab共有8个子选项卡，每个选项卡参数设置后，为了使这些选项卡参数都生效，需要勾选对应的&quot;Applied filters&quot;，确认好搜索条件后，可以点击&quot;Find Now&quot;进行搜索。</p>
+<h4 id="Search-Template进阶">Search Template进阶</h4>
+<h5 id="Search-Template使用说明指南">Search Template使用说明指南</h5>
+<p>详细使用说明请在地址栏输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rtfm &quot;idh_searchtemplates.htm&quot;;</span><br></pre></td></tr></table></figure>
+<h5 id="Search-Template保存文件命名">Search Template保存文件命名</h5>
+<p>Search Template是一个模板，模板文件保存在&lt;xydata&gt;\FindTemplates中。</p>
+<p>Template创建时，需要为当前Template进行命名，命名后进行保存，保存的文件名称与Template的一致，但由于Windows将如下字符作为保留字符：</p>
+<blockquote>
+<p>The following reserved characters:</p>
+<ul>
+<li>&lt; (less than)</li>
+<li>&gt; (greater than)</li>
+<li>: (colon)</li>
+<li>&quot; (double quote)</li>
+<li>/ (forward slash)</li>
+<li>\ (backslash)</li>
+<li>| (vertical bar or pipe)</li>
+<li>? (question mark)</li>
+<li>* (asterisk)</li>
+</ul>
+<p>关于Windows命名规范详情可参考<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/fileio/naming-a-file?redirectedfrom=MSDN">Naming Files, Paths, and Namespaces - Win32 apps | Microsoft Docs</a>，以上引用内容为保留字符的描述。</p>
+</blockquote>
+<p>所以文件名就不应该出现这些保留字符，不然就会出现文件名非法的情况。然而XY允许使用这些被Windows作为保留字符的字符。为了避免Windows文件名非法，XY采用了&quot;% &amp; Hex(charcode)&quot;的方案来转换这些字符。</p>
+<p>在地址栏输入:&lt;xydata&gt;\FindTemplates,看到我保存的Search Template文件:</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/FindFilesTab-SearchTemplate-Save-2.png" class="" title="FindFilesTab-SearchTemplate-Save-2">
+<p>可以发现’:'被解释成&quot;%3A&quot;了。Windows保留字符的对于的十六进制数如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 以下为十六进制数 */</span></span><br><span class="line">&lt; <span class="comment">// 3D</span></span><br><span class="line">&gt; <span class="comment">// 3E</span></span><br><span class="line">: <span class="comment">// 3A</span></span><br><span class="line"><span class="string">&quot; // 22</span></span><br><span class="line"><span class="string">/ // 2F</span></span><br><span class="line"><span class="string">\ // 5C</span></span><br><span class="line"><span class="string">| // 7C</span></span><br><span class="line"><span class="string">? // 3F</span></span><br><span class="line"><span class="string">* // 2A</span></span><br></pre></td></tr></table></figure>
+<p>给出对应ASCII表</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/ASCII_Full.gif" class="" title="ASCII_Full">
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/ExtendedASCIICodes.gif" class="" title="ExtendedASCIICodes">
+<h5 id="Search-Template快速载入">Search Template快速载入</h5>
+<p>每次载入都需要点击菜单栏&quot;Edit-&gt;Search Templates…&quot;然后选择模板文件，再载入，这样速度太慢了。于是参考了<a target="_blank" rel="noopener" href="https://www.xyplorer.com/xyfc/viewtopic.php?t=11958">load search template and open search box directly - XYplorer Beta Club</a>的脚本，其脚本如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$template &#x3D; popupmenu(replace(listfolder(&quot;&lt;xydata&gt;\FindTemplates&quot;, &quot;*.ini&quot;, 4), &quot;.ini&quot;));</span><br><span class="line">loadsearch $template, &quot;x&quot;;</span><br><span class="line">#260;</span><br></pre></td></tr></table></figure>
+<p>各位可以试着复制上面的内容，然后在菜单栏&quot;Scripting-&gt;Run Scripting…&quot;呼出Run Scripting…，也可以通过键盘依次按下Alt-&gt;S-&gt;R呼出。把复制的脚本内容粘贴，然后运行这个脚本（前提是你有保存Search Template文件哦）。</p>
+<p>这个脚本受限于&quot;loadsearch&quot;函数，该函数不支持载入包含对Windows保留字符进行编码的文件名，所以我在上面脚本基础上进行修改，将编码的保留字符还原为ASCII字符，修改好后的脚本如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get the base filename of user-selected template file</span></span><br><span class="line">$template = popupmenu(replace(listfolder(<span class="string">&quot;&lt;xydata&gt;\FindTemplates&quot;</span>, <span class="string">&quot;*.ini&quot;</span>, <span class="number">4</span>), <span class="string">&quot;.ini&quot;</span>));	</span><br><span class="line"><span class="comment">// If $template is &quot;&quot;, then terminate the running script, and else nothing be done.</span></span><br><span class="line">end $template == <span class="string">&quot;&quot;</span>;</span><br><span class="line">$invalid_characters = <span class="string">&quot;&lt;,&gt;,:,/,\,|,?,|,*&quot;</span>; <span class="comment">// a filename that doesn’t contain any control characters or these characters as follows</span></span><br><span class="line">$invalid_characters_ctr = <span class="number">9</span>;</span><br><span class="line">$searchlist =;</span><br><span class="line">$ctr = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// Get searchlist of invalid_characters which use for replacelist function.</span></span><br><span class="line"><span class="function"><span class="title">foreach</span>(<span class="params">$token, $invalid_characters, <span class="string">&quot;,&quot;</span></span>)</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> ($ctr &lt; $invalid_characters_ctr) &#123;</span><br><span class="line">		$temp = <span class="string">&#x27;%&#x27;</span>.dectohex(asc($token)).<span class="string">&#x27;,&#x27;</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		$temp = <span class="string">&#x27;%&#x27;</span>.dectohex(asc($token));</span><br><span class="line">	&#125;</span><br><span class="line">	$ctr += <span class="number">1</span>;</span><br><span class="line">	$searchlist .= $temp;</span><br><span class="line">&#125;</span><br><span class="line">loadsearch replacelist($template, $searchlist, $invalid_characters, <span class="string">&quot;,&quot;</span>, <span class="number">0</span>, <span class="number">0</span>), x; <span class="comment">//Load specified search template ini file</span></span><br><span class="line">#260;	// This Command ID will invoke Find Files Tab</span><br></pre></td></tr></table></figure>
+<p>可以把脚本文件命名FastLoadSearchTemplate.xys，然后保存在&lt;xyscripts&gt;中，然后通过按键依次按下Alt-&gt;U-M呼出&quot;Manager User-Defined Commands&quot;，设置快捷键为<kbd>Shift+T</kbd></p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/FindFilesTab-SearchTemplate-FastLoadTemplateScript.png" class="" title="FindFilesTab-SearchTemplate-FastLoadTemplateScript">
+<p>使用效果如下：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/FindFilesTab-SearchTemplate-FastLoadSearchTempalte.gif" class="" title="FindFilesTab-SearchTemplate-FastLoadSearchTempalte">
+<h3 id="1-3-Quick-Search">1.3 Quick Search</h3>
+<p>2.<code>Edit-&gt;Quick Search(F3)</code></p>
+<p>功能很强大。需要结合匹配规则进行搜索，详细使用说明请在地址栏输入:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rtfm &quot;idh_quicknamesearch.htm&quot;;</span><br></pre></td></tr></table></figure>
+<p>我写过的一个简易版按Tag搜索脚本就是参考以上内容才写出来的。</p>
+<h3 id="1-4-Live-Filter-Box">1.4 Live Filter Box</h3>
+<p>3.Live Filter Box。</p>
+<p>使用方式：<code>Window-&gt;Show Live Filter Box</code>。在地址栏最右侧可以看到，如图</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/LiveFilterBox-1.png" class="" title="LiveFilterBox-1">
+<p><kbd>Ctrl + Alt + X</kbd>进入，搜索关键字。</p>
+<p>该功能用于当前目录下筛选文件（极其适合目录文件过量的情况下进行筛选）</p>
+<p>假设我们需要筛选出<code>C:\Windows\SysWOW64\certcli.dll</code>，你只知道关键字&quot;cert&quot;，在Live Filter Box键入&quot;cert&quot;后，</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/LiveFilterBox-2.png" class="" title="LiveFilterBox-2">
+<p>这是一次模拟筛选，该功能场景范围过窄但好用。</p>
+<h3 id="1-5-文件列表关键词匹配">1.5 文件列表关键词匹配</h3>
+<p>在浏览文件列表时，输入要匹配文件名关键词（必须从目标文件名的首位字母开始输入）可以快速查找文件，使用效果图如下：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/QuickFileListMatching.gif" class="" title="QuickFileListMatching">
+<h2 id="2-Everything与XYplorer的集成">2. Everything与XYplorer的集成</h2>
+<h3 id="Everything内容打开到XYplorer侧">Everything内容打开到XYplorer侧</h3>
+<p><code>Options-&gt;General-&gt;Context Menu</code>，如图</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/Everything-1.png" class="" title="Everything-1">
+<p>Explore:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$exec(&quot;你的XYplorer目录\XYplorer.exe&quot; &quot;%1&quot;)</span><br></pre></td></tr></table></figure>
+<p>Explore Path:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$exec(&quot;你的XYplorer目录\XYplorer.exe&quot; &#x2F;select&#x3D;&quot;%1&quot;)</span><br></pre></td></tr></table></figure>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/Everything-2.png" class="" title="Everything-2">
+<p>Explore和Explorer Path的区别：前者打开这个文件；后者打开这个文件所在的父目录。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.xyplorer.com/xyfc/viewtopic.php?t=20506">Everything and XYplorer - My Everything Integration Settings - XYplorer Beta Club</a></p>
+<p>这里有个以前用过目前弃用的Scripts的链接：<a target="_blank" rel="noopener" href="https://www.xyplorer.com/xyfc/viewtopic.php?f=7&amp;t=21480">Everything for xyplorer - XYplorer Beta Club</a>。如果你感兴趣，可以尝试一下。</p>
+<p>当然，纠结Scripts文件来调用<code>Everything's command-line ES</code>服务来搜索是没有必要的，复杂麻烦而且没直接使用Everything来得快。你可以跟我一样，添加一个Everything按钮，或者设置一个热键调用XY（请参考<a href="#invoke_everything">XYplorer间接调用Everything</a>）。</p>
+<h3 id="span-id-invoke-everything-XYplorer间接调用Everything-span"><span id="invoke_everything">XYplorer间接调用Everything</span></h3>
+<p>仅在当前目录下搜索（搜索的目标包括当前目录和当前目录的所有子目录)，示意图如下，</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/LimitedlySearchByEverything-1.gif" class="" title="LimitedlySearchByEverything-1">
+<p>具体显示步骤如下，</p>
+<p>1.创建脚本文件。菜单栏<code>Scripting-&gt;Go to Scripts Folder</code>来到&lt;xyscripts&gt;的目录下，创建名为<code>EverythingCurpathSearch.xys</code>脚本文件，内容如下，记得修改everything目录</p>
+<p>版本一[可选，推荐]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$everything &#x3D; &quot;D:\PortableApps\Everything\everything.exe&quot;;		&#x2F;&#x2F;填写everything.exe路径</span><br><span class="line">runret (&quot;cmd &#x2F;c &quot;.$everything.&quot; -path &quot;.&quot;&quot;&quot;&lt;curpath&gt;&quot;&quot;&quot;);</span><br></pre></td></tr></table></figure>
+<p>以上每行语句都有一个<kbd>Tab</kbd>哦。</p>
+<p>版本二[可选]</p>
+<p>版本二特别注意：<span style="color:red"><strong>搜索的关键词首尾不能分别带有&quot;。也就是没办法进行准确搜索</strong></span>。比如<code>&quot;Common Files&quot;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$everything &#x3D; &quot;D:\PortableApps\Everything\everything.exe&quot;;		&#x2F;&#x2F;填写everything.exe路径</span><br><span class="line">$args &#x3D; input(&quot;当前文件下搜索,请输入关键词:&quot;);</span><br><span class="line">runret (&quot;cmd &#x2F;c &quot;.$everything.&quot; -path &quot;.&quot;&quot;&quot;&lt;curpath&gt;&quot;&quot;&quot;.&quot; -s &quot;.&quot;&quot;&quot;$args&quot;&quot;&quot;);</span><br></pre></td></tr></table></figure>
+<p>2.绑定热键。菜单栏<code>User-&gt;Manage Commands...(Ctril + Alt + F9)</code></p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/LimitedlySearchByEverything-2.png" class="" title="LimitedlySearchByEverything-2">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cpation:CurpathSearch</span><br><span class="line">Script Files:&lt;xyscripts&gt;&#x2F;EverythingCurpathSearch.xys</span><br></pre></td></tr></table></figure>
+<p>这样就设置完成了。开始使用吧，在XYplorer当前Tab所在当前目录下按<kbd>Alt+2</kbd>，键入你想要搜索的key words，然后<kbd>Enter</kbd>即可。</p>
+<p>Script编写思路：通过命令行调用everything，everything想要完成当前目录搜索，需要知道主程序的外部接口[<a target="_blank" rel="noopener" href="https://www.voidtools.com/support/everything/command_line_options/">?</a>]，需要获取当前目录和用户键入值。</p>
+<p>Script中runret()可参考<code>XYplorer.chm</code></p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/5c0966ce/Scripting_command-runret-1.png" class="" title="Scripting_command-runret-1">
+<p>编写的脚本很简陋，其目的主要是为了打开Everything，并自动化地添加上当前目录。</p>
+<p>如果有兴趣的同学们可以自行研究下XYplorer Script(可参考 <a href="/posts/b8aab654/" title="XYplorer-脚本篇(Scripting)">XYplorer-脚本篇(Scripting)</a> 和 <a href="/posts/59f1c7f2/" title="XYplorer Scripting笔记">XYplorer Scripting笔记</a> ，熟悉流程控制语句和常用的Script Command就可以进行更高逻辑的功能实现了。</p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>XYplorer-搜索篇(Search)</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://violet7pan.gitee.io/posts/5c0966ce/">https://violet7pan.gitee.io/posts/5c0966ce/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>violet7pan</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-03-09</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2021-06-14</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/XYplorer/">XYplorer</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/2c339ceb/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-15.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">XYplorer-收藏篇(Favorites)</div></div></a></div><div class="next-post pull-right"><a href="/posts/ed39d40a/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-3.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">XYplorer-便携式文件图标(CFI)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/7c0df866/" title="XYplorer-备份还原篇(Backup+Restore)"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-13.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-09</div><div class="title">XYplorer-备份还原篇(Backup+Restore)</div></div></a></div><div><a href="/posts/ebd34f79/" title="XYplorer-自定义事件动作(CEA)"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-6.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-09</div><div class="title">XYplorer-自定义事件动作(CEA)</div></div></a></div><div><a href="/posts/d17978f9/" title="XYplorer-便携式文件关联(CFA)+打开方式(POM)"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-10.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-09</div><div class="title">XYplorer-便携式文件关联(CFA)+打开方式(POM)</div></div></a></div><div><a href="/posts/ed39d40a/" title="XYplorer-便携式文件图标(CFI)"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-3.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-09</div><div class="title">XYplorer-便携式文件图标(CFI)</div></div></a></div><div><a href="/posts/2c339ceb/" title="XYplorer-收藏篇(Favorites)"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-15.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-09</div><div class="title">XYplorer-收藏篇(Favorites)</div></div></a></div><div><a href="/posts/c07fdd8a/" title="XYplorer-配合其他效率工具"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-09</div><div class="title">XYplorer-配合其他效率工具</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">violet7pan</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/violet7pan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#XYplorer%E7%9A%84%E6%90%9C%E7%B4%A2%E5%8F%8A%E6%9C%80%E4%BD%B3%E6%90%9C%E7%B4%A2%E6%9B%BF%E6%8D%A2%E5%B7%A5%E5%85%B7Everything-Search-Find"><span class="toc-number">1.</span> <span class="toc-text">XYplorer的搜索及最佳搜索替换工具Everything | Search | Find</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-span-id-xyplorer-search-XYplorer%E7%9A%84%E6%90%9C%E7%B4%A2-span"><span class="toc-number">1.1.</span> <span class="toc-text">1. XYplorer的搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 搜索功能有哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Find-Files"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 Find Files</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFFind-Files-Tab"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">什么是Find Files Tab</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Find-Files-Tab%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">Find Files Tab使用帮助</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Search-Template"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">Search Template</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSearch-Template"><span class="toc-number">1.1.2.3.1.</span> <span class="toc-text">什么是Search Template</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Search-Template%E7%9A%84%E4%BF%9D%E5%AD%98"><span class="toc-number">1.1.2.3.2.</span> <span class="toc-text">Search Template的保存</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Search-Template%E7%9A%84%E8%BD%BD%E5%85%A5"><span class="toc-number">1.1.2.3.3.</span> <span class="toc-text">Search Template的载入</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Find-Files-Tab%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">Find Files Tab的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Search-Template%E8%BF%9B%E9%98%B6"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">Search Template进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Search-Template%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E%E6%8C%87%E5%8D%97"><span class="toc-number">1.1.2.5.1.</span> <span class="toc-text">Search Template使用说明指南</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Search-Template%E4%BF%9D%E5%AD%98%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D"><span class="toc-number">1.1.2.5.2.</span> <span class="toc-text">Search Template保存文件命名</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Search-Template%E5%BF%AB%E9%80%9F%E8%BD%BD%E5%85%A5"><span class="toc-number">1.1.2.5.3.</span> <span class="toc-text">Search Template快速载入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Quick-Search"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 Quick Search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-Live-Filter-Box"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 Live Filter Box</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E6%96%87%E4%BB%B6%E5%88%97%E8%A1%A8%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8C%B9%E9%85%8D"><span class="toc-number">1.1.5.</span> <span class="toc-text">1.5 文件列表关键词匹配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Everything%E4%B8%8EXYplorer%E7%9A%84%E9%9B%86%E6%88%90"><span class="toc-number">1.2.</span> <span class="toc-text">2. Everything与XYplorer的集成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Everything%E5%86%85%E5%AE%B9%E6%89%93%E5%BC%80%E5%88%B0XYplorer%E4%BE%A7"><span class="toc-number">1.2.1.</span> <span class="toc-text">Everything内容打开到XYplorer侧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#span-id-invoke-everything-XYplorer%E9%97%B4%E6%8E%A5%E8%B0%83%E7%94%A8Everything-span"><span class="toc-number">1.2.2.</span> <span class="toc-text">XYplorer间接调用Everything</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/3b4634fc/" title="Hexo使用"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-20.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo使用"/></a><div class="content"><a class="title" href="/posts/3b4634fc/" title="Hexo使用">Hexo使用</a><time datetime="2021-06-07T12:08:35.000Z" title="发表于 2021-06-07 20:08:35">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/24caea6b/" title="Hexo常用命令"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-11.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo常用命令"/></a><div class="content"><a class="title" href="/posts/24caea6b/" title="Hexo常用命令">Hexo常用命令</a><time datetime="2021-06-07T06:10:13.000Z" title="发表于 2021-06-07 14:10:13">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo隐藏文章"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo隐藏文章"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo隐藏文章">Hexo隐藏文章</a><time datetime="2021-06-04T11:00:41.000Z" title="发表于 2021-06-04 19:00:41">2021-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-12.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo贴文Front-Matter用法"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法">Hexo贴文Front-Matter用法</a><time datetime="2021-06-01T11:37:37.000Z" title="发表于 2021-06-01 19:37:37">2021-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的Buttefly主题魔改历程"/></a><div class="content"><a class="title" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程">我的Buttefly主题魔改历程</a><time datetime="2021-06-01T08:52:32.000Z" title="发表于 2021-06-01 16:52:32">2021-06-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By violet7pan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/algolia.js"></script><div class="js-pjax"></div><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

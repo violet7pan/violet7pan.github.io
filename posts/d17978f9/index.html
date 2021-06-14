@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>XYplorer-便携式文件关联(CFA)+打开方式(POM) | violet7pan Blog</title><meta name="keywords" content="XYplorer"><meta name="author" content="violet7pan"><meta name="copyright" content="violet7pan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="返回:  XYplorer使用指南 PART1 便携式(定制化)文件关联 | Customize File Association(CFA) 1.基本语法 该功能在在QuickStart&#x2F;ReadMe.md已经讲过了。CFA是可以用于关联特定格式的应用。指定格式对应调用的应用规则： 1格式名1;格式名2;...;格式名N&gt;应用路径 2.花(高)式(阶)玩法:无需POM,使用Script定制C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XYplorer-便携式文件关联(CFA)+打开方式(POM)">
+<meta property="og:url" content="https://violet7pan.gitee.io/posts/d17978f9/index.html">
+<meta property="og:site_name" content="violet7pan Blog">
+<meta property="og:description" content="返回:  XYplorer使用指南 PART1 便携式(定制化)文件关联 | Customize File Association(CFA) 1.基本语法 该功能在在QuickStart&#x2F;ReadMe.md已经讲过了。CFA是可以用于关联特定格式的应用。指定格式对应调用的应用规则： 1格式名1;格式名2;...;格式名N&gt;应用路径 2.花(高)式(阶)玩法:无需POM,使用Script定制C">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-10.webp">
+<meta property="article:published_time" content="2021-03-09T07:28:38.000Z">
+<meta property="article:modified_time" content="2021-06-14T03:47:35.691Z">
+<meta property="article:author" content="violet7pan">
+<meta property="article:tag" content="XYplorer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-10.webp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://violet7pan.gitee.io/posts/d17978f9/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"PKY3F5HAHD","apiKey":"5e175a241d1eb8b01147dbb78d77842d","indexName":"prod_blog","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'XYplorer-便携式文件关联(CFA)+打开方式(POM)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-14 11:47:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/custom.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/index.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="//at.alicdn.com/t/font_2405210_6tovfl8ipqu.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-10.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">violet7pan Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">XYplorer-便携式文件关联(CFA)+打开方式(POM)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-09T07:28:38.000Z" title="发表于 2021-03-09 15:28:38">2021-03-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.691Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/XYplorer/">XYplorer</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="XYplorer-便携式文件关联(CFA)+打开方式(POM)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>返回:  <a href="/posts/8949c74c/" title="XYplorer使用指南">XYplorer使用指南</a></p>
+<h1 id="PART1-便携式-定制化-文件关联-Customize-File-Association-CFA">PART1 便携式(定制化)文件关联 | Customize File Association(CFA)</h1>
+<h2 id="1-基本语法">1.基本语法</h2>
+<p>该功能在在QuickStart/ReadMe.md已经讲过了。CFA是可以用于关联特定格式的应用。指定格式对应调用的应用规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式名1;格式名2;...;格式名N&gt;应用路径</span><br></pre></td></tr></table></figure>
+<h2 id="2-花-高-式-阶-玩法-无需POM-使用Script定制CFA">2.花(高)式(阶)玩法:无需POM,使用Script定制CFA</h2>
+<p>若你不了解POM，可以看关于POM章节的部分。这里讲解的是利用Script定制CFA。</p>
+<p>友情提示：这部分需要掌握Scripting哦。</p>
+<p>CFA中使用Scripting的示意图(以Batch文件为例)：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/CustomizeFileAssociation-Scripting-Batch.gif" class="" title="CustomizeFileAssociation-Scripting-Batch">
+<p>与下面POM进行比较：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/CustomizeFileAssociation-Scripting-Batch-2.png" class="" title="CustomizeFileAssociation-Scripting-Batch-2">
+<p>先选择&quot;MakeRAR_V0.3.cmd&quot;，然后&quot;Ctrl+Alt+Enter&quot;，最后选择想要的功能。</p>
+<p>对比两种方式，明显CFA中使用Scripting比使用POM要快捷多，其脚本(CFA/Batch.xys)如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$sublime_text_dir &#x3D; &quot;D:\PortableApps\Notepad\SublimeText_x64_3211&quot;;</span><br><span class="line">$npp_dir &#x3D; &quot;D:\PortableApps\Notepad\Npp_Portable&quot;;</span><br><span class="line">$choice &#x3D; popupnested(&quot;Run batch|Open with | Sublime Text| Notepad++&quot;);</span><br><span class="line">end $choice &#x3D;&#x3D; &quot;&quot;;</span><br><span class="line">if($choice &#x3D;&#x3D; &quot;Run batch&quot;) &#123;</span><br><span class="line">	run &quot;&lt;curitem&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">elseif($choice &#x3D;&#x3D; &quot;Sublime Text&quot;) &#123;</span><br><span class="line">	run $sublime_text_dir.&quot;\subl &quot;.&quot;&quot;&quot;&lt;curitem&gt;&quot;&quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">elseif($choice &#x3D;&#x3D; &quot;Notepad++&quot;) &#123;</span><br><span class="line">	run $npp_dir.&quot;\notepad++ &quot;.&quot;&quot;&quot;&lt;curitem&gt;&quot;&quot;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>CFA中设置如下：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/CustomizeFileAssociation-Scripting-Batch-3.png" class="" title="CustomizeFileAssociation-Scripting-Batch-3">
+<p>更多的例子及其示意图如下：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/CustomizeFileAssociation-Scripting-Torrent.gif" class="" title="CustomizeFileAssociation-Scripting-Torrent">
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/CustomizeFileAssociation-Scripting-Video.gif" class="" title="CustomizeFileAssociation-Scripting-Video">
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/CustomizeFileAssociation-Scripting-Video_Torrent.png" class="" title="CustomizeFileAssociation-Scripting-Video_Torrent">
+<p>脚本如下:</p>
+<p>CFA/Torrent.xys:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">$utorrent204_dir &#x3D; &quot;D:\PortableApps\uTorrent\uTorrent_2.0.4_绿色完美设置版&quot;;</span><br><span class="line">$utorrent35545828_dir &#x3D; &quot;D:\PortableApps\uTorrent\uTorrent_3.5.5.45828_Portable&quot;;</span><br><span class="line">$thunder11_dir &#x3D; &quot;D:\PortableApps\Thunder\Thunder11\Program&quot;;</span><br><span class="line">$thunderx_dir &#x3D; &quot;D:\PortableApps\Thunder\ThunderX\Program&quot;;</span><br><span class="line">$thunders_dir &#x3D; &quot;D:\PortableApps\Thunder\ThunderS_20201121_Green\Program&quot;;</span><br><span class="line">$thunder5_dir &#x3D; &quot;D:\PortableApps\Thunder\迅雷+v5.8.14.706+绿色共存版&quot;;</span><br><span class="line">$qbittorrent4191_dir &#x3D; &quot;D:\PortableApps\qBittorrent_Portable\qBittorrent-v4.1.9.1&quot;;</span><br><span class="line">$qbittorrentee41915_dir &#x3D; &quot;D:\PortableApps\qBittorrentEE_Portable\qBittorrentEE-v4.1.9.15&quot;;</span><br><span class="line">$qbittorrentee43110_dir &#x3D; &quot;D:\PortableApps\qBittorrentEE_Portable\qBittorrentEE-v4.3.1.10&quot;;</span><br><span class="line">$choice &#x3D; popupnested(&quot;Open With: uTorrent| uTorrent_2.0.4| uTorrent_3.5.5.45828|Open With: Thunder| Thunder11| ThunderX| ThunderS| Thunder5|Open With: qBittorrent| qBittorrent-v4.1.9.1|Open With: qBittorrentEE| qBittorrentEE-v4.1.9.15| qBittorrentEE-v4.3.1.10&quot;);</span><br><span class="line">end $choice &#x3D;&#x3D; &quot;&quot;;</span><br><span class="line">switch($choice) &#123;</span><br><span class="line">	case &quot;uTorrent_2.0.4&quot;:</span><br><span class="line">		&#x2F;* </span><br><span class="line">			Some characters of UTF-8 Unicode(65001) are found garbled. For example, the character &#39;／&#39;(not &#39;&#x2F;&#39;) is mistakenly interpreted as &quot;￡ˉ&quot;.</span><br><span class="line">		*&#x2F;</span><br><span class="line">		run(&quot;cmd &#x2F;c start uTorrent.exe &quot;.quote(&lt;curitem&gt;), $utorrent204_dir);</span><br><span class="line">		break;</span><br><span class="line">	case &quot;uTorrent_3.5.5.45828&quot;:</span><br><span class="line">		run(&quot;cmd &#x2F;c start uTorrent.exe &quot;.quote(&lt;curitem&gt;), $utorrent35545828_dir);</span><br><span class="line">		break;</span><br><span class="line">	case &quot;Thunder11&quot;:</span><br><span class="line">		&#x2F;&#x2F; 如果查询到进程有迅雷运行时</span><br><span class="line">		if(regexmatches(runret(&quot;cmd &#x2F;c tasklist &#x2F;v &#x2F;fi &quot;&quot;IMAGENAME eq Thunder.exe&quot;&quot;&quot;), &quot;Thunder&quot;) !&#x3D; &quot;&quot;) &#123;</span><br><span class="line">			&#x2F;&#x2F; 请保证你Thunder11目录包含&quot;Thunder11&quot;的关键字</span><br><span class="line">			&#x2F;&#x2F; 如果启动的是Thunder11</span><br><span class="line">			if(regexmatches(runret(&quot;cmd &#x2F;c tasklist &#x2F;v &#x2F;fi &quot;&quot;IMAGENAME eq DownloadSDKServer.exe&quot;&quot;&quot;), &quot;Thunder11&quot;) !&#x3D; &quot;&quot;) &#123;</span><br><span class="line">				run(&quot;cmd &#x2F;c start Thunder.exe &quot;.quote(&lt;curitem&gt;), $thunder11_dir);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; &#x2F;&#x2F;否则重新启动Thunder11</span><br><span class="line">		else &#123;</span><br><span class="line">			run(&quot;cmd &#x2F;c start Thunder.exe &quot;, $thunder11_dir);</span><br><span class="line">			&#x2F;&#x2F; 5000&#x3D;5秒,请微调该时间直至Thunder11完全打开</span><br><span class="line">			wait 5000;</span><br><span class="line">			run(&quot;cmd &#x2F;c start Thunder.exe &quot;.quote(&lt;curitem&gt;), $thunder11_dir);	</span><br><span class="line">		&#125;</span><br><span class="line">		break;</span><br><span class="line">	case &quot;ThunderX&quot;:</span><br><span class="line">		run(&quot;cmd &#x2F;c start Thunder.exe &quot;.quote(&lt;curitem&gt;), $thunderx_dir);</span><br><span class="line">		break;</span><br><span class="line">	case &quot;ThunderS&quot;:</span><br><span class="line">		run(&quot;cmd &#x2F;c start Thunder.exe &quot;.quote(&lt;curitem&gt;), $thunders_dir);</span><br><span class="line">		break;</span><br><span class="line">	case &quot;Thunder5&quot;:</span><br><span class="line">		&#x2F;&#x2F; 迅雷5打开后,在主界面手动打开种子</span><br><span class="line">		run(&quot;cmd &#x2F;c start 迅雷5.exe &quot;.quote(&lt;curitem&gt;), $thunder5_dir);</span><br><span class="line">		run(&quot;cmd &#x2F;c start 迅雷L3.exe&quot;, $thunder5_dir);</span><br><span class="line">		&#x2F;&#x2F;run(&quot;explorer &quot;.quote(&lt;curpath&gt;));</span><br><span class="line">		break;</span><br><span class="line">	case &quot;qBittorrent-v4.1.9.1&quot;:</span><br><span class="line">		run(&quot;cmd &#x2F;c start qbittorrent.exe &quot;.quote(&lt;curitem&gt;), $qbittorrent4191_dir);</span><br><span class="line">		break;</span><br><span class="line">	case &quot;qBittorrentEE-v4.1.9.15&quot;:</span><br><span class="line">		run(&quot;cmd &#x2F;c start qbittorrent_x64.exe &quot;.quote(&lt;curitem&gt;), $qbittorrentee41915_dir);</span><br><span class="line">		break;</span><br><span class="line">	case &quot;qBittorrentEE-v4.3.1.10&quot;:</span><br><span class="line">		run(&quot;cmd &#x2F;c start qbittorrent_x64.exe &quot;.quote(&lt;curitem&gt;), $qbittorrentee43110_dir);</span><br><span class="line">		break;</span><br><span class="line">	default:</span><br><span class="line">		break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>CFA/Video.xys:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$potplayer_dir &#x3D; &quot;C:\Program Files\DAUM\PotPlayer&quot;;</span><br><span class="line">$mpc_dir &#x3D; &quot;C:\Program Files\MPC-HC&quot;;</span><br><span class="line">$mpv_dir &#x3D; &quot;C:\Users\vip57\scoop\apps\mpv-git\20201122&quot;;</span><br><span class="line">$choice &#x3D; popupnested(&quot;Open With: Potplayer|Open With: MPC|Open With: MPV&quot;);</span><br><span class="line">end $choice &#x3D;&#x3D; &quot;&quot;;</span><br><span class="line">if($choice &#x3D;&#x3D; &quot;Open With: Potplayer&quot;) &#123;</span><br><span class="line">	run(&quot;cmd &#x2F;c start PotPlayerMini64.exe &quot;.quote(&lt;curitem&gt;), $potplayer_dir);</span><br><span class="line">&#125;</span><br><span class="line">elseif($choice &#x3D;&#x3D; &quot;Open With: MPC&quot;) &#123;</span><br><span class="line">	run(&quot;cmd &#x2F;c start mpc.exe &quot;.quote(&lt;curitem&gt;), $mpc_dir, 866);</span><br><span class="line">&#125;</span><br><span class="line">elseif($choice &#x3D;&#x3D; &quot;Open With: MPV&quot;) &#123;</span><br><span class="line">	run(&quot;cmd &#x2F;c start mpv.exe &quot;.quote(&lt;curitem&gt;), $mpv_dir, 866);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="PART2-便携式打开方式菜单-File-Association-Portable-OpenWith-Menu-POM">PART2 便携式打开方式菜单 | File Association &amp; Portable OpenWith Menu(POM)</h1>
+<h2 id="1-POM使用前提">1.POM使用前提</h2>
+<p>在CFA中添加关联规则。才可有效使用本功能。</p>
+<h2 id="2-便携式打开方式菜单">2.便携式打开方式菜单</h2>
+<h3 id="打开方式-Open-With…">打开方式 |  Open With…</h3>
+<h3 id="背景引入">背景引入</h3>
+<p>如下图，选中目标文件<kbd>Ctrl + Alt + Enter</kbd>，会弹出如下PopUp菜单：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/OpenWith-1.png" class="">
+<p>上图就是便携式打开方式菜单的&quot;打开方式&quot;。可以看到这个&quot;打开方式&quot;菜单有三个视频播放，这是如何设置的呢？</p>
+<p>我在自定义文件管理设置了三个视频播放器，并勾选：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/FileAssociation-1.png" class="" title="FileAssociation-1">
+<p>按顺序，如果直接双击打开，默认是最上面的Potplayer。如果要使用其他视频播放器打开，就可以用到&quot;打开方式&quot;这个功能，刚才讲过，通过<kbd>Ctrl + Alt + Enter</kbd>就可以调用这个功能。</p>
+<h3 id="介绍">介绍</h3>
+<p>对比Windows右键打开方式，它虽然可以关联和设置某个格式的应用，但是依托宿主系统，不具备便携式。我们将的这个&quot;打开方式&quot;是属于<code>Portable OpenWith Menu(POM)</code>中的功能。通过<kbd>Ctrl + Alt + Enter</kbd>就可以调用POM中的&quot;Open With…&quot;(打开方式)。POM是可配置的，可便携式，这便是它的优点。</p>
+<p>对同类格式文件需要用到不同应用软件,通过配置POM以满足不同的打开需求。</p>
+<p>[案例]：比如对于.c和.h文件来说，有时我想要用notepad打开，有时想用VS Code打开，有时想用Dev-C++打开，通过将格式规则写到&quot;自定义文件关联&quot;就可以了。</p>
+<p>对比Windows文件管理器，它的右键打开就显得繁琐。</p>
+<p>基于这样的需求，我修改了我的&quot;自定义文件关联&quot;：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/FileAssociation-2.png" class="" title="FileAssociation-2">
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/OpenWith-2.png" class="" title="OpenWith-2">
+<p>这是官网关于POM的介绍：<a target="_blank" rel="noopener" href="https://www.xyplorer.com/tour.php?page=pom">XYplorer - Tour - Portable Openwith Menu™</a></p>
+<h3 id="Generic-File-Type">Generic File Type</h3>
+<h4 id="有哪些Generic-File-Type呢">有哪些Generic File Type呢</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;:Text&#125;       *</span><br><span class="line">&#123;:Image&#125;      *</span><br><span class="line">&#123;:Photo&#125;      *   &#x3D; All image formats that may contain Exif data.</span><br><span class="line">&#123;:Audio&#125;      *</span><br><span class="line">&#123;:Video&#125;      *</span><br><span class="line">&#123;:Media&#125;      *   &#x3D; Audio &amp; Video</span><br><span class="line">&#123;:Font&#125;       *</span><br><span class="line">&#123;:Vector&#125;</span><br><span class="line">&#123;:Web&#125;        *</span><br><span class="line">&#123;:Office&#125;     *</span><br><span class="line">&#123;:Archive&#125;</span><br><span class="line">&#123;:Executable&#125;</span><br></pre></td></tr></table></figure>
+<p>想参考关于Generic File Type，请在地址栏输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rtfm &quot;idh_visualfilters.htm#idh_genericfiletypes&quot;;</span><br></pre></td></tr></table></figure>
+<h4 id="如何打印-某个Generic-File-Type呢">如何打印 某个Generic File Type呢</h4>
+<p>如何查看Generic File Type类型的所有格式呢？菜单栏&quot;脚本(Scripting)-&gt;运行脚本(Run Script…)&quot;，输入如下内容：(这里我们就查看下{:Photo}的所有格式)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo get(&quot;genericfiletype&quot;, &quot;&#123;:Photo&#125;&quot;, &quot;;&quot;);</span><br></pre></td></tr></table></figure>
+<h4 id="排除某个格式会被Generic-File-Type引入">排除某个格式会被Generic File Type引入</h4>
+<p>过度使用Generic File Type虽然节省键入代表格式的字符的书写空间以及保持自定义文件关联规则的整洁，但也带来了把一些用户不想被关联的格式引入进来的问题。</p>
+<p>比如我的markdown文件(.md)双击按理应该调用系统默认应用(我的是Typora)，但是实际调用的是Notepad++，于是<kbd>Ctrl+Alt+Enter</kbd>调用了&quot;打开方式&quot;:</p>
+<p>对于格式的系统默认应用，可以按如图所示辨别出来,</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/OpenWith-3.png" class="" title="OpenWith-3">
+<p>要使用快捷键调用&quot;打开方式&quot;确实没双击应用调用默认应用来得快，这也是引入Generic File Type的弊端。好消息这一弊端可以修正的。</p>
+<p>我们可以指定某个格式不被Generic File Type引入，它的解决方法就是：使用<code>#</code>(The special variable #)。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/FileAssociation-3.png" class="" title="FileAssociation-3">
+<p>语法格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式名1;格式名2;...;格式名N&gt;#</span><br></pre></td></tr></table></figure>
+<p>注意这条语句的优先级应该设置为最高，放在最下面就根本不会使用到。比如调用.md格式的文件，先走<code>md&gt;#</code>这条规则然后就调用.md格式的系统默认应用。若<code>md&gt;#</code>放在所有规则的最下面，那么它就会走{:Text}规则，那么就会调用第一个&quot;{:Text}&gt;&lt;xydrive&gt;\PortableApps\Npp_Portable\notepad++.exe&quot;规则，根本不会执行到<code>md&gt;#</code>这条规则。</p>
+<h3 id="定制-打开方式">定制&quot;打开方式&quot;</h3>
+<p>下面会用一个案例进行讲解。比如广大蓝光大佬，XXX资源分享大佬，亦或者是广大热爱收藏蓝光或者各种基于蓝光的经视频处理技术后重新编码的各种rip都需要用到BT下载器。PT网站要求不一，对BT下载器的版本要求不一，所以下载某些资源都需要切换版本。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/PortableOpenWithMenu-Torrent-1.png" class="" title="PortableOpenWithMenu-Torrent-1">
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/PortableOpenWithMenu-Torrent-2.png" class="" title="PortableOpenWithMenu-Torrent-2">
+<p>根本无法辨别qBittorrent版本，这时候就需要修改POM&quot;打开方式&quot;菜单中某项的标题</p>
+<p>修改内容如下：</p>
+<p>其中<code>&quot;</code>是在输入法英文下打出来的双引号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;qBittorrentEE-v4.3.1.10&quot; torrent&gt;D:\PortableApps\qBittorrentEE_Portable\qBittorrentEE-v4.3.1.10\qbittorrent_x64.exe</span><br><span class="line">&quot;qBittorrentEE-v4.1.9.15&quot; torrent&gt;D:\PortableApps\qBittorrentEE_Portable\qBittorrentEE-v4.1.9.15\qbittorrent_x64.exe</span><br><span class="line">&quot;qBittorrent-v4.1.9.1&quot; torrent&gt;D:\PortableApps\qBittorrent_Portable\qBittorrent-v4.1.9.1\qbittorrent.exe</span><br></pre></td></tr></table></figure>
+<p>这时就可以区分qBittorrent各个版本了：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/PortableOpenWithMenu-Torrent-3.png" class="" title="PortableOpenWithMenu-Torrent-3">
+<h4 id="定制图标">定制图标</h4>
+<p>可以看到我的BitComet使用的是bat运行，因为我运行BitComet需要打开磁盘提速服务，因此我写了个脚本，在开启前打开词服务再启动BitComet。我想把这个bat的图标修改为BitComet的图标。</p>
+<p>图标使用IcoFX3进行提取并命名为BitComet.ico并放置&lt;xyicons&gt;。接下来进行修改：</p>
+<p>由于我的图标放在&lt;xyicons&gt;中，我不需要书写成绝对路径的形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;BitComet|D:\PortableApps\XYplorer\Data\Icons\BitComet.ico&quot; torrent&gt;D:\PortableApps\BitComet\BitCometStart.bat</span><br></pre></td></tr></table></figure>
+<p>而是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;BitComet|BitComet.ico&quot; torrent&gt;D:\PortableApps\BitComet\BitCometStart.bat</span><br></pre></td></tr></table></figure>
+<p>注意管道符<code>|</code>两边的内容不要有空格，特别是管道符右边，要紧接着内容，不要加空格！！！</p>
+<p>这样就完成了修改了，效果如下：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/PortableOpenWithMenu-Torrent-4.png" class="" title="PortableOpenWithMenu-Torrent-4">
+<h4 id="定制分割线">定制分割线</h4>
+<p>语法格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式名&gt;-</span><br></pre></td></tr></table></figure>
+<p>为各个BT工具加分割线，如图所示：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/PortableOpenWithMenu-Torrent-5.png" class="" title="PortableOpenWithMenu-Torrent-5">
+<p>效果图如下：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/d17978f9/PortableOpenWithMenu-Torrent-6.png" class="" title="PortableOpenWithMenu-Torrent-6">
+<p>发挥你们的想象力吧，这个功能的应用场景太多了。比如有些图片文件需要用PS打开，平时浏览图片却不用；有些音乐需要倍速播放，所有需要切换音频播放器，有时候则不用；视频同理；有些PDF需要识别OCR，需要使用ABBYY，有些时候用其他PDF软件；有些office文档需要用WPS打开，有些则用Microsoft Office打开；…</p>
+<p>有了POM功能，你只需要用对应软件，推荐软件尽量选择便携版；绿色版有时候不是一个很好的选择，因为部分应用需要使用bat进行注册相关服务等才可使用；安装版只局限了当前宿主系统。因此要区分Portable, Green, Setup。</p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>XYplorer-便携式文件关联(CFA)+打开方式(POM)</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://violet7pan.gitee.io/posts/d17978f9/">https://violet7pan.gitee.io/posts/d17978f9/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>violet7pan</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-03-09</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2021-06-14</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/XYplorer/">XYplorer</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/ed39d40a/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-3.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">XYplorer-便携式文件图标(CFI)</div></div></a></div><div class="next-post pull-right"><a href="/posts/70c1108d/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-5.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">XYplorer-标签集(Tags)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/7c0df866/" title="XYplorer-备份还原篇(Backup+Restore)"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-13.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-09</div><div class="title">XYplorer-备份还原篇(Backup+Restore)</div></div></a></div><div><a href="/posts/ebd34f79/" title="XYplorer-自定义事件动作(CEA)"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-6.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-09</div><div class="title">XYplorer-自定义事件动作(CEA)</div></div></a></div><div><a href="/posts/ed39d40a/" title="XYplorer-便携式文件图标(CFI)"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-3.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-09</div><div class="title">XYplorer-便携式文件图标(CFI)</div></div></a></div><div><a href="/posts/2c339ceb/" title="XYplorer-收藏篇(Favorites)"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-15.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-09</div><div class="title">XYplorer-收藏篇(Favorites)</div></div></a></div><div><a href="/posts/c07fdd8a/" title="XYplorer-配合其他效率工具"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-1.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-09</div><div class="title">XYplorer-配合其他效率工具</div></div></a></div><div><a href="/posts/b8aab654/" title="XYplorer-脚本篇(Scripting)"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-17.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-09</div><div class="title">XYplorer-脚本篇(Scripting)</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">violet7pan</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/violet7pan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PART1-%E4%BE%BF%E6%90%BA%E5%BC%8F-%E5%AE%9A%E5%88%B6%E5%8C%96-%E6%96%87%E4%BB%B6%E5%85%B3%E8%81%94-Customize-File-Association-CFA"><span class="toc-number">1.</span> <span class="toc-text">PART1 便携式(定制化)文件关联 | Customize File Association(CFA)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">1.基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%8A%B1-%E9%AB%98-%E5%BC%8F-%E9%98%B6-%E7%8E%A9%E6%B3%95-%E6%97%A0%E9%9C%80POM-%E4%BD%BF%E7%94%A8Script%E5%AE%9A%E5%88%B6CFA"><span class="toc-number">1.2.</span> <span class="toc-text">2.花(高)式(阶)玩法:无需POM,使用Script定制CFA</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PART2-%E4%BE%BF%E6%90%BA%E5%BC%8F%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F%E8%8F%9C%E5%8D%95-File-Association-Portable-OpenWith-Menu-POM"><span class="toc-number">2.</span> <span class="toc-text">PART2 便携式打开方式菜单 | File Association &amp; Portable OpenWith Menu(POM)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-POM%E4%BD%BF%E7%94%A8%E5%89%8D%E6%8F%90"><span class="toc-number">2.1.</span> <span class="toc-text">1.POM使用前提</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BE%BF%E6%90%BA%E5%BC%8F%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F%E8%8F%9C%E5%8D%95"><span class="toc-number">2.2.</span> <span class="toc-text">2.便携式打开方式菜单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F-Open-With%E2%80%A6"><span class="toc-number">2.2.1.</span> <span class="toc-text">打开方式 |  Open With…</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E5%BC%95%E5%85%A5"><span class="toc-number">2.2.2.</span> <span class="toc-text">背景引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.2.3.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generic-File-Type"><span class="toc-number">2.2.4.</span> <span class="toc-text">Generic File Type</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9BGeneric-File-Type%E5%91%A2"><span class="toc-number">2.2.4.1.</span> <span class="toc-text">有哪些Generic File Type呢</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%89%93%E5%8D%B0-%E6%9F%90%E4%B8%AAGeneric-File-Type%E5%91%A2"><span class="toc-number">2.2.4.2.</span> <span class="toc-text">如何打印 某个Generic File Type呢</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%92%E9%99%A4%E6%9F%90%E4%B8%AA%E6%A0%BC%E5%BC%8F%E4%BC%9A%E8%A2%ABGeneric-File-Type%E5%BC%95%E5%85%A5"><span class="toc-number">2.2.4.3.</span> <span class="toc-text">排除某个格式会被Generic File Type引入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E5%88%B6-%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.5.</span> <span class="toc-text">定制&quot;打开方式&quot;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E5%88%B6%E5%9B%BE%E6%A0%87"><span class="toc-number">2.2.5.1.</span> <span class="toc-text">定制图标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E5%88%B6%E5%88%86%E5%89%B2%E7%BA%BF"><span class="toc-number">2.2.5.2.</span> <span class="toc-text">定制分割线</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/3b4634fc/" title="Hexo使用"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-20.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo使用"/></a><div class="content"><a class="title" href="/posts/3b4634fc/" title="Hexo使用">Hexo使用</a><time datetime="2021-06-07T12:08:35.000Z" title="发表于 2021-06-07 20:08:35">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/24caea6b/" title="Hexo常用命令"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-11.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo常用命令"/></a><div class="content"><a class="title" href="/posts/24caea6b/" title="Hexo常用命令">Hexo常用命令</a><time datetime="2021-06-07T06:10:13.000Z" title="发表于 2021-06-07 14:10:13">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo隐藏文章"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo隐藏文章"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo隐藏文章">Hexo隐藏文章</a><time datetime="2021-06-04T11:00:41.000Z" title="发表于 2021-06-04 19:00:41">2021-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-12.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo贴文Front-Matter用法"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法">Hexo贴文Front-Matter用法</a><time datetime="2021-06-01T11:37:37.000Z" title="发表于 2021-06-01 19:37:37">2021-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的Buttefly主题魔改历程"/></a><div class="content"><a class="title" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程">我的Buttefly主题魔改历程</a><time datetime="2021-06-01T08:52:32.000Z" title="发表于 2021-06-01 16:52:32">2021-06-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By violet7pan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/algolia.js"></script><div class="js-pjax"></div><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

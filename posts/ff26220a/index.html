@@ -1,0 +1,516 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Linux-UserManagement | violet7pan Blog</title><meta name="keywords" content="Linux"><meta name="author" content="violet7pan"><meta name="copyright" content="violet7pan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux如何进行用户管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux-UserManagement">
+<meta property="og:url" content="https://violet7pan.gitee.io/posts/ff26220a/index.html">
+<meta property="og:site_name" content="violet7pan Blog">
+<meta property="og:description" content="Linux如何进行用户管理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp">
+<meta property="article:published_time" content="2021-02-18T11:02:18.000Z">
+<meta property="article:modified_time" content="2021-06-14T03:47:35.631Z">
+<meta property="article:author" content="violet7pan">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://violet7pan.gitee.io/posts/ff26220a/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"PKY3F5HAHD","apiKey":"5e175a241d1eb8b01147dbb78d77842d","indexName":"prod_blog","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux-UserManagement',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-14 11:47:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/custom.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/index.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="//at.alicdn.com/t/font_2405210_6tovfl8ipqu.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">violet7pan Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux-UserManagement</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-18T11:02:18.000Z" title="发表于 2021-02-18 19:02:18">2021-02-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.631Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux-UserManagement"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="管理员-虚拟用户-普通用户UID范围">管理员/虚拟用户/普通用户UID范围</h2>
+<p>Root用户UID = 0</p>
+<p>虚拟用户UID范围: (CentOS7)1 ~ 999; (CentOS6) 1 ~ 499。</p>
+<p>普通用户UID范围 &gt;= 1000。</p>
+<p>虚拟用户是没办法使用shell prompt的，原因如下(以CentOS7为例)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;/nologin/&#123;print&#125;&#x27;</span> /etc/passwd</span></span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</span><br><span class="line">operator:x:11:0:operator:/root:/sbin/nologin</span><br><span class="line">games:x:12:100:games:/usr/games:/sbin/nologin</span><br><span class="line">ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin</span><br><span class="line">nobody:x:99:99:Nobody:/:/sbin/nologin</span><br><span class="line">systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin</span><br><span class="line">dbus:x:81:81:System message bus:/:/sbin/nologin</span><br><span class="line">polkitd:x:999:998:User for polkitd:/:/sbin/nologin</span><br><span class="line">tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin</span><br><span class="line">abrt:x:173:173::/etc/abrt:/sbin/nologin</span><br><span class="line">sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin</span><br><span class="line">postfix:x:89:89::/var/spool/postfix:/sbin/nologin</span><br><span class="line">dovecot:x:97:97:Dovecot IMAP server:/usr/libexec/dovecot:/sbin/nologin</span><br><span class="line">dovenull:x:998:996:Dovecot&#x27;s unauthorized user:/usr/libexec/dovecot:/sbin/nologin</span><br><span class="line">ntp:x:38:38::/etc/ntp:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<p>passwd文件中最后一个冒号(:)后接的shell prompt，很明显这些用户是无法使用shell登录的。</p>
+<h2 id="用户管理">用户管理</h2>
+<h3 id="用户创建">用户创建</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd 用户名</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>When we run ‘<strong>useradd</strong>’ command in Linux terminal, it performs following major things:</p>
+<ol>
+<li>It edits /etc/passwd, /etc/shadow, /etc/group and /etc/gshadow files for the newly created User account.</li>
+<li>Creates and populate a home directory for the new user.</li>
+<li>Sets permissions and ownerships to home directory.</li>
+</ol>
+<p>-<a target="_blank" rel="noopener" href="https://www.tecmint.com/add-users-in-linux/">The Complete Guide to “useradd” Command in Linux - 15 Practical Examples</a></p>
+</blockquote>
+<p>创建虚拟用户的方法</p>
+<blockquote>
+<p><code>-M</code> - 不创建家目录</p>
+<p><code>-s</code> - 指定使用的shell的路径</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd violet -M -s /sbin/nologin</span><br></pre></td></tr></table></figure>
+<p>创建的虚拟用户UID数值是大于等于1000。</p>
+<blockquote>
+<p><code>-u</code> - 指定创建的用户的UID</p>
+<p><code>-g</code> - 指定创建的用户的主组</p>
+<p><code>-G</code> - 指定创建的用户的次要组(附加组)</p>
+<p><code>-c</code> - 指定创建的用户的用户注释说明信息</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> useradd violet06 -u 1009</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> id violet06</span></span><br><span class="line">uid=1009(violet06) gid=1009(violet06) groups=1009(violet06)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> useradd violet06 -u 1009 -g violet05</span></span><br><span class="line">uid=1009(violet06) gid=1006(violet05) groups=1006(violet05)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> useradd violet06 -u 1009 -G violet05</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> id violet06</span></span><br><span class="line">uid=1009(violet06) gid=1009(violet06) groups=1009(violet06),1006(violet05)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> useradd violet06 -c <span class="string">&quot;manage db&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> grep <span class="string">&#x27;violet06&#x27;</span> /etc/passwd</span></span><br><span class="line">violet06:x:1009:1009:manage db:/home/violet06:/bin/bash</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>-p</code> 指定创建的用户的密码(这个密码应该是加密后的密码)</p>
+<p>对useradd -p的解释_weixin_34174132的博客-CSDN博客<br>
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34174132/article/details/91539386">https://blog.csdn.net/weixin_34174132/article/details/91539386</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># grep &#39;violet&#39; &#x2F;etc&#x2F;shadow</span><br><span class="line">violet:$6$QNUo3m1i$bL3EAkJn8sUXEE581lVxZ9&#x2F;fbgcKyFkQQ&#x2F;5edq7JtUdYO.00qen5QxtiHFFO4LbDpGy0hux4giBfg6Fr1K2Z.&#x2F;:18632:0:99999:7:::</span><br></pre></td></tr></table></figure>
+<p>比如&quot;123456&quot;密码的加密后的密码是第一个冒号和第二个冒号之间的字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$6$QNUo3m1i$bL3EAkJn8sUXEE581lVxZ9&#x2F;fbgcKyFkQQ&#x2F;5edq7JtUdYO.00qen5QxtiHFFO4LbDpGy0hux4giBfg6Fr1K2Z.&#x2F;</span><br></pre></td></tr></table></figure>
+<p>那么useradd -p应该这样使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> useradd violet06 -p <span class="string">&#x27;$6$QNUo3m1i$bL3EAkJn8sUXEE581lVxZ9/fbgcKyFkQQ/5edq7JtUdYO.00qen5QxtiHFFO4LbDpGy0hux4giBfg6Fr1K2Z./&#x27;</span></span></span><br></pre></td></tr></table></figure>
+<p>接下来就可以输入用户名violet06，密码为123456。由此这个’-p’参数设置密码麻烦，不推荐使用，还是使用passwd命令比较好。</p>
+<h3 id="用户删除">用户删除</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel USER</span><br></pre></td></tr></table></figure>
+<p>注意：如果被删除的用户的用户主组还加入了其他用户，那么这个主组是无法删除的。举例如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> useradd violet02</span></span><br><span class="line">useradd: user &#x27;violet02&#x27; already exists</span><br><span class="line"><span class="meta">#</span><span class="bash"> id violet02</span></span><br><span class="line">uid=1003(violet02) gid=1003(violet02) groups=1003(violet02)</span><br><span class="line"><span class="meta">#</span><span class="bash"> id violet03</span></span><br><span class="line">uid=1004(violet03) gid=1004(violet03) groups=1004(violet03)</span><br><span class="line"><span class="meta">#</span><span class="bash"> usermod -G violet02 violet03</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> id violet03</span></span><br><span class="line">uid=1004(violet03) gid=1004(violet03) groups=1004(violet03),1003(violet02)</span><br><span class="line"><span class="meta">#</span><span class="bash"> userdel violet02</span></span><br><span class="line">userdel: group violet02 not removed because it has other members.</span><br><span class="line"><span class="meta">#</span><span class="bash"> id violet02</span></span><br><span class="line">id: violet02: no such user</span><br><span class="line"><span class="meta">#</span><span class="bash"> ll -d /home/violet02</span></span><br><span class="line">drwx------ 2 1003 violet02 62 Jan 15 20:48 /home/violet02</span><br></pre></td></tr></table></figure>
+<p>可以从例子中看到，可以删除该用户，但该用户的主组无法删除。</p>
+<p>上面例子中，用户的家目录未被删除。</p>
+<p>接着上个例子创建被删除的用户</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> useradd violet02</span></span><br><span class="line">useradd: group violet02 exists - if you want to add this user to that group, use -g.</span><br><span class="line"><span class="meta">#</span><span class="bash"> useradd violet02 -g violet02</span></span><br><span class="line">useradd: warning: the home directory already exists.</span><br><span class="line">Not copying any file from skel directory into it.</span><br><span class="line">Creating mailbox file: File exists</span><br><span class="line"><span class="meta">#</span><span class="bash"> id violet02</span></span><br><span class="line">uid=1008(violet02) gid=1003(violet02) groups=1003(violet02)</span><br></pre></td></tr></table></figure>
+<p>可见如果想要再次创建被删除的用户，需要在使用useradd命令时指定主组。</p>
+<p>在删除用户时，最好指定’-r’删除：</p>
+<blockquote>
+<p><code>-r</code> - 删除用户信息的同时，删除家目录和邮件目录(mail spool)。</p>
+</blockquote>
+<p>在使用该选项前，请注意为备份家目录和邮件目录建立必要的备份。</p>
+<h3 id="用户切换">用户切换</h3>
+<p>普通用户切换用户：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su - 用户名	# 切换到某个用户</span><br><span class="line">su - root</span><br><span class="line"># 然后输入密码</span><br></pre></td></tr></table></figure>
+<p>退出切换的用户：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p># - 表示管理员身份</p>
+<p>$ - 表示普通用户身份</p>
+</blockquote>
+<h3 id="登录用户检测">登录用户检测</h3>
+<blockquote>
+<p>whoami - 该命令可以用于打印<u>当前登录的用户</u>是谁</p>
+</blockquote>
+<p>比如，</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> whoami</span></span><br><span class="line">root</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>who - 该命令用于检查<u>所有登录的用户</u>，并将其打印出来</p>
+<p>打印格式为: [用户名称]	[终端]	[登录时间]</p>
+<p>注意[终端]的格式有两种：</p>
+<ol>
+<li>ttyn。比如tty1, tty2, …</li>
+<li>pts/n。比如pts/0, pts/1, …</li>
+</ol>
+<p>tty和pts的区别可以参考<a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/21280/difference-between-pts-and-tty/21294">linux - Difference between pts and tty - Unix &amp; Linux Stack Exchange</a>。<br>
+tty: native terminal device(本地终端设备)。比如，你就在服务器上登录了系统，没有利用任何远程方式，从物理上，服务器和你是&quot;无距离&quot;的。</p>
+<p>pts: pseudo terminal slave(伪终端从设备)。比如利用ssh或xterm连接的终端。你可以理解你利用XShell远程登录你的Linux</p>
+<p>，那么在这整个XShell就是一个伪终端从设备。&quot;伪&quot;体现在你可以远程操作Linux，就仿佛你在服务器身边真正操作它一样。</p>
+</blockquote>
+<p>比如</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> who</span></span><br><span class="line">root     tty1         2021-01-21 14:38</span><br><span class="line">root     pts/1        2021-01-21 14:10 (192.168.10.1)</span><br><span class="line">root     pts/2        2021-01-21 14:13 (192.168.10.1)</span><br></pre></td></tr></table></figure>
+<h3 id="用户信息修改">用户信息修改</h3>
+<ul>
+<li>usermod命令</li>
+</ul>
+<blockquote>
+<p>-s - 修改用户的登录方式<br>
+-g - 修改用户的主要的组信息<br>
+-G - 修改用户的附属组信息<br>
+-c - 修改用户的注释信息</p>
+</blockquote>
+<h3 id="用户信息查看">用户信息查看</h3>
+<ul>
+<li>id命令</li>
+</ul>
+<p>用于显示用户信息。用户打印有效用户的UID, GID和组，对于不存在的用户，该命令会提示形如&quot;id 查询的用户名: no such user&quot;的错误信息</p>
+<p>应用 - 查询用户UID,GID,GROUPS</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> id violet</span></span><br></pre></td></tr></table></figure>
+<p>应用 - 检查用户是否存在</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> id violet100</span></span><br><span class="line">id: violet100: no such user</span><br></pre></td></tr></table></figure>
+<ul>
+<li>w命令</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> w</span></span><br><span class="line">17:02:27 up 3 days, 14:44,  4 users,  load average: 0.00, 0.01, 0.05</span><br><span class="line">USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT</span><br><span class="line">root     tty1                      Thu14   26:24m  0.02s  0.02s -bash</span><br><span class="line">violet   pts/0    192.168.10.1     16:40   12:35   0.05s  0.05s -bash</span><br><span class="line">root     pts/4    192.168.10.1     15:00    3.00s  0.03s  0.00s w</span><br><span class="line">root     pts/5    192.168.10.1     15:00   13:55   0.30s  0.30s -bash</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>列明</th>
+<th>简明描述</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USER</td>
+<td>用户名称</td>
+<td>用于显示使用当前终端的用户名称</td>
+</tr>
+<tr>
+<td>TTY</td>
+<td>终端</td>
+<td>用于显示登陆终端的类型(tty/pts)</td>
+</tr>
+<tr>
+<td>FROM</td>
+<td>登录IP</td>
+<td>用户登录到哪个IP地址</td>
+</tr>
+<tr>
+<td>LOGIN@</td>
+<td>登录时间</td>
+<td>用户登录的时间</td>
+</tr>
+<tr>
+<td>IDLE</td>
+<td>空闲时间</td>
+<td>用户上次使用终端进行操作的时间</td>
+</tr>
+<tr>
+<td>JCPU</td>
+<td>所有进程使用时长</td>
+<td>与用户登录的终端相关的所有进程的使用时长</td>
+</tr>
+<tr>
+<td>PCPU</td>
+<td>当前进程使用时长</td>
+<td>用户当前使用的进程(该进程信息在WHAT列有显示)的使用时长</td>
+</tr>
+<tr>
+<td>WHAT</td>
+<td>当前进程信息</td>
+<td>用户当前使用的进程和相关选项或参数。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>last命令</li>
+</ul>
+<p>用于显示用户上次登录信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> last</span></span><br><span class="line">violet   pts/0        192.168.10.1     Fri Jan 22 16:40   still logged in   </span><br><span class="line">root     pts/5        192.168.10.1     Fri Jan 22 15:00   still logged in   </span><br><span class="line">root     pts/4        192.168.10.1     Fri Jan 22 15:00   still logged in   </span><br><span class="line">...  </span><br><span class="line">root     tty1                          Fri Dec 25 14:55 - 15:22  (00:27)    </span><br><span class="line">reboot   system boot  3.10.0-862.el7.x Fri Dec 25 14:43 - 15:22  (00:39)    </span><br><span class="line"></span><br><span class="line">wtmp begins Fri Dec 25 14:43:01 2020</span><br></pre></td></tr></table></figure>
+<ul>
+<li>lastlog命令</li>
+</ul>
+<p>用于显示所有用户最近登录的信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> lastlog</span></span><br><span class="line">Username         Port     From             Latest</span><br><span class="line">root             pts/5    192.168.10.1     Fri Jan 22 15:00:18 +0800 2021</span><br><span class="line">bin                                        **Never logged in**</span><br><span class="line">daemon                                     **Never logged in**</span><br><span class="line">adm                                        **Never logged in**</span><br><span class="line">lp                                         **Never logged in**</span><br><span class="line">sync                                       **Never logged in**</span><br><span class="line">shutdown                                   **Never logged in**</span><br><span class="line">halt                                       **Never logged in**</span><br><span class="line">mail                                       **Never logged in**</span><br><span class="line">operator                                   **Never logged in**</span><br><span class="line">games                                      **Never logged in**</span><br><span class="line">ftp                                        **Never logged in**</span><br><span class="line">nobody           pts/1                     Sun Jan 10 19:51:06 +0800 2021</span><br><span class="line">systemd-network                            **Never logged in**</span><br><span class="line">dbus                                       **Never logged in**</span><br><span class="line">polkitd                                    **Never logged in**</span><br><span class="line">tss                                        **Never logged in**</span><br><span class="line">abrt                                       **Never logged in**</span><br><span class="line">sshd                                       **Never logged in**</span><br><span class="line">postfix                                    **Never logged in**</span><br><span class="line">violet           pts/0    192.168.10.1     Fri Jan 22 16:40:32 +0800 2021</span><br><span class="line">orchid                                     **Never logged in**</span><br><span class="line">dovecot                                    **Never logged in**</span><br><span class="line">dovenull                                   **Never logged in**</span><br><span class="line">ntp                                        **Never logged in**</span><br><span class="line">violet01         pts/1                     Fri Jan 15 20:48:15 +0800 2021</span><br><span class="line">violet03                                   **Never logged in**</span><br><span class="line">violet04                                   **Never logged in**</span><br><span class="line">violet05                                   **Never logged in**</span><br><span class="line">flower                                     **Never logged in**</span><br><span class="line">violet02                                   **Never logged in**</span><br><span class="line">violet06         pts/0                     Fri Jan 22 16:49:50 +0800 2021</span><br></pre></td></tr></table></figure>
+<h3 id="密码设置">密码设置</h3>
+<p>用户设置密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">passwd 用户名	# 修改指定用户的密码</span><br><span class="line">psswd	# 修改当前用户的密码</span><br></pre></td></tr></table></figure>
+<ul>
+<li>passwd命令</li>
+</ul>
+<p>交互式设置密码的方法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd USER</span><br></pre></td></tr></table></figure>
+<p>为violet用户设置密码，密码需要输入两次</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd violet</span><br></pre></td></tr></table></figure>
+<p>非交互式设置密码的方法：(不安全，因为通过history命令可查看到明文)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo PASSWORD | passwd --stdin USER</span><br></pre></td></tr></table></figure>
+<p>比如为violet用户设置密码为123456：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 123456 | passwd --stdin violet</span><br></pre></td></tr></table></figure>
+<h2 id="用户组管理">用户组管理</h2>
+<h3 id="主组和次要组的区别">主组和次要组的区别</h3>
+<p>这个问题可以参考<a target="_blank" rel="noopener" href="https://www.linode.com/docs/guides/linux-users-and-groups/">Linux Users and Groups | Linode</a>。下面给出我参考的理解：</p>
+<p>由于一个用户可以有多个组，肯定有一个组为主组(Primary Group)，其他为次要组(Secondary Groups)。</p>
+<ul>
+<li>主组</li>
+</ul>
+<p>通过&quot;man usermod&quot;查看命令使用手册时，主组的英文名为Initial login group，大部分老外也会称主组为Primary group。</p>
+<p>先看看主组。主组就是默认组，对每一个新创建的用户来说，如果你不使用’-G’或’-g’指定用户归属哪个组，该用户会归属于与用户名称同名的组，而这个组就是默认组。如何查看一个用户的主组呢？</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> id violet</span></span><br><span class="line">uid=1000(violet) gid=1000(violet) groups=1000(violet),1007(flower)</span><br></pre></td></tr></table></figure>
+<p>&quot;gid=1000(violet)&quot;表示该用户的主组id值为1000，主组的名称为violet。</p>
+<ul>
+<li>次要组(附加组)</li>
+</ul>
+<p>次要组的英文名称为Supplementary groups或Secondary groups。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> id violet</span></span><br><span class="line">uid=1000(violet) gid=1000(violet) groups=1000(violet),1007(flower)</span><br></pre></td></tr></table></figure>
+<p>&quot;groups=1000(violet),1007(flower)&quot;中&quot;groups&quot;表示这个用户(violet)所属的组有哪一些。可以看到该用户属于两个组，一个violet组，一个flower组，通过&quot;gid=1000(violet)&quot;确定主组为violet，那么flower则为次要组。</p>
+<ul>
+<li>那么一个用户的默认组有什么用呢？</li>
+</ul>
+<ol>
+<li>当用户登录Linux时，都会有一个与之关联的用户组，这个组就是默认组。</li>
+<li>除此之外，如果用户创建文件或目录，那么这个文件或目录都会关联上所属人(owner)和与用户主组的信息，比如</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ll -d /root</span></span><br><span class="line">dr-xr-x---. 4 root root 4096 Jan 21 15:00 /root</span><br><span class="line"><span class="meta">#</span><span class="bash"> mkdir /root/<span class="built_in">test</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ll -d /root/<span class="built_in">test</span></span></span><br><span class="line">drwxr-xr-x 2 root root 6 Jan 21 15:30 /root/test</span><br></pre></td></tr></table></figure>
+<p>root目录和root目录下的test目录的所属人就是root用户，并且其默认组为root组。</p>
+<ol start="3">
+<li>而且，通过id命令也可以看到主组的信息：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> id root</span></span><br><span class="line">uid=0(root) gid=0(root) groups=0(root)</span><br></pre></td></tr></table></figure>
+<p>&quot;gid=0(root)&quot;可以看出主组为root</p>
+<p>再用id命令举个例子</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> id violet</span></span><br><span class="line">uid=1000(violet) gid=1007(flower) groups=1007(flower),20(games),1000(violet)</span><br></pre></td></tr></table></figure>
+<p>在这个例子中，&quot;gid=1007(flower)&quot;可得知violet用户的主组是flower，它的次要组有games, violet，它所属的组有flower, games, vioelt。</p>
+<h3 id="用户加入一个组">用户加入一个组</h3>
+<p>Reference: <a target="_blank" rel="noopener" href="https://linuxize.com/post/usermod-command-in-linux/">Usermod Command in Linux | Linuxize</a>.</p>
+<blockquote>
+<p><code>-a -G</code> - 为用户增添一个组。添加成功后可以在/etc/group中查看组内用户的信息。</p>
+</blockquote>
+<p>语法格式如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> GROUP:当group有多个时，应该有逗号进行分割，而不是空格。</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> usermod -a -G GROUP USER</span></span><br></pre></td></tr></table></figure>
+<p>violet用户加入games组的实例如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> id violet</span></span><br><span class="line">uid=1000(violet) gid=1000(violet) groups=1000(violet)</span><br><span class="line"><span class="meta">#</span><span class="bash"> usermod -a -G games violet</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> id violet</span></span><br><span class="line">uid=1000(violet) gid=1000(violet) groups=1000(violet),20(games)</span><br><span class="line"><span class="meta">#</span><span class="bash"> awk <span class="string">&#x27;$1 ~ /games/&#123;print&#125;&#x27;</span> /etc/group</span></span><br><span class="line">games:x:20:violet</span><br></pre></td></tr></table></figure>
+<p><code>games:x:20:violet</code>表示games组中gid=20，该组中用户有violet。</p>
+<h3 id="用户退出一个组">用户退出一个组</h3>
+<blockquote>
+<p><code>-d</code> - 在用户组中删除指定用户</p>
+</blockquote>
+<p>语法格式如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpasswd -d USER GROUP</span><br></pre></td></tr></table></figure>
+<p>用户退出一个组的正确步骤：</p>
+<ol>
+<li>利用id检查退出的组是否为主组，若退出的组为主组，需要先修改主组为次要组，否则进行下一步</li>
+<li>使用&quot;gpasswd -d USER GROUP&quot;退出组。</li>
+</ol>
+<p>violet用户退出games组(其中games为主组)的实例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> id violet</span></span><br><span class="line">uid=1000(violet) gid=20(games) groups=20(games),1000(violet)</span><br><span class="line"><span class="meta">#</span><span class="bash"> usermod -g violet violet</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> id violet</span></span><br><span class="line">uid=1000(violet) gid=1000(violet) groups=1000(violet),20(games)</span><br><span class="line"><span class="meta">#</span><span class="bash"> gpasswd -d violet games</span></span><br><span class="line">Removing user violet from group games</span><br><span class="line"><span class="meta">#</span><span class="bash"> id violet</span></span><br><span class="line">uid=1000(violet) gid=1000(violet) groups=1000(violet)</span><br></pre></td></tr></table></figure>
+<p>特别注意: 用户无法删除从主组中退出，若要删除主组，需要先将主组降为次要组后，再使用gpasswd退出组，否则就会出现错误提示。虽然/etc/group显示用户退出了主组，实际上用户violet创建文件所属的组扔为原来的主组。例子如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> id violet</span></span><br><span class="line">uid=1000(violet) gid=1000(violet) groups=1000(violet)</span><br><span class="line"><span class="meta">#</span><span class="bash"> usermod -g games violet</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> id violet</span></span><br><span class="line">uid=1000(violet) gid=20(games) groups=20(games),1000(violet)</span><br><span class="line"><span class="meta">#</span><span class="bash"> gpasswd -d violet games</span></span><br><span class="line">Removing user violet from group games</span><br><span class="line">gpasswd: user &#x27;violet&#x27; is not a member of &#x27;games&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash"> awk -F: <span class="string">&#x27;$1 ~ /games$/&#123;print&#125;&#x27;</span> /etc/group</span></span><br><span class="line">games:x:20:</span><br></pre></td></tr></table></figure>
+<p>看到/etc/group中violet的组信息并不是<code>games:x:20:violet</code>，可见violet已经退出了主组。但是在violet用户的Shell prompt上创建文件时，文件所属的组还是原来的games主组：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[violet ~]$ touch test.txt</span><br><span class="line">[violet ~]$ ll</span><br><span class="line">total 4</span><br><span class="line">...</span><br><span class="line">-rw-rw-r-- 1 violet games  0 Jan 21 16:05 test.txt</span><br></pre></td></tr></table></figure>
+<p>正确的用法</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# id violet</span><br><span class="line">uid=1000(violet) gid=1000(violet) groups=1000(violet)</span><br><span class="line">[root@localhost ~]# usermod -a -G games violet</span><br><span class="line">[root@localhost ~]# id violet</span><br><span class="line">uid=1000(violet) gid=1000(violet) groups=1000(violet),20(games)</span><br><span class="line">[root@localhost ~]# usermod -g games violet</span><br><span class="line">[root@localhost ~]# id violet</span><br><span class="line">uid=1000(violet) gid=20(games) groups=20(games),1000(violet)</span><br><span class="line">[root@localhost ~]# usermod -g violet violet</span><br><span class="line">[root@localhost ~]# id violet</span><br><span class="line">uid=1000(violet) gid=1000(violet) groups=1000(violet),20(games)</span><br><span class="line">[root@localhost ~]# awk &#x27;$1 ~ /games/&#123;print&#125;&#x27; /etc/group</span><br><span class="line">games:x:20:violet</span><br><span class="line">[root@localhost ~]# gpasswd -d violet games</span><br><span class="line">Removing user violet from group games</span><br><span class="line">[root@localhost ~]# awk &#x27;$1 ~ /games/&#123;print&#125;&#x27; /etc/group</span><br><span class="line">games:x:20:</span><br><span class="line">[root@localhost ~]# id violet</span><br><span class="line">uid=1000(violet) gid=1000(violet) groups=1000(violet)</span><br></pre></td></tr></table></figure>
+<h3 id="修改用户的主组">修改用户的主组</h3>
+<h4 id="修改主组">修改主组</h4>
+<blockquote>
+<p><code>-g</code> - 强制改变用户的主组</p>
+</blockquote>
+<p>语法格式如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> usermod -g GROUP USER</span></span><br></pre></td></tr></table></figure>
+<p>由于该命名是强制改变用户的主组，因此改变用户的主组，先确定用户是否加入了指定的组。</p>
+<p>举例，若要修改violet用户的主组为flower组，但是violet用户并没加入flower组，先让violet用户加入flower组：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> id violet</span></span><br><span class="line">uid=1000(violet) gid=1000(violet) groups=1000(violet)</span><br><span class="line"><span class="meta">#</span><span class="bash"> usermod -a -G flower violet</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> id violet</span></span><br><span class="line">uid=1000(violet) gid=1000(violet) groups=1000(violet),1007(flower)</span><br><span class="line"><span class="meta">#</span><span class="bash"> usermod -g flower violet</span></span><br><span class="line">uid=1000(violet) gid=1007(flower) groups=1007(flower),20(games),1000(violet)</span><br></pre></td></tr></table></figure>
+<p>可以看到若violet用户所属的组中并没有flower的话，添加了主组为flower后，其所属的组也多了个flower。</p>
+<h3 id="添加用户备注信息">添加用户备注信息</h3>
+<blockquote>
+<p><code>-c</code> - 添加用户备注信息,这个备注是关于GECOS (the full name of the user)的信息，备注信息会添加到/etc/passwd</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> usermod -c <span class="string">&quot;GECOS Comment&quot;</span> USER</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>-d</code> - 改变用户的家目录,原来家目录的内容不会移动到新的家目录</p>
+<p><code>-m</code> - 配合’-d’使用，改变家目录的同时，原家目录内容也会迁移到新的家目录。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> By default, the <span class="built_in">command</span> doesn’t move the content of the user’s home directory to the new one.</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> usermod -d HOME_DIR USER</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> To move the content, use the -m option. If the new directory does not already exist, it is created:</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> usermod -d HOME_DIR -m USER</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>-s</code> - 改变用户默认的shell</p>
+<p>The default shell is the shell that is run after you log in to the  system. By default, on most Linux systems, the default shell is set to  Bash Shell.</p>
+<p>You can find out what shells are available on your system by displaying the <code>/etc/shells</code> file’s content.</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> SHELL:其他shell的绝对路径</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> usermod -s SHELL USER</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>-u</code> - 改变用户UID</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> usrmod -u UID USER</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>-l</code> - 改变用户名称</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> NEW_USER: 新用户名称</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> usermod -l NEW_USER USER</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> In the example below, we are renaming the user linuxize to lisa to “1050”:</span></span><br><span class="line">sudo usermod -l linuxize lisa</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>-e</code> - 改变用户到期时间，当当前时间到了到期时间时，用户会被关闭。</p>
+<p>到期时间存储在<a href="/etc/shadow">/etc/shadow</a></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> usermod -e DATE USER</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> For example, to <span class="built_in">disable</span> the user linuxize on 2022-02-21, you would run the following <span class="built_in">command</span>:</span></span><br><span class="line">sudo usermod -e &quot;2022-02-21&quot; linuxize</span><br><span class="line"><span class="meta">#</span><span class="bash"> To <span class="built_in">disable</span> the expiration of an account, <span class="built_in">set</span> an empty expiry date:</span></span><br><span class="line">sudo usermod -e &quot;&quot; linuxize</span><br></pre></td></tr></table></figure>
+<p>查询用户到期时间</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> chage -l USER</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>-L</code> - 锁定用户。</p>
+<p>The commands will insert an exclamation point (<code>!</code>) mark in front of the encrypted password. When the password field in the <code>/etc/shadow</code> file contains an exclamation point, the user will not be able to login  to the system using password authentication. Other login methods, like <a target="_blank" rel="noopener" href="https://linuxize.com/post/how-to-setup-passwordless-ssh-login/">key-based authentication</a> or <a target="_blank" rel="noopener" href="https://linuxize.com/post/su-command-in-linux/">switching to the user</a> are still allowed. If you want to lock the account and disable all login methods, you also need to set the expiration date to 1.</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> usermod -L USER</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Examples:</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo usermod -L linuxize</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo usermod -L -e 1 linuxize</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>-U</code> - 解锁用户</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> usermod -U USER</span></span><br></pre></td></tr></table></figure>
+<h2 id="用户授权">用户授权</h2>
+<p>背景：普通用户在运行命令时，可能会出现&quot;Permission denied&quot;的情况，这时候需要申请root授权。</p>
+<p>普通用户获得权限的方式</p>
+<ul>
+<li>su切换root用户</li>
+<li>让root用户通过chmod修改要目标文件或目录的权限</li>
+<li>sudo</li>
+<li>设置特殊权限位</li>
+</ul>
+<h3 id="su-root和su-root的区别">su - root和su root的区别?</h3>
+<p>&quot;su - root&quot;是切换到root账号使用，使用的是root用户的环境变量；</p>
+<p>&quot;su root&quot;则是取得root的特权，以root的身份执行程序，但保留原来用户环境。</p>
+<p>说明：有些命令即使你使用&quot;su root&quot;切换到root用户，仍无法执行，所以切换到root用户时，建议使用&quot;su - root&quot;。</p>
+<p>与普通用户violet有关的环境变量，例子如下：</p>
+<p>env命令用于显示系统中已存在的环境变量，以及在定义的环境中执行指令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[violet@localhost ~]$ env | grep &#x27;violet&#x27;</span><br><span class="line">USER=violet</span><br><span class="line">MAIL=/var/spool/mail/violet</span><br><span class="line">PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/violet/.local/bin:/home/violet/bin</span><br><span class="line">PWD=/home/violet</span><br><span class="line">HOME=/home/violet</span><br><span class="line">LOGNAME=violet</span><br></pre></td></tr></table></figure>
+<p>取得root权限时：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[violet@localhost ~]$ su root</span><br><span class="line">Password:</span><br><span class="line">[root@localhost /home/violet]# env | grep &#x27;violet&#x27;</span><br><span class="line">USER=violet</span><br><span class="line">PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/violet/.local/bin:/home/violet/bin</span><br><span class="line">MAIL=/var/spool/mail/violet</span><br><span class="line">PWD=/home/violet</span><br><span class="line">LOGNAME=violet</span><br><span class="line">[root@localhost /home/violet]# env | grep &#x27;root&#x27;</span><br><span class="line">HOME=/root</span><br></pre></td></tr></table></figure>
+<p>切换到root用户时：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[violet@localhost ~]$ su - root</span><br><span class="line">Password: </span><br><span class="line">Last login: Fri Jan 22 19:44:51 CST 2021 on pts/0</span><br><span class="line">[root@localhost ~]# env | grep &#x27;violet&#x27;</span><br><span class="line">[root@localhost ~]# env | grep &#x27;root&#x27;</span><br><span class="line">USER=root</span><br><span class="line">MAIL=/var/spool/mail/root</span><br><span class="line">PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin</span><br><span class="line">PWD=/root</span><br><span class="line">HOME=/root</span><br><span class="line">LOGNAME=root</span><br></pre></td></tr></table></figure>
+<p>可以看到&quot;su - root&quot;切换到root用户后，PATH路径下有一个/root/bin</p>
+<h3 id="sudo配置">sudo配置</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo -l	# 查看当前用户的特权信息</span><br><span class="line">sudo -k # 查看当前用户的密码缓存</span><br></pre></td></tr></table></figure>
+<h4 id="sudo配置文件编辑">sudo配置文件编辑</h4>
+<p>visudo - 相等于&quot;vi /etc/sudoers&quot;。但是使用visudo有一个语法检查的功能。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">visudo -c	# 提示编辑的文件是否符合语法规则</span><br></pre></td></tr></table></figure>
+<p>在root用户下输入visudo</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> visudo</span></span><br></pre></td></tr></table></figure>
+<p>进入vim跳转到93行(键盘按下&quot;93GG&quot;即可跳转)</p>
+<p>授权用户权限的格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[用户名]    [网络中的主机]&#x3D;[执行命令的目标用户]    [执行的命令范围]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>授予用户指定命令的执行权限</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">violet   ALL=(ALL)       /bin/ls, /bin/touch</span><br></pre></td></tr></table></figure>
+<p>上述例子授予violet用户ls和touch命令root权限。</p>
+<p>这样violet普通用户可以通过sudo ls命令查看处于权限限制下目录的文件列表，例子如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[violet@localhost ~]$ ls /root</span><br><span class="line">ls: cannot open directory /root: Permission denied</span><br><span class="line">[violet@localhost ~]$ sudo ls /root</span><br><span class="line">[sudo] password for violet: </span><br><span class="line">anaconda-ks.cfg  awk_test.txt	 info.txt    test	test.txt  violet	...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>授予大量命令，并排除指定命令</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">violet   ALL=(ALL)       /bin/*, ! /bin/vi</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">violet   ALL&#x3D;(ALL)       &#x2F;usr&#x2F;bin&#x2F;*, &#x2F;usr&#x2F;sbin&#x2F;*, !&#x2F;bin&#x2F;vi, !&#x2F;usr&#x2F;sbin&#x2F;visudo</span><br></pre></td></tr></table></figure>
+<p>批量授予给普通用户大量命令时，切记不能让普通用户拥有修改sudo配置文件的权利！</p>
+<ul>
+<li>授予用户使用命令不需要密码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">violet   ALL&#x3D;(ALL)       NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
+<p>ALL表示violet用户可以执行所有需要root权限的命令时，都不需要密码，这样的做法很危险。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">violet   ALL=(ALL)       NOPASSWD:  /usr/bin/*, /usr/sbin/*, !/bin/vi, !/usr/sbin/visudo</span><br></pre></td></tr></table></figure>
+<p>violet用户可以执行上述&quot;bin和sbin&quot;目录的文件时，都不需要密码.</p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Linux-UserManagement</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://violet7pan.gitee.io/posts/ff26220a/">https://violet7pan.gitee.io/posts/ff26220a/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>violet7pan</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-02-18</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2021-06-14</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/posts/7b277ce5/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-9.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Linux-Command-tar</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/c2e31e6/" title="CentOS7系统优化脚本"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-2.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-20</div><div class="title">CentOS7系统优化脚本</div></div></a></div><div><a href="/posts/9bbe274e/" title="Linux如何配置网络"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-16.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-20</div><div class="title">Linux如何配置网络</div></div></a></div><div><a href="/posts/7821e3ee/" title="CentOS6,7/Ubuntu镜像下载与安装至VM虚拟机"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-5.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-20</div><div class="title">CentOS6,7/Ubuntu镜像下载与安装至VM虚拟机</div></div></a></div><div><a href="/posts/887a2cdf/" title="Linux find命令的使用"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-21.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-20</div><div class="title">Linux find命令的使用</div></div></a></div><div><a href="/posts/7b277ce5/" title="Linux-Command-tar"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-9.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-19</div><div class="title">Linux-Command-tar</div></div></a></div><div><a href="/posts/60bc5e22/" title="Linux awk命令"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-16.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-22</div><div class="title">Linux awk命令</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">violet7pan</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/violet7pan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E5%91%98-%E8%99%9A%E6%8B%9F%E7%94%A8%E6%88%B7-%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7UID%E8%8C%83%E5%9B%B4"><span class="toc-number">1.</span> <span class="toc-text">管理员&#x2F;虚拟用户&#x2F;普通用户UID范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">用户创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%88%A0%E9%99%A4"><span class="toc-number">2.2.</span> <span class="toc-text">用户删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%88%87%E6%8D%A2"><span class="toc-number">2.3.</span> <span class="toc-text">用户切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E6%A3%80%E6%B5%8B"><span class="toc-number">2.4.</span> <span class="toc-text">登录用户检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E4%BF%AE%E6%94%B9"><span class="toc-number">2.5.</span> <span class="toc-text">用户信息修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E6%9F%A5%E7%9C%8B"><span class="toc-number">2.6.</span> <span class="toc-text">用户信息查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.7.</span> <span class="toc-text">密码设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">用户组管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E7%BB%84%E5%92%8C%E6%AC%A1%E8%A6%81%E7%BB%84%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.1.</span> <span class="toc-text">主组和次要组的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%8A%A0%E5%85%A5%E4%B8%80%E4%B8%AA%E7%BB%84"><span class="toc-number">3.2.</span> <span class="toc-text">用户加入一个组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E9%80%80%E5%87%BA%E4%B8%80%E4%B8%AA%E7%BB%84"><span class="toc-number">3.3.</span> <span class="toc-text">用户退出一个组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E7%9A%84%E4%B8%BB%E7%BB%84"><span class="toc-number">3.4.</span> <span class="toc-text">修改用户的主组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E7%BB%84"><span class="toc-number">3.4.1.</span> <span class="toc-text">修改主组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E5%A4%87%E6%B3%A8%E4%BF%A1%E6%81%AF"><span class="toc-number">3.5.</span> <span class="toc-text">添加用户备注信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E6%8E%88%E6%9D%83"><span class="toc-number">4.</span> <span class="toc-text">用户授权</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#su-root%E5%92%8Csu-root%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">4.1.</span> <span class="toc-text">su - root和su root的区别?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sudo%E9%85%8D%E7%BD%AE"><span class="toc-number">4.2.</span> <span class="toc-text">sudo配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sudo%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%BC%96%E8%BE%91"><span class="toc-number">4.2.1.</span> <span class="toc-text">sudo配置文件编辑</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/3b4634fc/" title="Hexo使用"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-20.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo使用"/></a><div class="content"><a class="title" href="/posts/3b4634fc/" title="Hexo使用">Hexo使用</a><time datetime="2021-06-07T12:08:35.000Z" title="发表于 2021-06-07 20:08:35">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/24caea6b/" title="Hexo常用命令"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-11.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo常用命令"/></a><div class="content"><a class="title" href="/posts/24caea6b/" title="Hexo常用命令">Hexo常用命令</a><time datetime="2021-06-07T06:10:13.000Z" title="发表于 2021-06-07 14:10:13">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo隐藏文章"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo隐藏文章"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo隐藏文章">Hexo隐藏文章</a><time datetime="2021-06-04T11:00:41.000Z" title="发表于 2021-06-04 19:00:41">2021-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-12.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo贴文Front-Matter用法"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法">Hexo贴文Front-Matter用法</a><time datetime="2021-06-01T11:37:37.000Z" title="发表于 2021-06-01 19:37:37">2021-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的Buttefly主题魔改历程"/></a><div class="content"><a class="title" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程">我的Buttefly主题魔改历程</a><time datetime="2021-06-01T08:52:32.000Z" title="发表于 2021-06-01 16:52:32">2021-06-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By violet7pan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/algolia.js"></script><div class="js-pjax"></div><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

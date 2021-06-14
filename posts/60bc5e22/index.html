@@ -1,0 +1,443 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Linux awk命令 | violet7pan Blog</title><meta name="keywords" content="Linux"><meta name="author" content="violet7pan"><meta name="copyright" content="violet7pan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="awk References: Awk Tutorial - Tutorialspoint. 30 Examples for Awk Command in Text Processing - Like Geeks. Awk Command in Linux with Examples | Linuxize(强烈推荐，把awk命令介绍得明明白白). AWK - 维基百科，自由的百科全书. Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux awk命令">
+<meta property="og:url" content="https://violet7pan.gitee.io/posts/60bc5e22/index.html">
+<meta property="og:site_name" content="violet7pan Blog">
+<meta property="og:description" content="awk References: Awk Tutorial - Tutorialspoint. 30 Examples for Awk Command in Text Processing - Like Geeks. Awk Command in Linux with Examples | Linuxize(强烈推荐，把awk命令介绍得明明白白). AWK - 维基百科，自由的百科全书. Linux">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-16.webp">
+<meta property="article:published_time" content="2021-02-21T16:51:50.000Z">
+<meta property="article:modified_time" content="2021-06-14T03:47:35.631Z">
+<meta property="article:author" content="violet7pan">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-16.webp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://violet7pan.gitee.io/posts/60bc5e22/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"PKY3F5HAHD","apiKey":"5e175a241d1eb8b01147dbb78d77842d","indexName":"prod_blog","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux awk命令',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-14 11:47:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/custom.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/index.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="//at.alicdn.com/t/font_2405210_6tovfl8ipqu.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-16.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">violet7pan Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux awk命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-21T16:51:50.000Z" title="发表于 2021-02-22 00:51:50">2021-02-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.631Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/Command/">Command</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux awk命令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="awk">awk</h1>
+<p>References:</p>
+<p><a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/awk/index.htm">Awk Tutorial - Tutorialspoint</a>.</p>
+<p><a target="_blank" rel="noopener" href="https://likegeeks.com/awk-command/#Using-Multiple-Commands">30 Examples for Awk Command in Text Processing - Like Geeks</a>.</p>
+<p><a target="_blank" rel="noopener" href="https://linuxize.com/post/awk-command/">Awk Command in Linux with Examples | Linuxize</a>(强烈推荐，把awk命令介绍得明明白白).</p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/AWK">AWK - 维基百科，自由的百科全书</a>.</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ginvip/p/6352157.html">Linux三剑客之awk命令 - 琴酒网络 - 博客园</a>。</p>
+<h2 id="初识awk">初识awk</h2>
+<h3 id="什么是awk">什么是awk</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/AWK">AWK - 维基百科，自由的百科全书</a>:</p>
+<p><strong>AWK</strong>是一种优良的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86&amp;action=edit&amp;redlink=1">文本处理</a>工具，<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Linux">Linux</a>及<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Unix">Unix</a>环境中现有的功能最强大的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86">数据处理</a>引擎之一。这种编程及数据操作语言（其名称得自于它的创始人<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%98%BF%E5%B0%94%E4%BD%9B%E9%9B%B7%E5%BE%B7%C2%B7%E8%89%BE%E4%BE%AF">阿尔佛雷德·艾侯</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BD%BC%E5%BE%97%C2%B7%E6%BA%AB%E4%BC%AF%E6%A0%BC">彼得·溫伯格</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B8%83%E8%90%8A%E6%81%A9%C2%B7%E6%9F%AF%E6%9E%97%E6%BC%A2">布萊恩·柯林漢</a>姓氏的首个字母）的最大功能取决于一个人所拥有的知识。AWK提供了极其强大的功能：可以进行正则表达式的匹配，样式装入、流控制、数学运算符、进程控制语句甚至于内置的变量和函数。它具备了一个完整的语言所应具有的几乎所有精美特性。实际上AWK的确拥有自己的语言：AWK<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80">程序设计语言</a>，三位创建者已将它正式定义为“样式扫描和处理语言”。它允许创建简短的程序，这些程序读取输入文件、为数据排序、处理数据、对输入执行计算以及生成报表，还有无数其他的功能。gawk是AWK的GNU版本。</p>
+<p>最简单地说，AWK是一种用于处理文本的编程语言工具。AWK在很多方面类似于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Unix_shell">Unix shell</a>编程语言，尽管AWK具有完全属于其本身的语法。它的设计思想来源于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/SNOBOL4">SNOBOL4</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Sed">sed</a>、Marc Rochkind设计的有效性语言、语言工具<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Yacc">yacc</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Lex">lex</a>，当然还从<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/C%E8%AF%AD%E8%A8%80">C语言</a>中获取了一些优秀的思想。在最初创造AWK时，其目的是用于文本处理，并且这种语言的基础是，只要在输入数据中有模式匹配，就执行一系列指令。该实用工具扫描文件中的每一行，查找与命令行中所给定内容相匹配的模式。如果发现匹配内容，则进行下一个编程步骤。如果找不到匹配内容，则继续处理下一行。</p>
+</blockquote>
+<p>将维基百科awk介绍进行简明概括就是：awk是一种用于文本处理的语言，通过编写符合awk语言的脚本表达式或文件后，交给awk来处理输入文件。</p>
+<p>&quot;awk&quot;有两种意思：</p>
+<ol>
+<li>awk指的是用于文本处理的脚本语言。</li>
+<li>awk是用于文本处理的实用程序(属于Utility或者Tool)。</li>
+</ol>
+<p>awk作为程序时，会使用awk语言编写的脚本文件作为处理规则，将处理规则运用到输入文件上。在我们探讨awk脚本设计时，就像你学c语言一样，它也应该有它的程序设计规则。</p>
+<h3 id="awk脚本的特性">awk脚本的特性</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://likegeeks.com/awk-command/#Using-Multiple-Commands">30 Examples for Awk Command in Text Processing - Like Geeks</a>:</p>
+<p>The awk command or GNU awk in specific provides a scripting language  for text processing. With awk scripting language, you can make the  following:</p>
+<ul>
+<li>Define variables.</li>
+<li>Use string and arithmetic operators.</li>
+<li>Use control flow and loops.</li>
+<li>Generate formatted reports.</li>
+</ul>
+</blockquote>
+<h3 id="awk的用途">awk的用途</h3>
+<p>列操作、数据的统计</p>
+<p>awk用于处理何种信息？awk主要用于处理文本，多用于日志文件。</p>
+<p>awk处理方式：排除信息、查询信息、统计信息、替换信息(并不是真正地写入到原文件，而是处理结果的替换)</p>
+<h3 id="span-id-awk-workflow-awk工作流程-span"><span id="awk_workflow">awk工作流程</span></h3>
+<p>awk的执行流程图(来源于<a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/awk/index.htm">Awk Tutorial - Tutorialspoint</a>):</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/60bc5e22/awk_workflow.png" class="" title="awk_workflow">
+<h3 id="awk命令语法格式">awk命令语法格式</h3>
+<p>awk命令用于执行awk脚本文件，为了让awk脚本正确执行，调用awk命令时应该符合下面两种语法格式：</p>
+<p>一种是awk脚本写在命令行上的语法格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk [OPTIONS...] [PROGRAM] INPUT_FILE</span><br></pre></td></tr></table></figure>
+<p>[OPTIONS…] - 选项(参数)</p>
+<p>[PROGRAM] - awk语言脚本表达式的集合。</p>
+<p>INPUT_FILE - 要处理的输入文件</p>
+<p>一种是awk脚本写在文件中的语法格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk [OPTIONS...] -f PROGRAM_FILE INPUT_FILE</span><br></pre></td></tr></table></figure>
+<p>PROGRAM_FILE - 编写awk语言脚本表达式的文件</p>
+<h3 id="span-id-awk-programing-awk脚本设计-span"><span id="awk_programing">awk脚本设计</span></h3>
+<p>在外文上经常会出现这两个属于&quot;awk script&quot;和&quot;awk program&quot;，它们指的都是用awk语言写的程序。下面是awk脚本设计的英文参考，如果不想细看，可以看中文部分。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://linuxize.com/post/awk-command/">Awk Command in Linux with Examples | Linuxize</a>:</p>
+<p>To process a text with <code>awk</code>, you write a program that  tells the command what to do. The program consists of a series of rules  and user defined functions. Each rule contains one pattern and action  pair. Rules are separated by newline or semi-colons (<code>;</code>). Typically, an awk program looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pattern &#123; action &#125;</span><br><span class="line">pattern &#123; action &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>When <code>awk</code> process data, if the pattern matches the record, it performs the specified action on that record. When the rule  has no pattern, all records (lines) are matched.</p>
+<p>An awk action is enclosed in braces (<code>&#123;&#125;</code>) and consists of statements. Each statement specifies the operation to  be performed. An action can have more than one statement separated by newline or semi-colons (<code>;</code>). If the rule has no action, it defaults to printing the whole record.</p>
+<p>Awk supports different types of statements, including expressions, conditionals, input, output statements, and more. The most common awk  statements are:</p>
+<ul>
+<li><code>exit</code> - Stops the execution of the whole program and exits.</li>
+<li><code>next</code> - Stops processing the current record and moves to the next record in the input data.</li>
+<li><code>print</code> - Print records, fields, variables, and custom text.</li>
+<li><code>printf</code> - Gives you more control over the output format, similar to C and bash <a target="_blank" rel="noopener" href="https://linuxize.com/post/bash-printf-command/"><code>printf</code></a> .</li>
+</ul>
+<p>When writing awk programs, everything after the hash mark <code>(#)</code> and until the end of the line is considered to be a comment. Long lines can be broken into multiple lines using the continuation character,  backslash (<code>\</code>)</p>
+</blockquote>
+<p>一个awk程序应该包括一系列规则和用户定义的函数。每一条规则都应该包括一条模式和对应的动作。每一条规则应该使用换行符或者分号(;)分隔开。因此一个awk程序应该写成这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pattern &#123; action &#125;</span><br><span class="line">pattern &#123; action &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pattern &#123; action &#125; ; pattern &#123; action &#125; ; ...</span><br></pre></td></tr></table></figure>
+<p>pattern - pattern代表匹配字符串，若字符串匹配了一行或多行数据，那么就会对匹配的行执行对应的动作(action)</p>
+<p>action - 动作用卷括号括起来，里面写有语句，每条语句应该用换行符或者分号(;)隔开。如果动作中没有语句，那么默认的动作是{print}，即打印整行。</p>
+<p>我们来举个例子吧：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk &#x27;/word/&#123;print $1&quot;,&quot;$3&#125;&#x27; awk_test.txt</span><br></pre></td></tr></table></figure>
+<p>其中&quot;/word/“代表pattern，而”{print $1&quot;,“$3}“代表action，里面有一条语句(print $1”,”$3)。这个脚本的功能就是搜索包含&quot;word&quot;的行数据，然后打印行数据中的第一个和第三个数据字段，并且这两个数据字段用逗号隔开。</p>
+<p>awk语言语法可以参考以下链接：</p>
+<p><a target="_blank" rel="noopener" href="http://kirste.userpage.fu-berlin.de/chemnet/use/info/gawk/gawk_toc.html">AWK Language Programming - Table of Contents</a><br>
+<a target="_blank" rel="noopener" href="https://www.gnu.org/software/gawk/manual/gawk.html">The GNU Awk User’s Guide</a></p>
+<h3 id="Records和Data-Filed">Records和Data Filed</h3>
+<p>首先要明白awk程序读入输入文件时，输入文件内容会被划分为Records和Fields。简单理解就是，输入的文件内容会被按行和列进行划分。每行数据叫Record,每列数据叫Data Filed。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Record</td>
+<td><u>记录</u>(每一行数据/信息）</td>
+</tr>
+<tr>
+<td>Data Filed</td>
+<td><u>数据字段</u>/数据域(数据列/列信息)</td>
+</tr>
+</tbody>
+</table>
+<p>每一行的数据可以被分割为数据字段，每个字段可以由<kbd>TAB</kbd>,<kbd>SPACE</kbd>进行分割。</p>
+<p>让我们用一个实例看看它们到底是什么吧，比如有如下sample.txt</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">This is sample file.</span><br><span class="line">Java is programming language.</span><br><span class="line">This is Java tutorial</span><br><span class="line">I know Java very well.</span><br></pre></td></tr></table></figure>
+<p>该文本有四行，那么就有四行records，第1个record就是&quot;This is sample file.“；第2个record就是&quot;Java is programming language.”；第3个record就是&quot;This is Java tutorial&quot;;第4个record就是&quot;I know Java very well.&quot;。</p>
+<p>第1~3行有4个Data fileds，而第4行有5个Data fileds，最后一个Data filed是&quot;well.&quot;。</p>
+<p>数据字段的分隔符默认是Space，因此FS变量存储的是Space。记录之间的分隔符是换行符，因此RS变量存储的是换行符。</p>
+<h3 id="Record-Sperator和Filed-Sperator">Record Sperator和Filed Sperator</h3>
+<p>Record Sperator: <u>记录分隔符</u>，又称<u>行分隔符</u>，简称<u>RS</u>.</p>
+<p>Filed Sperator: <u>域分隔符</u>，又称为<u>字段分隔符</u>，简称<u>FS</u>.</p>
+<p>理解记录和数据字段后，RS和FS就很容易理解了:</p>
+<ul>
+<li>RS用于分割每一行数据，默认的RS是换行符(newline character)。</li>
+<li>FS用于分割每一行数据中数据字段，默认的FS是空格，当然还包括制表符(TAB)。</li>
+</ul>
+<h3 id="实例材料">实例材料</h3>
+<p>awk_test.txt(这里我使用老男孩培训机构的视频中的实例材料)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Zhang	Dandan		41117397	:250:100:175</span><br><span class="line">Zhang	Xiaoyu		390320151	:155:90:201</span><br><span class="line">Meng	Feixue		80042789	:250:60:50</span><br><span class="line">Wu	Waiwai		70271111	:250:80:75</span><br><span class="line">Liu	Bingbing	41117483	:250:100:175</span><br><span class="line">Wang	Xiaoai		3515064655	:50:95:135</span><br><span class="line">Zi	Gege		1986787350	:250:168:200</span><br><span class="line">Li	Youjiu		918391635	:175:75:300</span><br><span class="line">Lao	Nanhai		918391635	:250:100:175</span><br></pre></td></tr></table></figure>
+<p>为了方便查看空白的内容是用了什么特殊转义字符，我使用cat -A命令进行打印</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cat -A awk_test.txt</span></span><br><span class="line">Zhang^IDandan^I^I41117397^I:250:100:175$</span><br><span class="line">Zhang^IXiaoyu^I^I390320151^I:155:90:201$</span><br><span class="line">Meng^IFeixue^I^I80042789^I:250:60:50$</span><br><span class="line">Wu^IWaiwai^I^I70271111^I:250:80:75$</span><br><span class="line">Liu^IBingbing^I41117483^I:250:100:175$</span><br><span class="line">Wang^IXiaoai^I^I3515064655^I:50:95:135$</span><br><span class="line">Zi^IGege^I^I1986787350^I:250:168:200$</span><br><span class="line">Li^IYoujiu^I^I918391635^I:175:75:300$</span><br><span class="line">Lao^INanhai^I^I918391635^I:250:100:175$</span><br></pre></td></tr></table></figure>
+<p>可以看到每行都是是以Tab(^I表示Tab)进行分隔数据字段的。</p>
+<h2 id="awk内置变量">awk内置变量</h2>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FS</td>
+<td>Field Separtor - 用于存储数据字段分隔符</td>
+</tr>
+<tr>
+<td>NR</td>
+<td>The number of the current record - 用于存储每一行信息的行号</td>
+</tr>
+<tr>
+<td>$NR</td>
+<td>表示第n行的第n个数据字段</td>
+</tr>
+<tr>
+<td>NF</td>
+<td>The number of fields in the record - 用于存储每一行信息中数据字段的数量</td>
+</tr>
+<tr>
+<td>$NF</td>
+<td>表示存储每一行最后一个数据字段</td>
+</tr>
+<tr>
+<td>$0 - $n</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mtext>代表一行信息；</mtext></mrow><annotation encoding="application/x-tex">0代表一行信息；</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord cjk_fallback">代表一行信息；</span></span></span></span>n代表第n个数据字段(n=1,2,…,i)</td>
+</tr>
+</tbody>
+</table>
+<p>只要知道如果表达式前面加上’<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mtext>，那么就表示使用</mtext><mo stretchy="false">(</mo><mtext>引用</mtext><mo stretchy="false">)</mo><mtext>数据字段，比如</mtext></mrow><annotation encoding="application/x-tex">&#x27;，那么就表示使用(引用)数据字段，比如</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.001892em;vertical-align:-0.25em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord cjk_fallback">，那么就表示使用</span><span class="mopen">(</span><span class="mord cjk_fallback">引用</span><span class="mclose">)</span><span class="mord cjk_fallback">数据字段，比如</span></span></span></span>NR和$NF和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mtext> </mtext></mrow><annotation encoding="application/x-tex">1~</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace nobreak"> </span></span></span></span>n都是表示数据字段，$0实际上把整行当做一个数据字段。</p>
+<h3 id="0-n的使用">$0 ~ $n的使用</h3>
+<blockquote>
+<p>Awk actually uses some variables for each data field found.</p>
+<ul>
+<li>$0 for whole line</li>
+<li>$1 for first field</li>
+<li>$2 for second field</li>
+<li>$3 for third field</li>
+<li>$n for nth field</li>
+</ul>
+</blockquote>
+<p>打印第一个数据字段的实例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span> sample.txt</span></span><br><span class="line">This</span><br><span class="line">Java</span><br><span class="line">This</span><br><span class="line">I</span><br></pre></td></tr></table></figure>
+<p>可以看到$1指的是每一行的第一个数据字段。</p>
+<p>打印多个数据字段的实例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;&#123;print $1&quot;,&quot;$3&#125;&#x27;</span> awk_test.txt	<span class="comment"># 数据字段以逗号进行分隔显示</span></span></span><br><span class="line">Zhang,41117397</span><br><span class="line">Zhang,390320151</span><br><span class="line">Meng,80042789</span><br><span class="line">Wu,70271111</span><br><span class="line">Liu,41117483</span><br><span class="line">Wang,3515064655</span><br><span class="line">Zi,1986787350</span><br><span class="line">Li,918391635</span><br><span class="line">Lao,918391635</span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;&#123;print $1,$3&#125;&#x27;</span> awk_test.txt	<span class="comment"># 数据字段以空格进行分隔显示</span></span></span><br><span class="line">Zhang 41117397</span><br><span class="line">Zhang 390320151</span><br><span class="line">Meng 80042789</span><br><span class="line">Wu 70271111</span><br><span class="line">Liu 41117483</span><br><span class="line">Wang 3515064655</span><br><span class="line">Zi 1986787350</span><br><span class="line">Li 918391635</span><br><span class="line">Lao 918391635</span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;&#123;print $1&quot;\t&quot;$3&#125;&#x27;</span> awk_test.txt	<span class="comment"># 数据字段以制表符进行分隔显示</span></span></span><br><span class="line">Zhang	41117397</span><br><span class="line">Zhang	390320151</span><br><span class="line">Meng	80042789</span><br><span class="line">Wu	70271111</span><br><span class="line">Liu	41117483</span><br><span class="line">Wang	3515064655</span><br><span class="line">Zi	1986787350</span><br><span class="line">Li	918391635</span><br><span class="line">Lao	918391635</span><br></pre></td></tr></table></figure>
+<h3 id="FS变量的使用">FS变量的使用</h3>
+<p>FS(Field Separtor) - 用于存储数据字段分隔符的变量</p>
+<h4 id="指定单个分隔符">指定单个分隔符</h4>
+<p>你也可以指定域分隔符，可以’-F’后接域分隔符进行指定：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -F&#x27;,&#x27; &#x27;&#123;print $1&#125;&#x27; countries.csv</span><br></pre></td></tr></table></figure>
+<p>其中countries.csv内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#Country,Population,Captital</span><br><span class="line">India,10000,Delhi</span><br><span class="line">Nepal,2000,Kathmandu</span><br><span class="line">China,20000,Beijing</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#Country</span><br><span class="line">India</span><br><span class="line">Nepal</span><br><span class="line">China</span><br></pre></td></tr></table></figure>
+<p>'-F’相当于内置变量FS, 指定的分割字符是设置到该变量中。</p>
+<h4 id="指定多个分隔符">指定多个分隔符</h4>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk -F<span class="string">&#x27;[&quot;\t&quot;:]+&#x27;</span> <span class="string">&#x27;/Zhang/&#123;print $1,$2,$3,$4,$5,$6&#125;&#x27;</span> awk_test.txt</span></span><br><span class="line">Zhang Dandan 41117397 250 100 175</span><br><span class="line">Zhang Xiaoyu 390320151 155 90 201</span><br></pre></td></tr></table></figure>
+<p>'[“\t”:]+'表示有分隔符&quot;\t&quot;或&quot;:&quot;匹配一次或多次。这种写法实际上符合正则表达式的写法。</p>
+<p>‘+’ - 表示匹配分隔符一次或多次。</p>
+<p>‘[]’ - 分隔符集合，里面的每一个分隔符为&quot;或&quot;的逻辑关系。</p>
+<p>以下三种写法都正确</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk -F<span class="string">&#x27;[&quot;\t&quot;:]+&#x27;</span> <span class="string">&#x27;/Zhang/&#123;print $1,$2,$3,$4,$5,$6&#125;&#x27;</span> awk_test.txt</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk -F<span class="string">&#x27;[\t:]+&#x27;</span> <span class="string">&#x27;/Zhang/&#123;print $1,$2,$3,$4,$5,$6&#125;&#x27;</span> awk_test.txt</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk -F<span class="string">&#x27;[&quot;\t&quot;&quot;:&quot;]+&#x27;</span> <span class="string">&#x27;/Zhang/&#123;print $1,$2,$3,$4,$5,$6&#125;&#x27;</span> awk_test.txt</span></span><br></pre></td></tr></table></figure>
+<p>指定多个分隔符的另一种方法</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk -vFS=<span class="string">&#x27;[&quot;\t&quot;:]+&#x27;</span> <span class="string">&#x27;/Zhang/&#123;print $1,$2,$3,$4,$5,$6&#125;&#x27;</span> awk_test.txt</span></span><br></pre></td></tr></table></figure>
+<p>指定多个分隔符的还有一种方法在<a href="#begin_end_special_pattern">两个特性的pattern</a>中有提及——BEGIN BLOCK中可以直接设置FS变量。</p>
+<h3 id="NR变量的使用">NR变量的使用</h3>
+<div class='tip'><p>NR(The number of the current record) - 用于存储一行信息的行号的变量  </p></div>
+<p>打印输入文件内容的单行、多行、指定行的实例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;NR==2&#x27;</span> awk_test.txt</span></span><br><span class="line">Zhang	Xiaoyu		390320151	:155:90:201</span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;NR==2;NR==4&#x27;</span> awk_test.txt</span></span><br><span class="line">Zhang	Xiaoyu		390320151	:155:90:201</span><br><span class="line">Wu	Waiwai		70271111	:250:80:75</span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;NR==2,NR==4&#x27;</span> awk_test.txt</span></span><br><span class="line">Zhang	Xiaoyu		390320151	:155:90:201</span><br><span class="line">Meng	Feixue		80042789	:250:60:50</span><br><span class="line">Wu	Waiwai		70271111	:250:80:75</span><br></pre></td></tr></table></figure>
+<p>$NR和NR的区别</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cat test.txt</span> </span><br><span class="line">a 2 3 4 5</span><br><span class="line">2 b 4 5 6</span><br><span class="line">3 4 c 6 7</span><br><span class="line">4 5 6 d 8</span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;&#123;print NR&#125;&#x27;</span> test.txt</span></span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;&#123;print $NR&#125;&#x27;</span> test.txt</span></span><br><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br><span class="line">d</span><br></pre></td></tr></table></figure>
+<p>$NR表示第n行的第n个数据字段，NR表示每行的行号</p>
+<h3 id="NF变量的使用">NF变量的使用</h3>
+<p>NF(The number of fields in the record) - 用于存储一行信息有多少个字段的变量</p>
+<p>$NF和NF的区别</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.gnu.org/software/gawk/manual/html_node/Fields.html">Fields (The GNU Awk User’s Guide)</a>:</p>
+<p>…</p>
+<p><code>NF</code> is a predefined variable whose value is the number of fields in the current record.  <code>awk</code> automatically updates the value of <code>NF</code> each time it reads a record.  No matter how many fields there are, the last field in a record can be represented by <code>$NF</code>.</p>
+</blockquote>
+<p>$NF和NF实例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cat awk_nf.txt</span></span><br><span class="line">a</span><br><span class="line">a b</span><br><span class="line">a b c</span><br><span class="line">a b c d</span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;&#123;print $NF&#125;&#x27;</span> awk_nf.txt</span></span><br><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br><span class="line">d</span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;&#123;print NF&#125;&#x27;</span> awk_nf.txt</span></span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+<p>可以看出$NF表示最后一个数据字段，NF表示每一行的行号</p>
+<h2 id="定义变量">定义变量</h2>
+<p>'-v’用于设置变量。下面给出非常规用法，但可以帮助理解该选项：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -v name=&#x27;violet&#x27; &#x27;BEGIN &#123;print name&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">violet</span><br></pre></td></tr></table></figure>
+<p>可以看到上述例子中awk仅执行了BEGIN block，按照awk的执行流程，由于没有指定输入的文件，因此不会读入文件内容。</p>
+<p>'-v’一般用于awk的执行流程中BEGIN block中，这一点从awk使用文档有提及：</p>
+<blockquote>
+<p>-v var=val<br>
+–assign var=val<br>
+Assign  the  value val to the variable var, before execution of the program begins.  Such variable values are available to the BEGIN block of an AWK program.</p>
+</blockquote>
+<h2 id="awk模式-awk-pattern">awk模式 | awk pattern</h2>
+<p>我们要在输入文件中查找符合要求的record，那么我们需要研究下pattern，可以参考<a target="_blank" rel="noopener" href="https://www.gnu.org/software/gawk/manual/gawk.html#Pattern-Overview">The GNU Awk User’s Guide-Pattern-Overview</a>。</p>
+<p>在<a href="#awk_programing">awk脚本设计</a>已经介绍了pattern是干什么用的了。</p>
+<p>应用 - “显示xiaoyu的姓氏和ID号码”</p>
+<p>应用 - “姓氏是Zhang的人,显示他的第二次捐款金额及他的名字”</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk -F<span class="string">&#x27;[&quot;\t&quot;:]+&#x27;</span> <span class="string">&#x27;/Zhang/&#123;print $2, $(NF-1)&#125;&#x27;</span> awk_test.txt</span></span><br><span class="line">Dandan 100</span><br><span class="line">Xiaoyu 90</span><br></pre></td></tr></table></figure>
+<h3 id="波浪号-运用">波浪号(~)运用</h3>
+<p>Reference:<a target="_blank" rel="noopener" href="https://www.gnu.org/software/gawk/manual/gawk.html#index-_007e-_0028tilde_0029_002c-_007e-operator">~ operator | GNU Awk User’s Guide</a>.</p>
+<p>~(波浪号,Tilde)用于pattern匹配。</p>
+<p>波浪号语法格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp ~ &#x2F;regexp&#x2F;</span><br></pre></td></tr></table></figure>
+<p>exp - 指定匹配源(source)，即在哪里进行匹配。可以$0,<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mtext> </mtext></mrow><annotation encoding="application/x-tex">1~</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace nobreak"> </span></span></span></span>n，表示在这些数据字段中做匹配。</p>
+<p>/regexp/ - 指定以何种方式进行匹配。</p>
+<p>一个波浪号语法实例的分析</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$1 ~ &#x2F;word&#x2F;</span><br></pre></td></tr></table></figure>
+<p>该实例的功能：在每行的第一个数据字段中做匹配，如果某行的第一个数据字段中包含&quot;word&quot;，那么就代表匹配成功，接下来就需要可以执行动作(action)了。</p>
+<p>实际上形如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk &#39;pattern&#123;action&#125;&#39; input_file </span><br></pre></td></tr></table></figure>
+<p>这样的命令默认都会匹配当前行.即每读入输入文件的一行，awk都会对当前行进行匹配，因此上述命令相当于如下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk &#39;$0 ~ pattern&#123;action&#125;&#39; input_file</span><br></pre></td></tr></table></figure>
+<p>应用 - “显示所有以41开头的ID号码的人的全名和ID号码”</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;$3 ~ /^41/&#123;print&#125;&#x27;</span> awk_test.txt</span></span><br><span class="line">Zhang	Dandan		41117397	:250:100:175</span><br><span class="line">Liu	Bingbing	41117483	:250:100:175</span><br></pre></td></tr></table></figure>
+<p>应用 - “显示所有ID号码最后一位数字是1或5的人的全名”</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;$3 ~ /[15]$/&#123;print $1$2&#125;&#x27;</span> awk_test.txt</span></span><br><span class="line">ZhangXiaoyu</span><br><span class="line">WuWaiwai</span><br><span class="line">WangXiaoai</span><br><span class="line">LiYoujiu</span><br><span class="line">LaoNanhai</span><br></pre></td></tr></table></figure>
+<p>其他方法</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;$3 ~ /1$|5$/&#123;print $1$2&#125;&#x27;</span> awk_test.txt</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;$3 ~ /(1|5)$/&#123;print $1$2&#125;&#x27;</span> awk_test.txt</span></span><br></pre></td></tr></table></figure>
+<p>应用 - “显示Xiaoyu的捐款,每个数额都有以$开头, 如$110$220$330”</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk -F<span class="string">&#x27;[\t:]+&#x27;</span> <span class="string">&#x27;/Xiaoyu/&#123;print &quot;$&quot;$(NF-2)&quot;$&quot;$(NF-1)&quot;$&quot;$NF&#125;&#x27;</span> awk_test.txt</span></span><br><span class="line"><span class="meta">$</span><span class="bash">155$90<span class="variable">$201</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk -F<span class="string">&#x27;[\t:]+&#x27;</span> <span class="string">&#x27;/Xiaoyu/&#123;print &quot;$&quot;$(NF-2), &quot;$&quot;$(NF-1), &quot;$&quot;$NF&#125;&#x27;</span> awk_test.txt	<span class="comment"># 这样显示更易读</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">155 <span class="variable">$90</span> <span class="variable">$201</span></span></span><br></pre></td></tr></table></figure>
+<p>其他方法</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> gusb(需要替换的部分, 替换信息, 具体数据字段)</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;$2 ~ /Xiaoyu/&#123;gsub(/:/, &quot;$&quot;, $NF); print $NF&#125;&#x27;</span> awk_test.txt</span></span><br></pre></td></tr></table></figure>
+<p>应用 - 排除空行/注释信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> grep -Ev <span class="string">&#x27;^#|^$&#x27;</span> INPUT_FILE</span></span><br><span class="line">sed -n &#x27;/^#|^$/!p&#x27; INPUT_FILE</span><br><span class="line">awk &#x27;$0! ~ /^#|^$/&#x27; INPUT_FILE</span><br></pre></td></tr></table></figure>
+<pre><code>a 对日志信息进行统计(计数)             
+b 对日志信息数值进行求和  客户端-下载 服务端-上传  消耗网络流量
+c (数组)进行排序分析  
+</code></pre>
+<h3 id="span-id-begin-end-special-pattern-两个特殊的pattern-span"><span id="begin_end_special_pattern">两个特殊的pattern</span></h3>
+<p>在<a href="#awk_workflow">awk工作流程</a>中看到BEGIN和END BLOCK，这两个BLOCK用于BEGIN/END pattern。</p>
+<p>BEGIN/END pattern不是用来匹配记录的，而是用来匹配BEGIN/END BLOCK。BEGIN/END BLOCK用于在awk程序开始阶段或结束阶段(清理阶段)执行某些动作的。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.gnu.org/software/gawk/manual/gawk.html#BEGIN_002fEND">GNU Awk User’s Guide-7.1.4 The BEGIN and END Special Patterns</a>:</p>
+<p>All the patterns described so far are for matching input records. The <code>BEGIN</code> and <code>END</code> special patterns are different. They supply startup and cleanup actions for <code>awk</code> programs. <code>BEGIN</code> and <code>END</code> rules must have actions; there is no default action for these rules because there is no current record when they run. <code>BEGIN</code> and <code>END</code> rules are often referred to as “<code>BEGIN</code> and <code>END</code> blocks” by longtime <code>awk</code> programmers.</p>
+</blockquote>
+<p>其语法格式如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk [OPTIONS...] &#39;[BEGIN&#123;STATEMENT_1;STATEMENT_2;...&#125;] pattern&#123;&#125; [END&#123;STATEMENT_1;STATEMENT_2;...&#125;]&#39;</span><br></pre></td></tr></table></figure>
+<p>其中&quot;BEGIN{STATEMENT_1;STATEMENT_2;…}&quot;是可选的，因此使用方括号([])表示，&quot;END{STATEMENT_1;STATEMENT_2;…}&quot;也是可选的。</p>
+<p>一个符合该语法格式的实例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;BEGIN&#123;print &quot;开始阶段&quot;&#125; &#123;print&#125; END&#123;print &quot;清理阶段&quot;&#125;&#x27;</span> awk_test.txt</span></span><br><span class="line">开始阶段</span><br><span class="line">Zhang	Dandan		41117397	:250:100:175</span><br><span class="line">Zhang	Xiaoyu		390320151	:155:90:201</span><br><span class="line">Meng	Feixue		80042789	:250:60:50</span><br><span class="line">Wu	Waiwai		70271111	:250:80:75</span><br><span class="line">Liu	Bingbing	41117483	:250:100:175</span><br><span class="line">Wang	Xiaoai		3515064655	:50:95:135</span><br><span class="line">Zi	Gege		1986787350	:250:168:200</span><br><span class="line">Li	Youjiu		918391635	:175:75:300</span><br><span class="line">Lao	Nanhai		918391635	:250:100:175</span><br><span class="line">清理阶段</span><br></pre></td></tr></table></figure>
+<p>可以看到BEGIN就是一个PATTERN，END也是一个PATTERN。它们匹配对应的BLCOK后，会执行对应的动作，这里的动作都是打印文本消息。</p>
+<p>我们可以用BEGIN BLOCK为数据添加列标题</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> column -t 用于创建表格</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;BEGIN&#123;print &quot;姓&quot;,&quot;名&quot;,&quot;QQ&quot;,&quot;捐款金额&quot; &#125; &#123;print&#125;&#x27;</span> awk_test.txt | column -t</span></span><br><span class="line">姓     名        QQ          捐款金额</span><br><span class="line">Zhang  Dandan    41117397    :250:100:175</span><br><span class="line">Zhang  Xiaoyu    390320151   :155:90:201</span><br><span class="line">Meng   Feixue    80042789    :250:60:50</span><br><span class="line">Wu     Waiwai    70271111    :250:80:75</span><br><span class="line">Liu    Bingbing  41117483    :250:100:175</span><br><span class="line">Wang   Xiaoai    3515064655  :50:95:135</span><br><span class="line">Zi     Gege      1986787350  :250:168:200</span><br><span class="line">Li     Youjiu    918391635   :175:75:300</span><br><span class="line">Lao    Nanhai    918391635   :250:100:175</span><br></pre></td></tr></table></figure>
+<p>我们可以用BEGIN BLOCK中修改内置分隔符变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;BEGIN&#123;FS=&quot;:&quot;&#125;&#123;print $2&#125;&#x27;</span> awk_test.txt</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;BEGIN&#123;FS=&quot;[\t:]+&quot;&#125;&#123;print&#125;&#x27;</span> awk_test.txt</span></span><br></pre></td></tr></table></figure>
+<p>统计普通用户</p>
+<p>普通用户登录的shell都是’/bin/bash’</p>
+<h3 id="的使用">!的使用</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cat test.txt</span></span><br><span class="line">a 2 3 4 5</span><br><span class="line">2 b 4 5 6</span><br><span class="line">3 4 c 6 7</span><br><span class="line">4 5 6 d 8</span><br><span class="line"><span class="meta">#</span><span class="bash"> 匹配的某行第二列中不包含<span class="string">&#x27;2&#x27;</span>则打印该行</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;$2 !~ /2/&#123;print&#125;&#x27;</span> test.txt</span></span><br><span class="line">2 b 4 5 6</span><br><span class="line">3 4 c 6 7</span><br><span class="line">4 5 6 d 8</span><br><span class="line"><span class="meta">#</span><span class="bash"> 匹配的某行中不包含<span class="string">&#x27;2&#x27;</span>则打印该行</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;!/2/&#123;print&#125;&#x27;</span> test.txt</span></span><br><span class="line">3 4 c 6 7</span><br><span class="line">4 5 6 d 8</span><br></pre></td></tr></table></figure>
+<h2 id="awk应用">awk应用</h2>
+<p>awk脚本支持算术运算</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;BEGIN&#123;i++; print i&#125;&#x27;</span></span></span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<p>求和应用- 统计/etc/services中空行数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;/^$/&#123;i++&#125; END&#123;print i&#125;&#x27;</span> /etc/services</span></span><br><span class="line">17</span><br><span class="line"><span class="meta">$</span><span class="bash"> grep -c <span class="string">&#x27;^$&#x27;</span> /etc/services</span></span><br><span class="line">17</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Linux awk命令</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://violet7pan.gitee.io/posts/60bc5e22/">https://violet7pan.gitee.io/posts/60bc5e22/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>violet7pan</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-02-22</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2021-06-14</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/6b35569d/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-20.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Linux Docker Oracle11g安装,运行和远程连接</div></div></a></div><div class="next-post pull-right"><a href="/posts/5e23cf0c/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-19.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux sed命令的使用</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/c2e31e6/" title="CentOS7系统优化脚本"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-2.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-20</div><div class="title">CentOS7系统优化脚本</div></div></a></div><div><a href="/posts/9bbe274e/" title="Linux如何配置网络"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-16.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-20</div><div class="title">Linux如何配置网络</div></div></a></div><div><a href="/posts/7821e3ee/" title="CentOS6,7/Ubuntu镜像下载与安装至VM虚拟机"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-5.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-20</div><div class="title">CentOS6,7/Ubuntu镜像下载与安装至VM虚拟机</div></div></a></div><div><a href="/posts/887a2cdf/" title="Linux find命令的使用"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-21.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-20</div><div class="title">Linux find命令的使用</div></div></a></div><div><a href="/posts/7b277ce5/" title="Linux-Command-tar"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-9.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-19</div><div class="title">Linux-Command-tar</div></div></a></div><div><a href="/posts/ff26220a/" title="Linux-UserManagement"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-18</div><div class="title">Linux-UserManagement</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">violet7pan</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/violet7pan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#awk"><span class="toc-number">1.</span> <span class="toc-text">awk</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E8%AF%86awk"><span class="toc-number">1.1.</span> <span class="toc-text">初识awk</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFawk"><span class="toc-number">1.1.1.</span> <span class="toc-text">什么是awk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#awk%E8%84%9A%E6%9C%AC%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.2.</span> <span class="toc-text">awk脚本的特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#awk%E7%9A%84%E7%94%A8%E9%80%94"><span class="toc-number">1.1.3.</span> <span class="toc-text">awk的用途</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#span-id-awk-workflow-awk%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B-span"><span class="toc-number">1.1.4.</span> <span class="toc-text">awk工作流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#awk%E5%91%BD%E4%BB%A4%E8%AF%AD%E6%B3%95%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.5.</span> <span class="toc-text">awk命令语法格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#span-id-awk-programing-awk%E8%84%9A%E6%9C%AC%E8%AE%BE%E8%AE%A1-span"><span class="toc-number">1.1.6.</span> <span class="toc-text">awk脚本设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Records%E5%92%8CData-Filed"><span class="toc-number">1.1.7.</span> <span class="toc-text">Records和Data Filed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Record-Sperator%E5%92%8CFiled-Sperator"><span class="toc-number">1.1.8.</span> <span class="toc-text">Record Sperator和Filed Sperator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E6%9D%90%E6%96%99"><span class="toc-number">1.1.9.</span> <span class="toc-text">实例材料</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text">awk内置变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-n%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">$0 ~ $n的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FS%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">FS变量的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E5%8D%95%E4%B8%AA%E5%88%86%E9%9A%94%E7%AC%A6"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">指定单个分隔符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E5%A4%9A%E4%B8%AA%E5%88%86%E9%9A%94%E7%AC%A6"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">指定多个分隔符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NR%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.3.</span> <span class="toc-text">NR变量的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NF%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.4.</span> <span class="toc-text">NF变量的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="toc-number">1.3.</span> <span class="toc-text">定义变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk%E6%A8%A1%E5%BC%8F-awk-pattern"><span class="toc-number">1.4.</span> <span class="toc-text">awk模式 | awk pattern</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A2%E6%B5%AA%E5%8F%B7-%E8%BF%90%E7%94%A8"><span class="toc-number">1.4.1.</span> <span class="toc-text">波浪号(~)运用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#span-id-begin-end-special-pattern-%E4%B8%A4%E4%B8%AA%E7%89%B9%E6%AE%8A%E7%9A%84pattern-span"><span class="toc-number">1.4.2.</span> <span class="toc-text">两个特殊的pattern</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.4.3.</span> <span class="toc-text">!的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk%E5%BA%94%E7%94%A8"><span class="toc-number">1.5.</span> <span class="toc-text">awk应用</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/3b4634fc/" title="Hexo使用"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-20.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo使用"/></a><div class="content"><a class="title" href="/posts/3b4634fc/" title="Hexo使用">Hexo使用</a><time datetime="2021-06-07T12:08:35.000Z" title="发表于 2021-06-07 20:08:35">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/24caea6b/" title="Hexo常用命令"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-11.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo常用命令"/></a><div class="content"><a class="title" href="/posts/24caea6b/" title="Hexo常用命令">Hexo常用命令</a><time datetime="2021-06-07T06:10:13.000Z" title="发表于 2021-06-07 14:10:13">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo隐藏文章"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo隐藏文章"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo隐藏文章">Hexo隐藏文章</a><time datetime="2021-06-04T11:00:41.000Z" title="发表于 2021-06-04 19:00:41">2021-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-12.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo贴文Front-Matter用法"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法">Hexo贴文Front-Matter用法</a><time datetime="2021-06-01T11:37:37.000Z" title="发表于 2021-06-01 19:37:37">2021-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的Buttefly主题魔改历程"/></a><div class="content"><a class="title" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程">我的Buttefly主题魔改历程</a><time datetime="2021-06-01T08:52:32.000Z" title="发表于 2021-06-01 16:52:32">2021-06-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By violet7pan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/algolia.js"></script><div class="js-pjax"></div><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

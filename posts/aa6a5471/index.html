@@ -1,0 +1,645 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Linux Ansible | violet7pan Blog</title><meta name="author" content="violet7pan"><meta name="copyright" content="violet7pan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ansible环境准备 ansible安装 管理端安装ansible（yum安装需要EPEL源） 1yum install -y ansible 查看ansible软件包的部分文件 1rpm -ql ansible | egrep -v &quot;^&#x2F;usr&#x2F;(share|lib)&quot; 受控端安装依赖和关闭SELinux 1234#安装依赖yum install -y">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux Ansible">
+<meta property="og:url" content="https://violet7pan.gitee.io/posts/aa6a5471/index.html">
+<meta property="og:site_name" content="violet7pan Blog">
+<meta property="og:description" content="ansible环境准备 ansible安装 管理端安装ansible（yum安装需要EPEL源） 1yum install -y ansible 查看ansible软件包的部分文件 1rpm -ql ansible | egrep -v &quot;^&#x2F;usr&#x2F;(share|lib)&quot; 受控端安装依赖和关闭SELinux 1234#安装依赖yum install -y">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-19.webp">
+<meta property="article:published_time" content="2021-02-24T16:31:10.000Z">
+<meta property="article:modified_time" content="2021-06-14T03:47:35.631Z">
+<meta property="article:author" content="violet7pan">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-19.webp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://violet7pan.gitee.io/posts/aa6a5471/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"PKY3F5HAHD","apiKey":"5e175a241d1eb8b01147dbb78d77842d","indexName":"prod_blog","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux Ansible',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-14 11:47:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/custom.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/index.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="//at.alicdn.com/t/font_2405210_6tovfl8ipqu.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-19.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">violet7pan Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux Ansible</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-24T16:31:10.000Z" title="发表于 2021-02-25 00:31:10">2021-02-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.631Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux Ansible"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="ansible环境准备">ansible环境准备</h1>
+<h2 id="ansible安装">ansible安装</h2>
+<p><code>管理端</code>安装ansible（yum安装需要EPEL源）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y ansible</span><br></pre></td></tr></table></figure>
+<p>查看ansible软件包的部分文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ql ansible | egrep -v &quot;^&#x2F;usr&#x2F;(share|lib)&quot;</span><br></pre></td></tr></table></figure>
+<p><code>受控端</code>安装依赖和关闭SELinux</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">安装依赖</span></span><br><span class="line">yum install -y libselinux-python</span><br><span class="line"><span class="meta">#</span><span class="bash">关闭SELinux</span></span><br><span class="line">setenforce 0</span><br></pre></td></tr></table></figure>
+<p>受控端通过&quot;getenforce&quot;查看SELinux是否关闭。</p>
+<h2 id="配置ansible主机清单">配置ansible主机清单</h2>
+<p>/etc/ansible/host为主机清单，这里记录了哪些IP可被管理。</p>
+<p>在该文件末尾追加以下受控端IP地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">172.16.1.7</span><br><span class="line">172.16.1.31</span><br><span class="line">172.16.1.41</span><br></pre></td></tr></table></figure>
+<h2 id="管理端分发SSH公钥给受控端">管理端分发SSH公钥给受控端</h2>
+<p>批量管理的通信以SSH密钥登录方式进行的，因此必须确保管理端分发给其他服务器SSH密钥。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@m01 /server/scripts]# ansible all -a &quot;hostname&quot;</span><br><span class="line">172.16.1.7 | CHANGED | rc=0 &gt;&gt;</span><br><span class="line">web01</span><br><span class="line">172.16.1.31 | CHANGED | rc=0 &gt;&gt;</span><br><span class="line">nfs01</span><br><span class="line">172.16.1.41 | CHANGED | rc=0 &gt;&gt;</span><br><span class="line">backup</span><br></pre></td></tr></table></figure>
+<h1 id="主机清单配置方式">主机清单配置方式</h1>
+<h2 id="分组配置主机列表">分组配置主机列表</h2>
+<p>/etc/ansible/host</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[web]</span><br><span class="line">172.16.1.31</span><br><span class="line">172.16.1.7</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible web -a &quot;hostname&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="模式匹配配置主机列表">模式匹配配置主机列表</h2>
+<p>/etc/ansible/host</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[web]</span><br><span class="line">172.16.1.[7:9]</span><br><span class="line"></span><br><span class="line">[nfs]</span><br><span class="line">nfs[01:03]</span><br></pre></td></tr></table></figure>
+<p>等价于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[web]</span><br><span class="line">172.16.1.7</span><br><span class="line">172.16.1.8</span><br><span class="line">172.16.1.9</span><br><span class="line"></span><br><span class="line">[nfs]</span><br><span class="line">nfs01</span><br><span class="line">nfs02</span><br><span class="line">nfs03</span><br></pre></td></tr></table></figure>
+<h2 id="主机列表加入SSH端口号">主机列表加入SSH端口号</h2>
+<p>可以指定SSH端口号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[web]</span><br><span class="line">web01:52222</span><br></pre></td></tr></table></figure>
+<p>那么使用&quot;ansible web -a &quot;hostname&quot;测试时，默认连接到远程主机web01的52222端口。</p>
+<h2 id="主机列表组划分子组">主机列表组划分子组</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[rsync:children]    --- 嵌入子组信息</span><br><span class="line">rsync_server</span><br><span class="line">rsync_client</span><br><span class="line"></span><br><span class="line">[rsync_server]</span><br><span class="line">172.16.1.41</span><br><span class="line"></span><br><span class="line">[rsync_client]</span><br><span class="line">172.16.1.31</span><br><span class="line">172.16.1.7</span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ansible rsync -a &quot;hostname&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 等价于</span></span><br><span class="line">ansible rsync_server,rsync_client -a &quot;hostname&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="加入特殊变量">加入特殊变量</h2>
+<p>主机列表后面加上特殊变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[web]</span><br><span class="line">172.16.1.7 ansible_ssh_port&#x3D;52113 ansible_ssh_user&#x3D;root ansible_ssh_pass&#x3D;123456</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ansible_ssh_port：要连接的SSH端口号<br>
+ansible_ssh_user：以什么用户身份建立连接<br>
+ansible_ssh_pass：用户密码</p>
+</blockquote>
+<p>除了这些写，还可以将变量存放在vars中。</p>
+<h2 id="设置主机清单变量">设置主机清单变量</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[web]</span><br><span class="line">web01</span><br><span class="line"></span><br><span class="line">[web:vars]</span><br><span class="line">ansible_ssh_host&#x3D;172.16.1.7</span><br><span class="line">ansible_ssh_port&#x3D;52113</span><br><span class="line">ansible_ssh_user&#x3D;root</span><br><span class="line">ansible_ssh_pass&#x3D;123456</span><br></pre></td></tr></table></figure>
+<h1 id="常用模块">常用模块</h1>
+<p><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/2.8/modules/modules_by_category.html">Module Index — Ansible Documentation</a></p>
+<h2 id="command模块-默认模块">command模块(默认模块)</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/2.8/modules/command_module.html#command-module">command – Execute commands on targets — Ansible Documentation</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible 主机名称&#x2F;主机组名称&#x2F;主机地址信息&#x2F;all  -m(指定应用的模块信息)  模块名称  -a(指定动作信息)  &quot;执行什么动作&quot;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>chdir - 在执行命令之前对目录进行切换</p>
+<p>creates - 如果文件存在了,不执行命令操作</p>
+<p>removes - 如果文件存在了,	这个步骤将执行</p>
+<p>free_form(required) -  使用command模块的时候,-a参数后面必须写上一个合法linux命令信息</p>
+<p>注意事项:<br>
+有些符号信息无法识别:  &lt;&quot;, “&gt;”, “|”, “;” and “&amp;”</p>
+</blockquote>
+<p>管理服务器终端：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.31 -m command -a &quot;chdir=/root/violet touch violet.txt&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 等价于</span></span><br><span class="line">ansible 172.16.1.31 -a &quot;chdir=/root/violet touch violet.txt&quot;</span><br></pre></td></tr></table></figure>
+<p>'-m’若不指定，默认指定command，即&quot;-m command&quot;。上述命令相当于在172.16.1.31主机上创建/root/violet/violet.txt</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.31 -m command -a &quot;creates=/root/violet touch violet.txt&quot;</span><br></pre></td></tr></table></figure>
+<p>如果目标主机/root/violet存在，则不创建violet.txt。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.31 -m command -a &quot;removes=/root/violet touch violet.txt&quot;</span><br></pre></td></tr></table></figure>
+<p>如果目标主机/root/violet存在，则创建violet.txt，默认创建在目标主机家目录。目标主机root家目录可以看到violet.txt文件创建。</p>
+<h2 id="shell模块">shell模块</h2>
+<p>shell  – Execute commands in nodes（在节点上执行操作）</p>
+<blockquote>
+<p>chdir - 在执行命令之前对目录进行切换</p>
+<p>creates - 如果文件存在了,不执行命令操作</p>
+<p>removes - 如果文件存在了,	这个步骤将执行</p>
+<p>free_form(required)</p>
+<p>The command module takes a free form command to run.</p>
+<p>There is no parameter actually named ‘free form’. See the examples!</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.31 -m shell -a &quot;hostname&quot;</span><br></pre></td></tr></table></figure>
+<p>在目标主机上执行&quot;hostname&quot;命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.31 -m command -a &quot;chdir&#x3D;&#x2F;tmp touch oldboy.txt&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.31 -m command -a &quot;creates&#x3D;&#x2F;tmp&#x2F;hosts touch oldboy.txt&quot; </span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.31 -m command -a &quot;removes&#x3D;&#x2F;tmp&#x2F;hosts chdir&#x3D;&#x2F;tmp touch oldboy.txt&quot;</span><br></pre></td></tr></table></figure>
+<p>实践应用: 利用shell执行脚本</p>
+<p>第一个步骤: 编写一个脚本</p>
+<p>第二个步骤: 将脚本发送到远程主机</p>
+<p>第三个步骤: 将脚本权限进行修改(添加执行权限)</p>
+<p>第四个步骤: 运行ansible命令执行脚本</p>
+<h2 id="script模块">script模块</h2>
+<h2 id="copy模块">copy模块</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/2.8/modules/copy_module.html#copy-module">copy – Copy files to remote locations — Ansible Documentation</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.31 -m copy -a &quot;src&#x3D;&#x2F;root&#x2F;ana.txt dest&#x3D;.&#x2F;&quot;</span><br></pre></td></tr></table></figure>
+<pre><code>补充说明: ansible软件输出颜色说明:
+01. 绿色信息:  查看主机信息/对主机未做改动
+02. 黄色信息:  对主机数据信息做了修改
+03. 红色信息:  命令执行出错了
+04. 粉色信息:  忠告信息
+05. 蓝色信息:  显示ansible命令执行的过程???
+</code></pre>
+<p>copy模块扩展用法</p>
+<p>比较hash值如果相同则不会再次传输</p>
+<p>在传输文件时修改文件的属主和属组信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.31 -m copy -a &quot;src&#x3D;&#x2F;etc&#x2F;ansible&#x2F;file&#x2F;rsync&#x2F;rsync.password dest&#x3D;&#x2F;etc&#x2F; owner&#x3D;oldboy group&#x3D;oldboy&quot;</span><br></pre></td></tr></table></figure>
+<p>在传输文件时修改文件的权限信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.31 -m copy -a &quot;src=test.txt dest=./ owner=violet group=violet mode=644&quot;</span><br></pre></td></tr></table></figure>
+<p>在传输数据文件信息时对远程主机源文件进行备份：</p>
+<p>远程主机中对test.txt修改后，管理端执行以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.31 -m copy -a &quot;src&#x3D;test.txt dest&#x3D;.&#x2F; owner&#x3D;violet group&#x3D;violet mode&#x3D;664 backup&#x3D;yes&quot;</span><br></pre></td></tr></table></figure>
+<p>可以发现远程主机的文件备份了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@nfs01 ~]# ll</span><br><span class="line">-rw-rw-r--  1 violet violet    4 Feb 21 23:35 test.txt</span><br><span class="line">-rw-rw-r--  1 violet violet    7 Feb 21 23:35 test.txt.8694.2021-02-21@23:35:06~</span><br></pre></td></tr></table></figure>
+<p>创建一个文件并直接编辑文件的信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.31 -m copy -a &quot;content=&#x27;123456&#x27; dest=./test.txt&quot;</span><br></pre></td></tr></table></figure>
+<p>远程主机终端查询文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@nfs01 ~]# cat test.txt</span><br><span class="line">123456[root@nfs01 ~]#</span><br></pre></td></tr></table></figure>
+<p>可以发现写入的内容没有换行符。</p>
+<blockquote>
+<p>自行研究:</p>
+<p>directory_mode</p>
+<p>local_follow</p>
+</blockquote>
+<p>复制目录信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@m01 ~]# tree violet</span><br><span class="line">violet</span><br><span class="line">├── dir1</span><br><span class="line">│   └── r1.txt</span><br><span class="line">├── dir2</span><br><span class="line">│   └── r1.txt</span><br><span class="line">└── r1.txt</span><br><span class="line"></span><br><span class="line">2 directories, 3 files</span><br><span class="line">[root@m01 ~]# ansible 172.16.1.31 -m copy -a &quot;src=/root/violet dest=./&quot;</span><br></pre></td></tr></table></figure>
+<p>src后面目录没有/: 将目录本身以及目录下面的内容都进行远程传输复制</p>
+<p>查看远程主机</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@nfs01 ~]# tree ~</span><br><span class="line">/root</span><br><span class="line">└── violet</span><br><span class="line">    ├── dir1</span><br><span class="line">    │   └── r1.txt</span><br><span class="line">    ├── dir2</span><br><span class="line">    │   └── r1.txt</span><br><span class="line">    └── r1.txt</span><br><span class="line"></span><br><span class="line">3 directories, 3 files</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@m01 ~]# ansible 172.16.1.31 -m copy -a &quot;src=/root/violet/ dest=./&quot; </span><br></pre></td></tr></table></figure>
+<p>src后面目录有/:   只将目录下面的内容都进行远程传输复制</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@nfs01 ~]# tree ~</span><br><span class="line">/root</span><br><span class="line">├── dir1</span><br><span class="line">│   └── r1.txt</span><br><span class="line">├── dir2</span><br><span class="line">│   └── r1.txt</span><br><span class="line">└── r1.txt</span><br><span class="line"></span><br><span class="line">2 directories, 3 files</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>remote_src</p>
+<p>no : src参数指定文件信息,会在本地管理端服务进行查找</p>
+<p>yes : src参数指定文件信息,会从远程主机上进行查找</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.31 -m copy -a &quot;src=test.txt dest=./ remote_src=no&quot;	#省略remote_src，默认为no</span><br></pre></td></tr></table></figure>
+<p>test.txt复制到远程主机</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.31 -m copy -a &quot;src=/root/test.txt dest=~ remote_src=yes&quot;</span><br></pre></td></tr></table></figure>
+<p>查询远程主机是否存在src指定的文件&quot;/root/test.txt&quot;，若有将管理端文件移动到远程主机。</p>
+<h2 id="fetch模块">fetch模块</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/2.8/modules/fetch_module.html?highlight=fetch">fetch – Fetch files from remote nodes — Ansible Documentation</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="yum模块">yum模块</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/2.8/modules/yum_module.html?highlight=yum">yum – Manages packages with the yum package manager — Ansible Documentation</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.41 -m yum -a &#39;name&#x3D;iotop&#39;</span><br></pre></td></tr></table></figure>
+<h2 id="mount模块">mount模块</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/2.8/modules/mount_module.html?highlight=mount">mount – Control active and configured mount points — Ansible Documentation</a></p>
+<h2 id="user模块">user模块</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/2.8/modules/user_module.html#user-module">user – Manage user accounts — Ansible Documentation</a></p>
+<p>实例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ansible 172.16.1.41 -m user -a &#x27;name=violet01&#x27;</span><br><span class="line">ansible 172.16.1.41 -m user -a &#x27;name=violet01 uid=1111&#x27;</span><br><span class="line">ansible 172.16.1.41 -m user -a &#x27;name=violet01 uid=1111 groups=violet&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">指定属组为root并加入violet组</span></span><br><span class="line">ansible 172.16.1.41 -m user -a &#x27;name=violet01 uid=1111 groups=violet group=root&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">删除violet01用户</span></span><br><span class="line">ansible 172.16.1.41 -m user -a &#x27;name=violet01 remove=yes state=absent&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">violet01虚拟用户</span></span><br><span class="line">ansible 172.16.1.41 -m user -a &#x27;name=violet01 shell=/sbin/nologin create_home=no&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">生成密码123456的密文</span></span><br><span class="line">ansible all -i localhost, -m debug -a &quot;msg=&#123;&#123; &#x27;123456&#x27; | password_hash(&#x27;sha512&#x27;, &#x27;violet&#x27;) &#125;&#125;&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash">设置密码</span></span><br><span class="line">ansible 172.16.1.41 -m user -a &#x27;name=violet01 password=$6$violet$9kOIDp1f6D5KDmpWNEqkzRQfL.Mk3/ORcLqycQrDiqcsO4GrQaHDnzV0dcKkPqEa5yVAR8hBNVzx8tgPs9cSE1&#x27;</span><br></pre></td></tr></table></figure>
+<h2 id="service模块">service模块</h2>
+<h2 id="ping模块">ping模块</h2>
+<h2 id="synchronize模块">synchronize模块</h2>
+<p>什么要选取好模块</p>
+<p>比如你在shell模块中使用&quot;yum install -y&quot;命令，那么远程主机执行时会再次下载软件包，而使用yum模块则不会，从速度看，yum模块反而更快。</p>
+<p>在shell模块中scp，文件重复复制，如果使用copy模块，会检验hash值，若一致，代表源文件和目标文件一致，不会再次传输文件。</p>
+<h2 id="setup模块">setup模块</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/2.8/modules/setup_module.html?highlight=setup">setup – Gathers facts about remote hosts — Ansible Documentation</a></p>
+<p>setup模块用于收集并打印被管理主机系统的详细信息（包括硬件信息）。</p>
+<h1 id="剧本-Playbook">剧本(Playbook)</h1>
+<h2 id="使用剧本">使用剧本</h2>
+<p>在管理端编写剧本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#x2F;etc&#x2F;ansible&#x2F;ansible-playbook</span><br></pre></td></tr></table></figure>
+<p>运行剧本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">剧本语法检查</span></span><br><span class="line">ansible-playbook --syntax-check</span><br><span class="line"><span class="meta">#</span><span class="bash">模拟运行剧本</span></span><br><span class="line">ansible-playbook -C [剧本名]</span><br><span class="line"><span class="meta">#</span><span class="bash">运行剧本</span></span><br><span class="line">ansible-playbook [剧本名]</span><br></pre></td></tr></table></figure>
+<p>[剧本名]以<code>.yaml</code>结尾。请按照&quot;剧本语法检查 - 模拟运行剧本 - 运行剧本&quot;或&quot;模拟运行剧本 - 运行剧本&quot;的流程编写和测试剧本。</p>
+<h2 id="span-id-rsync-deploy-playbook-rsync服务自动化部署剧本-span"><span id="rsync_deploy_playbook">rsync服务自动化部署剧本</span></h2>
+<p>/etc/ansible/ansible-playbook/rsync_server.yaml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="number">172.16</span><span class="number">.1</span><span class="number">.41</span></span><br><span class="line">  <span class="attr">vars:</span></span><br><span class="line">    <span class="attr">passfile:</span> <span class="string">rsync.password</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">install</span> <span class="string">rsync</span></span><br><span class="line">      <span class="attr">yum:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">rsync</span></span><br><span class="line">        <span class="attr">state:</span> <span class="string">installed</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">copy</span> <span class="string">rsyncd.conf</span></span><br><span class="line">      <span class="attr">copy:</span></span><br><span class="line">        <span class="attr">src:</span> <span class="string">/tmp/rsyncd.conf</span></span><br><span class="line">        <span class="attr">dest:</span> <span class="string">/etc</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">rsync</span> <span class="string">virtual</span> <span class="string">user</span></span><br><span class="line">      <span class="attr">user:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">rsync</span></span><br><span class="line">        <span class="attr">create_home:</span> <span class="literal">no</span></span><br><span class="line">        <span class="attr">shell:</span> <span class="string">/sbin/nologin</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">create</span> <span class="string">password</span> <span class="string">file</span></span><br><span class="line">      <span class="attr">copy:</span></span><br><span class="line">        <span class="attr">mode:</span> <span class="number">600</span></span><br><span class="line">        <span class="attr">content:</span> <span class="string">rsync_backup:123456</span></span><br><span class="line">        <span class="attr">dest:</span> <span class="string">/etc/&#123;&#123;</span> <span class="string">passfile</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">start</span> <span class="string">rsnyc</span> <span class="string">daemon</span></span><br><span class="line">      <span class="attr">service:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">rsyncd.service</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">yes</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="number">172.16</span><span class="number">.1</span><span class="number">.31</span><span class="string">,</span> <span class="number">172.16</span><span class="number">.1</span><span class="number">.7</span></span><br><span class="line">  <span class="attr">vars:</span></span><br><span class="line">    <span class="attr">passfile:</span> <span class="string">rsync.password</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">install</span> <span class="string">rsync</span></span><br><span class="line">      <span class="attr">yum:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">rsync</span></span><br><span class="line">        <span class="attr">state:</span> <span class="string">installed</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">copy</span> <span class="string">password</span> <span class="string">file</span></span><br><span class="line">      <span class="attr">copy:</span></span><br><span class="line">        <span class="attr">mode:</span> <span class="number">600</span></span><br><span class="line">        <span class="attr">content:</span> <span class="number">123456</span></span><br><span class="line">        <span class="attr">dest:</span> <span class="string">/etc/&#123;&#123;</span> <span class="string">passfile</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">create</span> <span class="string">test</span> <span class="string">file</span> <span class="string">on</span> <span class="string">rsync</span> <span class="string">client</span></span><br><span class="line">      <span class="attr">file:</span></span><br><span class="line">        <span class="attr">dest:</span> <span class="string">/tmp/test.txt</span></span><br><span class="line">        <span class="attr">state:</span> <span class="string">touch</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">test</span> <span class="string">rsync</span> <span class="string">client</span></span><br><span class="line">      <span class="attr">shell:</span> <span class="string">rsync</span> <span class="string">-avz</span> <span class="string">/tmp/test.txt</span> <span class="string">rsync_backup@172.16.1.41::backup</span> <span class="string">--password-file=/etc/&#123;&#123;</span> <span class="string">passfile</span> <span class="string">&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用变量">使用变量</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html">Using Variables — Ansible Documentation</a></p>
+<p>变量的定义有三种：运行时变量、剧本变量 、主机清单(/etc/ansible/hosts)变量。</p>
+<h3 id="剧本变量">剧本变量</h3>
+<p>定义格式</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">vars:</span></span><br><span class="line">	<span class="attr">key:</span> <span class="string">value</span></span><br><span class="line">	<span class="string">...</span></span><br></pre></td></tr></table></figure>
+<p>key为变量名，value为变量值。通过<code>&#123;&#123; 变量名 &#125;&#125;</code>引用定义的变量值。</p>
+<p>实例请参考<a href="#rsync_deploy_playbook">rsync服务自动化部署剧本</a>。</p>
+<h3 id="运行时变量">运行时变量</h3>
+<p><code>--extra-vars</code>或<code>-e</code>用于运行时变量，例子如下：</p>
+<p>测试实例仍使用<a href="#rsync_deploy_playbook">rsync服务自动化部署剧本</a>，不过需要修改点细节，方便演示效果：</p>
+<p>/etc/ansible/ansible-playbook/rsync_server.yaml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="number">172.16</span><span class="number">.1</span><span class="number">.41</span></span><br><span class="line">  <span class="comment"># vars:</span></span><br><span class="line">  <span class="comment">#   passfile: rsync.password</span></span><br><span class="line">  <span class="string">...</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="number">172.16</span><span class="number">.1</span><span class="number">.31</span><span class="string">,</span> <span class="number">172.16</span><span class="number">.1</span><span class="number">.7</span></span><br><span class="line">  <span class="comment"># vars:</span></span><br><span class="line">  <span class="comment">#   passfile: rsync.password</span></span><br><span class="line">  <span class="string">...</span></span><br></pre></td></tr></table></figure>
+<p>运行剧本，并指定运行时变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook rsync_server.yaml --extra-vars=&quot;passfile=rsync.password&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line">ansible-playbook rsync_server.yaml -e &quot;passfile=rsync.password&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="主机清单-Inventory-变量">主机清单(Inventory)变量</h3>
+<p>主机清单变量使用前必须有主机清单。</p>
+<p>主机清单就是主机列表。主机清单格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[清单名]</span><br><span class="line">主机列表或者域名(域名通过&#x2F;etc&#x2F;hosts识别)</span><br></pre></td></tr></table></figure>
+<p>有了主机清单，那么就可以定义主机清单变量了</p>
+<p>格式如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[清单名:vars]</span><br><span class="line">key1&#x3D;value1</span><br><span class="line">key2&#x3D;value2</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>以下例子展示如何使用主机清单和主机清单变量，不过我们还是以rsync服务自动化部署剧本为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[rsync_client]</span><br><span class="line">172.16.1.31</span><br><span class="line">172.16.1.7</span><br><span class="line"></span><br><span class="line">[rsync_server]</span><br><span class="line">172.16.1.41</span><br><span class="line"></span><br><span class="line">[rsync_server:vars]</span><br><span class="line">passfile&#x3D;rsync.password</span><br><span class="line"></span><br><span class="line">[rsync_client:vars]</span><br><span class="line">passfile&#x3D;rsync.password</span><br></pre></td></tr></table></figure>
+<p>/etc/ansible/ansible-playbook/rsync_server.yaml中修改部分细节</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- hosts: 172.16.1.41</span><br><span class="line">  vars:</span><br><span class="line">    passfile: rsync.password</span><br><span class="line">...</span><br><span class="line">- hosts: 172.16.1.31, 172.16.1.7</span><br><span class="line">  vars:</span><br><span class="line">    passfile: rsync.password</span><br></pre></td></tr></table></figure>
+<p>改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- hosts: rsync_server</span><br><span class="line">  # vars:</span><br><span class="line">  #   passfile: rsync.password</span><br><span class="line">...</span><br><span class="line">- hosts: rsync_client</span><br><span class="line">  # vars:</span><br><span class="line">  #   passfile: rsync.password</span><br></pre></td></tr></table></figure>
+<h3 id="变量优先级">变量优先级</h3>
+<p>运行时变量 &gt; 剧本变量 &gt; 主机清单(/etc/ansible/hosts)变量。</p>
+<h3 id="选用变量的原则">选用变量的原则</h3>
+<p>由于运行时变量需要再命令行上指定，批量化管理时显得过于繁琐，因此尽量使用剧本变量和主机清单变量</p>
+<h2 id="注册变量">注册变量</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/2.8/user_guide/playbooks_variables.html#registering-variables">Using Variables — Ansible Documentation</a></p>
+<p>注册变量是什么意思</p>
+<blockquote>
+<p>Another major use of variables is running a command and registering the result of that command as a variable. When you execute a task and save the return value in a variable for use in later tasks, you create a registered variable.</p>
+</blockquote>
+<p>注册变量就是将运行的命令的结果集存放到一个变量的过程。</p>
+<p>当我们声明了一个&quot;将结果集存放指定变量&quot;的操作，那么我们就完成了注册变量。那么该如何注册变量？</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">check</span> <span class="string">rsync</span> <span class="string">server</span> <span class="string">port</span></span><br><span class="line">  <span class="attr">shell:</span> <span class="string">netstat</span> <span class="string">-luntp</span> <span class="string">|</span> <span class="string">grep</span> <span class="number">873</span></span><br><span class="line">  <span class="attr">register:</span> <span class="string">get_server_port</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">display</span> <span class="string">rsync</span> <span class="string">server</span> <span class="string">port</span> <span class="string">info</span></span><br><span class="line">  <span class="attr">debug:</span> <span class="string">msg=&#123;&#123;</span> <span class="string">get_server_port.stdout_lines</span> <span class="string">&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>我们调用shell模块完成netstat命令，那么netstat命令的输出结果集会保存到&quot;get_server_port&quot;变量中，也就是说我们注册了&quot;get_server_port&quot;变量，该变量值为输出结果集。在debug模块中我们以<code>标准输出</code>的形式输出了变量值。</p>
+<h2 id="特殊变量">特殊变量</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/2.8/reference_appendices/special_variables.html">Special Variables — Ansible Documentation</a></p>
+<h3 id="使用介绍">使用介绍</h3>
+<h4 id="什么是特殊变量">什么是特殊变量</h4>
+<p>特殊变量是由Ansible设置和维护的，用户不能直接设置这些变量。</p>
+<p>特殊变量有Magic，Facts和Connection变量，这些变量可以认为是内置变量。</p>
+<h4 id="特殊变量从何而来">特殊变量从何而来</h4>
+<p><a target="_blank" rel="noopener" href="https://www.middlewareinventory.com/blog/ansible-facts-list-how-to-use-ansible-facts/">Ansible Facts and How to use them - Ansible Facts Index</a></p>
+<p><strong>Ansible在运行剧本时，默认会调用setup模块来收集远程主机的信息</strong>(Facts)，而这些信息会被写入保留变量（ reserved variable）中。保留变量指的是许多特定的变量名交由Ansible维护，而用户不能直接设置这些变量名。</p>
+<p>只要知道特殊变量名，那么就可以直接引用而不需要设置变量。</p>
+<h4 id="变量的组成与使用-引用">变量的组成与使用(引用)</h4>
+<p>首先要明白的一点是，这些变量值打印出来，都是一大堆输出信息，这是因为一个变量是由许多数据类型（List, Dictionary等等）实体组成的。</p>
+<p>在剧本中若想引用变量的值：通过<code>&#123;&#123; 变量名 &#125;&#125;</code>来引用。</p>
+<p>在剧本中若想引用变量的其中一个元素的值：通过<code>&#123;&#123; 变量名.元素名&#125;&#125;</code>来引用。</p>
+<h4 id="查看变量和元素的数据类型">查看变量和元素的数据类型</h4>
+<p>方法一</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">打印某个主机的全部信息</span></span><br><span class="line">ansible 主机名 -m setup</span><br></pre></td></tr></table></figure>
+<p>方法二</p>
+<p>/etc/ansible/ansible-playbook/debug.yaml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Ansible</span> <span class="string">Variable</span> <span class="string">Example</span> <span class="string">Playbook</span></span><br><span class="line">  <span class="attr">hosts:</span> <span class="string">app</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># display the variable data type</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">debug:</span></span><br><span class="line">        <span class="attr">msg:</span> </span><br><span class="line">          <span class="bullet">-</span> <span class="string">&quot; Data type of &#x27;ansible_architecture&#x27;  is <span class="template-variable">&#123;&#123; ansible_architecture | type_debug &#125;&#125;</span> &quot;</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">&quot; Data type of &#x27;ansible_apparmor&#x27; is <span class="template-variable">&#123;&#123; ansible_apparmor | type_debug &#125;&#125;</span> &quot;</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">&quot; Data type of &#x27;ansible_all_ipv4_addresses&#x27; is <span class="template-variable">&#123;&#123; ansible_all_ipv4_addresses | type_debug &#125;&#125;</span> &quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Simply printing the value of fact which is Ansible UnSafe Text type</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">debug:</span></span><br><span class="line">        <span class="attr">msg:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123; ansible_architecture &#125;&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Accessing an element of dictionary</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">debug:</span></span><br><span class="line">        <span class="attr">msg:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123;ansible_apparmor.status&#125;&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Accessing the list</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">debug:</span></span><br><span class="line">        <span class="attr">msg:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123;ansible_all_ipv4_addresses&#125;&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Accessing the Second Element of the list</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">debug:</span></span><br><span class="line">        <span class="attr">msg:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123;ansible_all_ipv4_addresses[1]&#125;&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<p>运行剧本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@m01 /etc/ansible/ansible-playbook]# ansible-playbook debug.yaml </span><br></pre></td></tr></table></figure>
+<p>变量中某个元素的数据类型通过<code>&#123;&#123; <the variable name> | type_debug &#125;&#125;</code>的方式查看。注意一定要使用剧本才能进行查看。</p>
+<h3 id="Magic变量">Magic变量</h3>
+<p>什么是Magic变量</p>
+<blockquote>
+<p>These variables cannot be set directly by the user; Ansible will always override them to reflect internal state.</p>
+</blockquote>
+<p>特殊变量有哪些</p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ansible_check_mode</td>
+<td>Boolean that indicates if we are in check mode or not</td>
+</tr>
+<tr>
+<td>ansible_dependent_role_names</td>
+<td>The names of the roles currently imported into the current play as dependencies of other plays</td>
+</tr>
+<tr>
+<td>ansible_diff_mode</td>
+<td>Boolean that indicates if we are in diff mode or not</td>
+</tr>
+<tr>
+<td>ansible_forks</td>
+<td>Integer reflecting the number of maximum forks available to this run</td>
+</tr>
+<tr>
+<td>ansible_inventory_sources</td>
+<td>List of sources used as inventory</td>
+</tr>
+<tr>
+<td>ansible_limit</td>
+<td>Contents of the <code>--limit</code> CLI option for the current execution of Ansible</td>
+</tr>
+<tr>
+<td>ansible_loop</td>
+<td>A dictionary/map containing extended loop information when enabled via <code>loop_control.extended</code></td>
+</tr>
+<tr>
+<td>ansible_loop_var</td>
+<td>The name of the value provided to <code>loop_control.loop_var</code>. Added in <code>2.8</code></td>
+</tr>
+<tr>
+<td>ansible_play_batch</td>
+<td>List of active hosts in the current play run limited by the serial, aka ‘batch’. Failed/Unreachable hosts are not considered ‘active’.</td>
+</tr>
+<tr>
+<td>ansible_play_hosts</td>
+<td>The same as ansible_play_batch</td>
+</tr>
+<tr>
+<td>ansible_play_hosts_all</td>
+<td>List of all the hosts that were targeted by the play</td>
+</tr>
+<tr>
+<td>ansible_play_role_names</td>
+<td>The names of the roles currently imported into the current play. This list does <strong>not</strong> contain the role names that are implicitly included via dependencies.</td>
+</tr>
+<tr>
+<td>ansible_playbook_python</td>
+<td>The path to the python interpreter being used by Ansible on the controller</td>
+</tr>
+<tr>
+<td>ansible_role_names</td>
+<td>The names of the roles currently imported into the current play, or roles referenced as dependencies of the roles imported into the current play.</td>
+</tr>
+<tr>
+<td>ansible_run_tags</td>
+<td>Contents of the <code>--tags</code> CLI option, which specifies which tags will be included for the current run.</td>
+</tr>
+<tr>
+<td>ansible_search_path</td>
+<td>Current search path for action plugins and lookups, i.e where we search for relative paths when you do template: src=myfile</td>
+</tr>
+<tr>
+<td>ansible_skip_tags</td>
+<td>Contents of the <code>--skip_tags</code> CLI option, which specifies which tags will be skipped for the current run.</td>
+</tr>
+<tr>
+<td>ansible_verbosity</td>
+<td>Current verbosity setting for Ansible</td>
+</tr>
+<tr>
+<td>ansible_version</td>
+<td>Dictionary/map that contains information about the current running version of ansible, it has the following keys: full, major, minor, revision and string.</td>
+</tr>
+<tr>
+<td>group_names</td>
+<td>List of groups the current host is part of</td>
+</tr>
+<tr>
+<td>groups</td>
+<td>A dictionary/map with all the groups in inventory and each group has the list of hosts that belong to it</td>
+</tr>
+<tr>
+<td>hostvars</td>
+<td>A dictionary/map with all the hosts in inventory and variables assigned to them</td>
+</tr>
+<tr>
+<td>inventory_hostname</td>
+<td>The inventory name for the ‘current’ host being iterated over in the play</td>
+</tr>
+<tr>
+<td>inventory_hostname_short</td>
+<td>The short version of inventory_hostname</td>
+</tr>
+<tr>
+<td>inventory_dir</td>
+<td>The directory of the inventory source in which the inventory_hostname was first defined</td>
+</tr>
+<tr>
+<td>inventory_file</td>
+<td>The file name of the inventory source in which the inventory_hostname was first defined</td>
+</tr>
+<tr>
+<td>omit</td>
+<td>Special variable that allows you to ‘omit’ an option in a task, i.e <code>- user: name=bob home=&#123;&#123; bobs_home|default(omit) &#125;&#125;</code></td>
+</tr>
+<tr>
+<td>play_hosts</td>
+<td>Deprecated, the same as ansible_play_batch</td>
+</tr>
+<tr>
+<td>ansible_play_name</td>
+<td>The name of the currently executed play. Added in <code>2.8</code>.</td>
+</tr>
+<tr>
+<td>playbook_dir</td>
+<td>The path to the directory of the playbook that was passed to the <code>ansible-playbook</code> command line.</td>
+</tr>
+<tr>
+<td>role_name</td>
+<td>The name of the currently executed role</td>
+</tr>
+<tr>
+<td>role_names</td>
+<td>Deprecated, the same as ansible_play_role_names</td>
+</tr>
+<tr>
+<td>role_path</td>
+<td>The path to the dir of the currently running role</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Facts变量">Facts变量</h3>
+<p>什么是Facts变量</p>
+<blockquote>
+<p>These are variables that contain information pertinent to the current host (inventory_hostname). They are only available if gathered first.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ansible_facts</td>
+<td>Contains any facts gathered or cached for the inventory_hostname Facts are normally gathered by the <a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/2.8/modules/setup_module.html#setup-module">setup</a> module automatically in a play, but any module can return facts.</td>
+</tr>
+<tr>
+<td>ansible_local</td>
+<td>Contains any ‘local facts’ gathered or cached for the inventory_hostname. The keys available depend on the custom facts created. See the setup module for more details.</td>
+</tr>
+</tbody>
+</table>
+<p><code>ansible_hostname</code>也是一个内置变量。</p>
+<blockquote>
+<p>ansible_hostname built-in variable holds the hostname of the remote host just like the inventory_hostname, the difference is that <code>ansible_hostname</code> takes the hostname of the remote machine from the facts collected during the <code>gather_facts</code> section of your playbook.</p>
+<p><a target="_blank" rel="noopener" href="https://www.middlewareinventory.com/blog/ansible-inventory_hostname-ansible_hostname-variables/#:~:text=hostgroup%20mentioned%20earlier.-,ansible_hostname%20variable%20%E2%80%93%20Introduction,gather_facts%20section%20of%20your%20playbook.">Ansible Inventory_hostname &amp; ansible_hostname Examples | Devops Junc</a></p>
+</blockquote>
+<h3 id="连接变量">连接变量</h3>
+<p>什么是连接变量</p>
+<blockquote>
+<p>Connection variables are normally used to set the specifics on how to execute actions on a target. Most of them correspond to connection plugins, but not all are specific to them; other plugins like shell, terminal and become are normally involved. Only the common ones are described as each connection/become/shell/etc plugin can define its own overrides and specific variables.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ansible_become_user</td>
+<td>The user Ansible ‘becomes’ after using privilege escalation. This must be available to the ‘login user’.</td>
+</tr>
+<tr>
+<td>ansible_connection</td>
+<td>The connection plugin actually used for the task on the target host.</td>
+</tr>
+<tr>
+<td>ansible_host</td>
+<td>The ip/name of the target host to use instead of inventory_hostname.</td>
+</tr>
+<tr>
+<td>ansible_python_interpreter</td>
+<td>The path to the Python executable Ansible should use on the target host.</td>
+</tr>
+<tr>
+<td>ansible_user</td>
+<td>The user Ansible ‘logs in’ as.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="判断">判断</h2>
+<p><code>when: (条件判断)</code>。</p>
+<p>我们对这个实例<a href="#rsync_deploy_playbook">rsync服务自动化部署剧本</a>进行修改：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">rsync_server</span></span><br><span class="line">  <span class="attr">vars:</span></span><br><span class="line">    <span class="attr">passfile:</span> <span class="string">rsync.password</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">1</span> <span class="bullet">-</span> <span class="string">install</span> <span class="string">rsync</span></span><br><span class="line">      <span class="attr">yum:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">rsync</span></span><br><span class="line">        <span class="attr">state:</span> <span class="string">installed</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">2</span> <span class="bullet">-</span> <span class="string">copy</span> <span class="string">rsyncd.conf</span></span><br><span class="line">      <span class="attr">copy:</span></span><br><span class="line">        <span class="attr">src:</span> <span class="string">/tmp/rsyncd.conf</span></span><br><span class="line">        <span class="attr">dest:</span> <span class="string">/etc</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">3</span> <span class="bullet">-</span> <span class="string">rsync</span> <span class="string">virtual</span> <span class="string">user</span></span><br><span class="line">      <span class="attr">user:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">rsync</span></span><br><span class="line">        <span class="attr">create_home:</span> <span class="literal">no</span></span><br><span class="line">        <span class="attr">shell:</span> <span class="string">/sbin/nologin</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">4</span> <span class="bullet">-</span> <span class="string">create</span> <span class="string">password</span> <span class="string">file</span></span><br><span class="line">      <span class="attr">copy:</span></span><br><span class="line">        <span class="attr">mode:</span> <span class="number">600</span></span><br><span class="line">        <span class="attr">content:</span> <span class="string">rsync_backup:123456</span></span><br><span class="line">        <span class="attr">dest:</span> <span class="string">/etc/&#123;&#123;</span> <span class="string">passfile</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">5</span> <span class="bullet">-</span> <span class="string">start</span> <span class="string">rsnyc</span> <span class="string">daemon</span></span><br><span class="line">      <span class="attr">service:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">rsyncd.service</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">yes</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">6</span> <span class="bullet">-</span> <span class="string">check</span> <span class="string">rsync</span> <span class="string">server</span> <span class="string">port</span></span><br><span class="line">      <span class="attr">shell:</span> <span class="string">netstat</span> <span class="string">-luntp</span> <span class="string">|</span> <span class="string">grep</span> <span class="number">873</span></span><br><span class="line">      <span class="attr">register:</span> <span class="string">get_server_port</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">7</span> <span class="bullet">-</span> <span class="string">display</span> <span class="string">rsync</span> <span class="string">server</span> <span class="string">port</span> <span class="string">info</span></span><br><span class="line">      <span class="attr">debug:</span> <span class="string">msg=&#123;&#123;</span> <span class="string">get_server_port.stdout_lines</span> <span class="string">&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">rsync_client</span></span><br><span class="line">  <span class="attr">vars:</span></span><br><span class="line">    <span class="attr">passfile:</span> <span class="string">rsync.password</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">1</span> <span class="bullet">-</span> <span class="string">install</span> <span class="string">rsync</span></span><br><span class="line">      <span class="attr">yum:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">rsync</span></span><br><span class="line">        <span class="attr">state:</span> <span class="string">installed</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">2</span> <span class="bullet">-</span> <span class="string">copy</span> <span class="string">password</span> <span class="string">file</span></span><br><span class="line">      <span class="attr">copy:</span></span><br><span class="line">        <span class="attr">mode:</span> <span class="number">600</span></span><br><span class="line">        <span class="attr">content:</span> <span class="number">123456</span></span><br><span class="line">        <span class="attr">dest:</span> <span class="string">/etc/&#123;&#123;</span> <span class="string">passfile</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">3.1</span> <span class="bullet">-</span> <span class="string">create</span> <span class="string">test</span> <span class="string">file</span> <span class="string">on</span> <span class="string">rsync</span> <span class="string">client</span></span><br><span class="line">      <span class="attr">file:</span></span><br><span class="line">        <span class="attr">dest:</span> <span class="string">/tmp/test_&#123;&#123;</span> <span class="string">ansible_hostname&#125;&#125;.txt</span></span><br><span class="line">        <span class="attr">state:</span> <span class="string">touch</span></span><br><span class="line">      <span class="attr">when:</span> <span class="string">(ansible_hostname</span> <span class="string">==</span> <span class="string">&#x27;nfs01&#x27;</span><span class="string">)</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">3.2</span> <span class="bullet">-</span> <span class="string">create</span> <span class="string">test</span> <span class="string">file</span> <span class="string">on</span> <span class="string">rsync</span> <span class="string">client</span></span><br><span class="line">      <span class="attr">file:</span></span><br><span class="line">        <span class="attr">dest:</span> <span class="string">/tmp/test_&#123;&#123;</span> <span class="string">ansible_hostname&#125;&#125;.txt</span></span><br><span class="line">        <span class="attr">state:</span> <span class="string">touch</span></span><br><span class="line">      <span class="attr">when:</span> <span class="string">(ansible_hostname</span> <span class="string">==</span> <span class="string">&#x27;web01&#x27;</span><span class="string">)</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">4.1</span> <span class="bullet">-</span> <span class="string">test</span> <span class="string">rsync</span> <span class="string">client</span></span><br><span class="line">      <span class="attr">shell:</span> <span class="string">rsync</span> <span class="string">-avz</span> <span class="string">/tmp/test_&#123;&#123;</span> <span class="string">ansible_hostname</span> <span class="string">&#125;&#125;.txt</span> <span class="string">rsync_backup@172.16.1.41::backup</span> <span class="string">--password-file=/etc/&#123;&#123;</span> <span class="string">passfile</span> <span class="string">&#125;&#125;</span></span><br><span class="line">      <span class="attr">when:</span> <span class="string">(ansible_hostname</span> <span class="string">==</span> <span class="string">&#x27;nfs01&#x27;</span><span class="string">)</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">4.2</span> <span class="bullet">-</span> <span class="string">test</span> <span class="string">rsync</span> <span class="string">client</span></span><br><span class="line">      <span class="attr">shell:</span> <span class="string">rsync</span> <span class="string">-avz</span> <span class="string">/tmp/test_&#123;&#123;</span> <span class="string">ansible_hostname</span> <span class="string">&#125;&#125;.txt</span> <span class="string">rsync_backup@172.16.1.41::web</span> <span class="string">--password-file=/etc/&#123;&#123;</span> <span class="string">passfile</span> <span class="string">&#125;&#125;</span></span><br><span class="line">      <span class="attr">when:</span> <span class="string">(ansible_hostname</span> <span class="string">==</span> <span class="string">&#x27;web01&#x27;</span><span class="string">)</span></span><br></pre></td></tr></table></figure>
+<h2 id="循环-Loop">循环(Loop)</h2>
+<p>不同模块不能在一个task，以下为错误实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tasks:</span><br><span class="line">  - name: 1 - install rsync</span><br><span class="line">    yum:</span><br><span class="line">      name: rsync</span><br><span class="line">      state: installed</span><br><span class="line">    copy:</span><br><span class="line">    ....</span><br></pre></td></tr></table></figure>
+<p>&quot; - name&quot;标签里面代表一个task，一个task只能出现同种模块。</p>
+<p>对于同一模块可以在一个task出现多次，并且模块使用的参数一致，那么就可以使用循环功能。</p>
+<p>循环实例：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">rsync_server</span></span><br><span class="line">  <span class="attr">vars:</span></span><br><span class="line">    <span class="attr">passfile:</span> <span class="string">rsync.password</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">1</span> <span class="bullet">-</span> <span class="string">install</span> <span class="string">rsync</span></span><br><span class="line">      <span class="attr">yum:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">rsync</span></span><br><span class="line">        <span class="attr">state:</span> <span class="string">installed</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">2</span> <span class="bullet">-</span> <span class="string">copy</span> <span class="string">rsyncd.conf</span> <span class="string">and</span> <span class="string">password</span> <span class="string">file</span></span><br><span class="line">      <span class="attr">copy:</span></span><br><span class="line">        <span class="attr">src:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123; item.src &#125;&#125;</span>&quot;</span></span><br><span class="line">        <span class="attr">dest:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123; item.dest &#125;&#125;</span>&quot;</span></span><br><span class="line">        <span class="attr">mode:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123; item.mode &#125;&#125;</span>&quot;</span></span><br><span class="line">      <span class="attr">with_items:</span></span><br><span class="line">        <span class="bullet">-</span> &#123; <span class="attr">src:</span> <span class="string">&#x27;/tmp/rsyncd.conf&#x27;</span>, <span class="attr">dest:</span> <span class="string">&#x27;/etc&#x27;</span>, <span class="attr">mode:</span> <span class="string">&#x27;644&#x27;</span> &#125;</span><br><span class="line">        <span class="bullet">-</span> &#123; <span class="attr">src:</span> <span class="string">&#x27;/tmp/server/<span class="template-variable">&#123;&#123; passfile &#125;&#125;</span>&#x27;</span>, <span class="attr">dest:</span> <span class="string">&#x27;/etc&#x27;</span>, <span class="attr">mode:</span> <span class="string">&#x27;600&#x27;</span> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="错误忽略">错误忽略</h2>
+<p>使用&quot;ignore_errors&quot;可忽略当前task的错误</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">rsync_server</span></span><br><span class="line">  <span class="attr">vars:</span></span><br><span class="line">    <span class="attr">passfile:</span> <span class="string">rsync.password</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">1</span> <span class="bullet">-</span> <span class="string">Ignore</span> <span class="string">error</span></span><br><span class="line">      <span class="attr">command:</span> <span class="string">/bin/false</span></span><br><span class="line">      <span class="attr">ignore_errors:</span> <span class="literal">yes</span></span><br><span class="line">    <span class="string">....</span></span><br></pre></td></tr></table></figure>
+<p>但发现该task错误时，会忽略该错误，并往下执行。</p>
+<h2 id="标签">标签</h2>
+<p>应用需求：比如某剧本有1000个task，中间第500task的模块执行错误，那么我想要修改这个错误，如果不使用标签功能，那么我要等前面499task的模块执行完后才能开始测试第500task，因此这样编写效率太低了。通过标签功能我们可以执行剧本中指定的task。</p>
+<p>一个标签实例：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">rsync_server</span></span><br><span class="line">  <span class="attr">vars:</span></span><br><span class="line">    <span class="attr">passfile:</span> <span class="string">rsync.password</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">1</span> <span class="bullet">-</span> <span class="string">install</span> <span class="string">rsync</span></span><br><span class="line">      <span class="attr">yum:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">rsync</span></span><br><span class="line">        <span class="attr">state:</span> <span class="string">installed</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">3</span> <span class="bullet">-</span> <span class="string">rsync</span> <span class="string">virtual</span> <span class="string">user</span></span><br><span class="line">      <span class="attr">user:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">rsync</span></span><br><span class="line">        <span class="attr">create_home:</span> <span class="literal">no</span></span><br><span class="line">        <span class="attr">shell:</span> <span class="string">/sbin/nologin</span></span><br><span class="line">      <span class="attr">tags:</span> <span class="string">t1</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">4</span> <span class="bullet">-</span> <span class="string">start</span> <span class="string">rsnyc</span> <span class="string">daemon</span></span><br><span class="line">      <span class="attr">service:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">rsyncd.service</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">yes</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">5</span> <span class="bullet">-</span> <span class="string">check</span> <span class="string">rsync</span> <span class="string">server</span> <span class="string">port</span></span><br><span class="line">      <span class="attr">shell:</span> <span class="string">netstat</span> <span class="string">-luntp</span> <span class="string">|</span> <span class="string">grep</span> <span class="number">873</span></span><br><span class="line">      <span class="attr">register:</span> <span class="string">get_server_port</span></span><br><span class="line">      <span class="attr">tags:</span> <span class="string">t2</span></span><br><span class="line">	<span class="string">....</span></span><br></pre></td></tr></table></figure>
+<p>对task使用<code>tags: &lt;tag_value&gt;</code>进行标记。</p>
+<p>运行剧本时使用标签：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook -t t2 rsync_server.yaml</span><br><span class="line"><span class="meta">#</span><span class="bash">或者</span></span><br><span class="line">ansible-playbook --tags=t2 rsync_server.yaml</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>-t, --tags</code> - only run plays and tasks tagged with these values</p>
+<p>指定-t选项后，只运行指定标签的task。</p>
+</blockquote>
+<p>也可以选择对指定标签做跳过操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook --skip-tags&#x3D;t2 rsync_server.yaml</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>--skip-tags</code> - only run plays and tasks whose tags do not match these values</p>
+<p>指定–skip-tags选项后，被指定的标签的task是不会被执行的。</p>
+</blockquote>
+<h2 id="触发">触发</h2>
+<p>触发源：当task模块执行状态为changed，那么就会触发通知。</p>
+<p>响应源：当触发通知被特定的handler接收了，那么响应源就会执行响应的动作。</p>
+<p>在触发源的task中加入<code>notify:</code>语句，并在响应源的task编写在<code>handlers:</code>语句中。</p>
+<p>在rsync服务自动化部署剧本中，一旦在copy模块中传输rsyncd.conf给远程主机后，检查到文件changed状态，那么就会触发剧本中一个响应task：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">rsync_server</span></span><br><span class="line">  <span class="attr">vars:</span></span><br><span class="line">    <span class="attr">passfile:</span> <span class="string">rsync.password</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">1</span> <span class="bullet">-</span> <span class="string">install</span> <span class="string">rsync</span></span><br><span class="line">      <span class="attr">yum:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">rsync</span></span><br><span class="line">        <span class="attr">state:</span> <span class="string">installed</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">2</span> <span class="bullet">-</span> <span class="string">copy</span> <span class="string">rsyncd.conf</span> <span class="string">and</span> <span class="string">password</span> <span class="string">file</span></span><br><span class="line">      <span class="attr">copy:</span></span><br><span class="line">        <span class="attr">src:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123; item.src &#125;&#125;</span>&quot;</span></span><br><span class="line">        <span class="attr">dest:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123; item.dest &#125;&#125;</span>&quot;</span></span><br><span class="line">        <span class="attr">mode:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123; item.mode &#125;&#125;</span>&quot;</span></span><br><span class="line">      <span class="attr">with_items:</span></span><br><span class="line">        <span class="bullet">-</span> &#123; <span class="attr">src:</span> <span class="string">&#x27;/tmp/rsyncd.conf&#x27;</span>, <span class="attr">dest:</span> <span class="string">&#x27;/etc&#x27;</span>, <span class="attr">mode:</span> <span class="string">&#x27;644&#x27;</span> &#125;</span><br><span class="line">        <span class="bullet">-</span> &#123; <span class="attr">src:</span> <span class="string">&#x27;/tmp/server/<span class="template-variable">&#123;&#123; passfile &#125;&#125;</span>&#x27;</span>, <span class="attr">dest:</span> <span class="string">&#x27;/etc&#x27;</span>, <span class="attr">mode:</span> <span class="string">&#x27;600&#x27;</span> &#125;</span><br><span class="line">      <span class="attr">notify:</span> <span class="string">restart</span> <span class="string">rsnyc</span> <span class="string">daemon</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">3</span> <span class="bullet">-</span> <span class="string">rsync</span> <span class="string">virtual</span> <span class="string">user</span></span><br><span class="line">      <span class="attr">user:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">rsync</span></span><br><span class="line">        <span class="attr">create_home:</span> <span class="literal">no</span></span><br><span class="line">        <span class="attr">shell:</span> <span class="string">/sbin/nologin</span></span><br><span class="line">      <span class="attr">tags:</span> <span class="string">t1</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">5</span> <span class="bullet">-</span> <span class="string">check</span> <span class="string">rsync</span> <span class="string">server</span> <span class="string">port</span></span><br><span class="line">      <span class="attr">shell:</span> <span class="string">netstat</span> <span class="string">-luntp</span> <span class="string">|</span> <span class="string">grep</span> <span class="number">873</span></span><br><span class="line">      <span class="attr">register:</span> <span class="string">get_server_port</span></span><br><span class="line">      <span class="attr">tags:</span> <span class="string">t2</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="number">6</span> <span class="bullet">-</span> <span class="string">display</span> <span class="string">rsync</span> <span class="string">server</span> <span class="string">port</span> <span class="string">info</span></span><br><span class="line">      <span class="attr">debug:</span> <span class="string">msg=&#123;&#123;</span> <span class="string">get_server_port.stdout_lines</span> <span class="string">&#125;&#125;</span></span><br><span class="line">  <span class="attr">handlers:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">restart</span> <span class="string">rsnyc</span> <span class="string">daemon</span></span><br><span class="line">      <span class="attr">service:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">rsyncd.service</span></span><br><span class="line">        <span class="attr">state:</span> <span class="string">restarted</span></span><br></pre></td></tr></table></figure>
+<p>我们改变rsyncd.conf中的port为874，那么剧本运行后，远程主机的文件发生改变，那么就会触发响应源。</p>
+<h1 id="Ansible查阅">Ansible查阅</h1>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ansible-doc -l	#列出模块使用简介</span><br><span class="line">ansible-doc -s [模块名]	#指定一个模块详细说明</span><br><span class="line">ansible-doc [模块名]	#查询模块在剧本中的运用方法</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://www.ansible.com.cn/index.html">Ansible中文权威指南- 国内最专业的Ansible中文官方学习手册</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/index.html">Ansible Documentation — Ansible Documentation</a></p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Linux Ansible</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://violet7pan.gitee.io/posts/aa6a5471/">https://violet7pan.gitee.io/posts/aa6a5471/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>violet7pan</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-02-25</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2021-06-14</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/89d90db1/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-7.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">OnePlus8Pro使用</div></div></a></div><div class="next-post pull-right"><a href="/posts/6b35569d/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-20.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux Docker Oracle11g安装,运行和远程连接</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">violet7pan</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/violet7pan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ansible%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">ansible环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ansible%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">ansible安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEansible%E4%B8%BB%E6%9C%BA%E6%B8%85%E5%8D%95"><span class="toc-number">1.2.</span> <span class="toc-text">配置ansible主机清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E7%AB%AF%E5%88%86%E5%8F%91SSH%E5%85%AC%E9%92%A5%E7%BB%99%E5%8F%97%E6%8E%A7%E7%AB%AF"><span class="toc-number">1.3.</span> <span class="toc-text">管理端分发SSH公钥给受控端</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E6%B8%85%E5%8D%95%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">主机清单配置方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E9%85%8D%E7%BD%AE%E4%B8%BB%E6%9C%BA%E5%88%97%E8%A1%A8"><span class="toc-number">2.1.</span> <span class="toc-text">分组配置主机列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D%E9%85%8D%E7%BD%AE%E4%B8%BB%E6%9C%BA%E5%88%97%E8%A1%A8"><span class="toc-number">2.2.</span> <span class="toc-text">模式匹配配置主机列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%88%97%E8%A1%A8%E5%8A%A0%E5%85%A5SSH%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-number">2.3.</span> <span class="toc-text">主机列表加入SSH端口号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%88%97%E8%A1%A8%E7%BB%84%E5%88%92%E5%88%86%E5%AD%90%E7%BB%84"><span class="toc-number">2.4.</span> <span class="toc-text">主机列表组划分子组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E5%85%A5%E7%89%B9%E6%AE%8A%E5%8F%98%E9%87%8F"><span class="toc-number">2.5.</span> <span class="toc-text">加入特殊变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BB%E6%9C%BA%E6%B8%85%E5%8D%95%E5%8F%98%E9%87%8F"><span class="toc-number">2.6.</span> <span class="toc-text">设置主机清单变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97"><span class="toc-number">3.</span> <span class="toc-text">常用模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#command%E6%A8%A1%E5%9D%97-%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9D%97"><span class="toc-number">3.1.</span> <span class="toc-text">command模块(默认模块)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E6%A8%A1%E5%9D%97"><span class="toc-number">3.2.</span> <span class="toc-text">shell模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#script%E6%A8%A1%E5%9D%97"><span class="toc-number">3.3.</span> <span class="toc-text">script模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#copy%E6%A8%A1%E5%9D%97"><span class="toc-number">3.4.</span> <span class="toc-text">copy模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fetch%E6%A8%A1%E5%9D%97"><span class="toc-number">3.5.</span> <span class="toc-text">fetch模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#yum%E6%A8%A1%E5%9D%97"><span class="toc-number">3.6.</span> <span class="toc-text">yum模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mount%E6%A8%A1%E5%9D%97"><span class="toc-number">3.7.</span> <span class="toc-text">mount模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#user%E6%A8%A1%E5%9D%97"><span class="toc-number">3.8.</span> <span class="toc-text">user模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#service%E6%A8%A1%E5%9D%97"><span class="toc-number">3.9.</span> <span class="toc-text">service模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ping%E6%A8%A1%E5%9D%97"><span class="toc-number">3.10.</span> <span class="toc-text">ping模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#synchronize%E6%A8%A1%E5%9D%97"><span class="toc-number">3.11.</span> <span class="toc-text">synchronize模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#setup%E6%A8%A1%E5%9D%97"><span class="toc-number">3.12.</span> <span class="toc-text">setup模块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%A7%E6%9C%AC-Playbook"><span class="toc-number">4.</span> <span class="toc-text">剧本(Playbook)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%89%A7%E6%9C%AC"><span class="toc-number">4.1.</span> <span class="toc-text">使用剧本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#span-id-rsync-deploy-playbook-rsync%E6%9C%8D%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%89%A7%E6%9C%AC-span"><span class="toc-number">4.2.</span> <span class="toc-text">rsync服务自动化部署剧本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F"><span class="toc-number">4.3.</span> <span class="toc-text">使用变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%A7%E6%9C%AC%E5%8F%98%E9%87%8F"><span class="toc-number">4.3.1.</span> <span class="toc-text">剧本变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%8F%98%E9%87%8F"><span class="toc-number">4.3.2.</span> <span class="toc-text">运行时变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E6%B8%85%E5%8D%95-Inventory-%E5%8F%98%E9%87%8F"><span class="toc-number">4.3.3.</span> <span class="toc-text">主机清单(Inventory)变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">4.3.4.</span> <span class="toc-text">变量优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E7%94%A8%E5%8F%98%E9%87%8F%E7%9A%84%E5%8E%9F%E5%88%99"><span class="toc-number">4.3.5.</span> <span class="toc-text">选用变量的原则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E5%8F%98%E9%87%8F"><span class="toc-number">4.4.</span> <span class="toc-text">注册变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%8F%98%E9%87%8F"><span class="toc-number">4.5.</span> <span class="toc-text">特殊变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.5.1.</span> <span class="toc-text">使用介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%89%B9%E6%AE%8A%E5%8F%98%E9%87%8F"><span class="toc-number">4.5.1.1.</span> <span class="toc-text">什么是特殊变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%8F%98%E9%87%8F%E4%BB%8E%E4%BD%95%E8%80%8C%E6%9D%A5"><span class="toc-number">4.5.1.2.</span> <span class="toc-text">特殊变量从何而来</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E7%BB%84%E6%88%90%E4%B8%8E%E4%BD%BF%E7%94%A8-%E5%BC%95%E7%94%A8"><span class="toc-number">4.5.1.3.</span> <span class="toc-text">变量的组成与使用(引用)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%8F%98%E9%87%8F%E5%92%8C%E5%85%83%E7%B4%A0%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.5.1.4.</span> <span class="toc-text">查看变量和元素的数据类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Magic%E5%8F%98%E9%87%8F"><span class="toc-number">4.5.2.</span> <span class="toc-text">Magic变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Facts%E5%8F%98%E9%87%8F"><span class="toc-number">4.5.3.</span> <span class="toc-text">Facts变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%8F%98%E9%87%8F"><span class="toc-number">4.5.4.</span> <span class="toc-text">连接变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD"><span class="toc-number">4.6.</span> <span class="toc-text">判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF-Loop"><span class="toc-number">4.7.</span> <span class="toc-text">循环(Loop)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%BF%BD%E7%95%A5"><span class="toc-number">4.8.</span> <span class="toc-text">错误忽略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE"><span class="toc-number">4.9.</span> <span class="toc-text">标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91"><span class="toc-number">4.10.</span> <span class="toc-text">触发</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ansible%E6%9F%A5%E9%98%85"><span class="toc-number">5.</span> <span class="toc-text">Ansible查阅</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/3b4634fc/" title="Hexo使用"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-20.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo使用"/></a><div class="content"><a class="title" href="/posts/3b4634fc/" title="Hexo使用">Hexo使用</a><time datetime="2021-06-07T12:08:35.000Z" title="发表于 2021-06-07 20:08:35">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/24caea6b/" title="Hexo常用命令"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-11.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo常用命令"/></a><div class="content"><a class="title" href="/posts/24caea6b/" title="Hexo常用命令">Hexo常用命令</a><time datetime="2021-06-07T06:10:13.000Z" title="发表于 2021-06-07 14:10:13">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo隐藏文章"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo隐藏文章"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo隐藏文章">Hexo隐藏文章</a><time datetime="2021-06-04T11:00:41.000Z" title="发表于 2021-06-04 19:00:41">2021-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-12.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo贴文Front-Matter用法"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法">Hexo贴文Front-Matter用法</a><time datetime="2021-06-01T11:37:37.000Z" title="发表于 2021-06-01 19:37:37">2021-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的Buttefly主题魔改历程"/></a><div class="content"><a class="title" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程">我的Buttefly主题魔改历程</a><time datetime="2021-06-01T08:52:32.000Z" title="发表于 2021-06-01 16:52:32">2021-06-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By violet7pan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/algolia.js"></script><div class="js-pjax"></div><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

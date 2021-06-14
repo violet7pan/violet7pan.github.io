@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OnePlus8P内核使用教程(Kernel) | violet7pan Blog</title><meta name="keywords" content="OnePlus"><meta name="author" content="violet7pan"><meta name="copyright" content="violet7pan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="提取OTA固件包内核 为什么要提取内核 如果你刷入第三方内核，对内核不满意，就需要回到官方内核，因此需要提取官方内核。 有哪些工具可用于提取内核 FKM&#x2F;EXKM都是Android上的APP，都是需要Root的安卓设备才可使用。 payload dumper是python脚本，需要安装python和pip才能使用，可用于提取卡刷包中payload.bin的内核映像文件。 使用FKM&#x2F;EXKM是最简">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OnePlus8P内核使用教程(Kernel)">
+<meta property="og:url" content="https://violet7pan.gitee.io/posts/254aaa4a/index.html">
+<meta property="og:site_name" content="violet7pan Blog">
+<meta property="og:description" content="提取OTA固件包内核 为什么要提取内核 如果你刷入第三方内核，对内核不满意，就需要回到官方内核，因此需要提取官方内核。 有哪些工具可用于提取内核 FKM&#x2F;EXKM都是Android上的APP，都是需要Root的安卓设备才可使用。 payload dumper是python脚本，需要安装python和pip才能使用，可用于提取卡刷包中payload.bin的内核映像文件。 使用FKM&#x2F;EXKM是最简">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-17.webp">
+<meta property="article:published_time" content="2021-03-04T16:23:26.000Z">
+<meta property="article:modified_time" content="2021-06-14T03:47:35.639Z">
+<meta property="article:author" content="violet7pan">
+<meta property="article:tag" content="OnePlus">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-17.webp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://violet7pan.gitee.io/posts/254aaa4a/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"PKY3F5HAHD","apiKey":"5e175a241d1eb8b01147dbb78d77842d","indexName":"prod_blog","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'OnePlus8P内核使用教程(Kernel)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-14 11:47:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/custom.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/index.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="//at.alicdn.com/t/font_2405210_6tovfl8ipqu.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-17.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">violet7pan Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">OnePlus8P内核使用教程(Kernel)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-04T16:23:26.000Z" title="发表于 2021-03-05 00:23:26">2021-03-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.639Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/OnePlus/">OnePlus</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="OnePlus8P内核使用教程(Kernel)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="提取OTA固件包内核">提取OTA固件包内核</h1>
+<h2 id="为什么要提取内核">为什么要提取内核</h2>
+<p>如果你刷入第三方内核，对内核不满意，就需要回到官方内核，因此需要提取官方内核。</p>
+<h2 id="有哪些工具可用于提取内核">有哪些工具可用于提取内核</h2>
+<p>FKM/EXKM都是Android上的APP，都是需要Root的安卓设备才可使用。</p>
+<p>payload dumper是python脚本，需要安装python和pip才能使用，可用于提取卡刷包中payload.bin的内核映像文件。</p>
+<p>使用FKM/EXKM是最简单的提取内核方式，使用payload dumper比较费时费事。</p>
+<h2 id="利用FKM-EXKM提取内核">利用FKM/EXKM提取内核</h2>
+<p>适用对象：以Root的一加手机。</p>
+<p>下载：</p>
+<p>Play商店：<a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.franco.kernel&amp;hl=en&amp;gl=US">FKM</a>、<a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=flar2.exkernelmanager&amp;hl=en&amp;gl=US">EXKM</a></p>
+<p>其他途径：我的百度网盘也有提供EXKM。</p>
+<h3 id="提取-备份内核映像">提取/备份内核映像</h3>
+<p>EXKM提取内核步骤如图所示：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/254aaa4a/EXKM-BackupKernel-1.jpg" class="" title="EXKM-BackupKernel-1">
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/254aaa4a/EXKM-BackupKernel-2.jpg" class="" title="EXKM-BackupKernel-2">
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/254aaa4a/EXKM-BackupKernel-3.jpg" class="" title="EXKM-BackupKernel-3">
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/254aaa4a/EXKM-BackupKernel-4.jpg" class="" title="EXKM-BackupKernel-4">
+<h3 id="还原内核">还原内核</h3>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/254aaa4a/EXKM-RestoreKernel-1.jpg" class="" title="EXKM-RestoreKernel-1">
+<h2 id="利用payload-dumper提取OTA固件包内核">利用payload dumper提取OTA固件包内核</h2>
+<h3 id="下载payload-dumper">下载payload_dumper</h3>
+<p>进入<a target="_blank" rel="noopener" href="https://github.com/vm03/payload_dumper">GitHub - vm03/payload_dumper: Android OTA payload dumper</a>后，点击&quot;Code&quot;，然后点击&quot;Download ZIP&quot;</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/254aaa4a/PayloadDumper-Download.jpg" class="" title="PayloadDumper-Download">
+<h3 id="为什么要使用payload-dumper">为什么要使用payload dumper</h3>
+<p>一加8P卡刷包的文件结构如下：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/254aaa4a/OnePlus8P_OTAFirmwareHierarchy.jpg" class="" title="OnePlus8P_OTAFirmwareHierarchy">
+<p>可以看到大部分数据都在payload.bin中，因此我们需要从payload.bin提取官网内核。</p>
+<p>复制必备文件到手机存储根目录</p>
+<ol>
+<li>
+<p>解压刚才下载的压缩包，然后将payload_dumper-master命名为payload_dumper</p>
+</li>
+<li>
+<p>复制payload_dumper文件夹到手机外部存储根目录。</p>
+</li>
+<li>
+<p>将payload.bin放到手机中的payload_dumper文件夹。</p>
+</li>
+</ol>
+<h3 id="Android端进行提取">Android端进行提取</h3>
+<details blue><summary> 点击查看Android端进行提取教程 </summary>
+              <div class='content'>
+              <div class="tabs" id="android_extract_ota"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#android_extract_ota-1">Termux安装</button></li><li class="tab"><button type="button" data-href="#android_extract_ota-2">Termux使用</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="android_extract_ota-1"><p>Termux安装</p><p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/forum.php?mod=viewthread&amp;tid=1060846&amp;highlight=Termux">【高级终端Termux】让你在手机也能编写Python - 『精品软件区』 - 吾爱破解 - LCG - LSG |安卓破解|病毒分析|www.52pojie.cn</a></p><p><a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.termux">Termux - Apps on Google Play</a></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="android_extract_ota-2"><p>让Termux科学上网，然后依次在Termux运行以下命令</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pkg install python -y</span><br><span class="line">pip install --upgrade pip</span><br><span class="line">apt update &amp;&amp; apt upgrade -y</span><br><span class="line">termux-setup-storage</span><br><span class="line">cd &#x2F;storage&#x2F;emulated&#x2F;0&#x2F;payload_dumper</span><br><span class="line">pip install -r requirements.txt</span><br><span class="line">python payload_dumper.py payload.bin</span><br></pre></td></tr></table></figure><p>部分运行截图：</p><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/254aaa4a/termux-install_python.jpg" class="" title="termux-install_python"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/254aaa4a/termux-upgrade_pip.jpg" class="" title="termux-upgrade_pip"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/254aaa4a/termux-chgdir_pip_install_requirements.jpg" class="" title="termux-chgdir_pip_install_requirements"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/posts/254aaa4a/termux-extract_payloadbin.jpg" class="" title="termux-extract_payloadbin"><details yellow><summary> 相关参考 </summary>              <div class='content'>              <p>References:</p><p><a target="_blank" rel="noopener" href="https://forum.xda-developers.com/t/tutorial-android-ota-payload-dumper-on-android.4061799/">[Tutorial] Android OTA payload dumper on Android | XDA Developers Forums</a></p><p><a target="_blank" rel="noopener" href="https://www.thecustomdroid.com/how-to-extract-android-payload-bin-file/">Extract Android OTA Payload.bin File using Payload Dumper Tool</a></p>              </div>            </details><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+              </div>
+            </details>
+<h3 id="Windows端进行提取">Windows端进行提取</h3>
+<p><a target="_blank" rel="noopener" href="https://www.daxiaamu.com/5795/">大侠阿木</a>提供<a target="_blank" rel="noopener" href="https://sn9.us/file/15691642-418679208">payload_dumper-win64.zip - 免费高速下载</a>。</p>
+<p>下载payload dumper-win64.zip后解压。</p>
+<p>安装Python。</p>
+<p>将卡刷包中的payload.bin放入payload_input文件夹里，双击payload dumper.exe运行即可。</p>
+<p>payload_output存放提取的映像。</p>
+<h3 id="刷回官方内核">刷回官方内核</h3>
+<p>官方内核需要通过OTA固件包提取出来，提取的映像文件为boot.img。因此刷入boot.img到boot分区就完成了官方内核的恢复了。</p>
+<details yellow><summary> 什么是boot.img </summary>
+              <div class='content'>
+              <p>boot.img包含内核和RAM驱动器（安卓系统将RAM视为一个磁盘），其中RAM驱动器包含用于启动和控制系统基础层的指令集和二进制运行库，比如挂载点，内存管理和开机启动服务等。</p><p>以下为英文释义：</p><blockquote><p>What is the boot.img?<br>-&gt; basically it contains the kernel &amp; the ramdisk. But let’s hear what the pros have to say:</p><blockquote><p>“The boot.img is a small(ish) file that contains 2 main parts, the kernel (the brain of the Android system) and the ramdisk (a core set of instructions and binaries that begins the boot process and controls base aspects of the system, such as mountpoints, memory management and startup services)” <a target="_blank" rel="noopener" href="http://forum.xda-developers.com/showthread.php?t=1630130">Source</a></p></blockquote><p>Further information can be found <a target="_blank" rel="noopener" href="http://android-dls.com/wiki/index.php?title=HOWTO:_Unpack%2C_Edit%2C_and_Re-Pack_Boot_Images#Structure_of_boot_and_recovery_images">here</a>.</p></blockquote>
+              </div>
+            </details>
+<p>如何刷入boot.img</p>
+<p>Reference:<br>
+<a target="_blank" rel="noopener" href="https://forum.xda-developers.com/t/tutorial-how-to-flash-a-new-boot-img-via-fastboot.1752270/">[Tutorial] How to flash a new boot.img via Fastboot | XDA Developers Forums</a></p>
+<p><a target="_blank" rel="noopener" href="https://forum.xda-developers.com/t/magisk-root-boot-img-how-to-patch-the-oneplus-8-8t-and-8-pro-stock-boot-image-boot-img-from-the-currently-installed-stock-rom.4199943/">[MAGISK][ROOT][BOOT.IMG] How to patch the Oneplus 8, 8T and 8 Pro stock Boot Image (boot.img) from the currently installed Stock ROM | XDA Developers Forums</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot flash boot boot.img</span><br></pre></td></tr></table></figure>
+<p>你可以先输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot flash boot </span><br></pre></td></tr></table></figure>
+<p>注意boot后面有一个空格，然后将文件拖到命令行窗口。</p>
+<p>如果你怕fastboot flash刷入的boot.img后问题，可以试试临时挂载boot.img</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot boot boot.img</span><br></pre></td></tr></table></figure>
+<p>这样一加8P会以安全模式状态开启，你可以看看内核版本是否有变化，确认有变化，重启进入刷机模式使用fastboot flash刷入官方内核。</p>
+<h1 id="刷入内核">刷入内核</h1>
+<h2 id="有哪些方式内核的方式">有哪些方式内核的方式</h2>
+<h3 id="卡刷">卡刷</h3>
+<p>如果你下载的内核文件是以.zip结尾的，那么就需要使用卡刷的方式，可以先刷入临时TWRP，在恢复模式贴文中有介绍。</p>
+<p>刷入临时TWRP</p>
+<p><code>#</code>为注释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#确认设备是否接入</span><br><span class="line">adb devices</span><br><span class="line">#重启进入bootloader模式</span><br><span class="line">adb reboot bootloader</span><br><span class="line">#刷入TWRP</span><br><span class="line">fastboot boot twrpname.img</span><br></pre></td></tr></table></figure>
+<p>fastboot boot twrpname.img执行后，等待一会，自动进入临时TWRP</p>
+<p>刷入内核文件，以Kirisakura内核为例</p>
+<p>进入TWRP恢复模式</p>
+<p>选择&quot;Kirisakura_InstantNoodle_1.2.4.zip&quot;刷入。</p>
+<p>然后TWRP中Wipe Dalvik。</p>
+<p>Wipe Dalvik不会清空用户数据，而是清除.apk和.jar文件产生的.DEX预编译文件</p>
+<h3 id="Flash方式刷">Flash方式刷</h3>
+<p>如果你下载的内核文件是以.img结尾的，那么就需要通过Flash方式刷入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot flash boot 内核文件.img</span><br></pre></td></tr></table></figure>
+<p>你可以先输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot flash boot </span><br></pre></td></tr></table></figure>
+<p>注意boot后面有一个空格，然后将文件拖到命令行窗口。</p>
+<p>如果你怕fastboot flash刷入的boot.img后问题，可以试试临时挂载boot.img</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot boot boot.img</span><br></pre></td></tr></table></figure>
+<p>这样一加8P会以安全模式状态开启，你可以看看内核版本是否有变化，确认有变化，重启进入刷机模式使用fastboot flash刷入官方内核。</p>
+<h1 id="第三方内核源">第三方内核源</h1>
+<p>大部分内核都来自XDA，这里我只提供8P的链接</p>
+<h2 id="Kirisakura-Kernel">Kirisakura Kernel</h2>
+<p><a target="_blank" rel="noopener" href="https://forum.xda-developers.com/t/kernel-20-09-2020-android-10-kirisakura-1-2-4-for-oneplus-8-pro-aka-instantnoodle.4119585/">[Kernel][20.09.2020][Android 10] Kirisakura 1.2.4 for OnePlus 8 Pro aka InstantNoodle | XDA Developers Forums</a></p>
+<h2 id="Horizon-Kernel">Horizon Kernel</h2>
+<p><a target="_blank" rel="noopener" href="https://forum.xda-developers.com/t/kernel-4-19-139-caf-rebased-horizon-kernel-preview.4148293/">[Kernel][4.19.139][CAF-Rebased] Horizon Kernel [preview] | XDA Developers Forums</a></p>
+<h2 id="FrankenKernel">FrankenKernel</h2>
+<p><a target="_blank" rel="noopener" href="https://forum.xda-developers.com/t/kernel-frankenkernel-oos-11-custom-8-8pro-13-1-clang-11-0-4.4100853/">[Kernel]FrankenKernel🧟[oos]11[custom][8/8pro][13.1][clang 11.0.4] | XDA Developers Forums</a></p>
+<h2 id="ElementalX-Kernel">ElementalX Kernel</h2>
+<p><a target="_blank" rel="noopener" href="https://forum.xda-developers.com/t/kernel-aug-2-oneplus-8-pro-elementalx-1-08-android-10.4098217/">[KERNEL] [Aug 2] OnePlus 8 Pro ElementalX 1.08 (Android 10) | XDA Developers Forums</a></p>
+<h2 id="Omega-Kernel">Omega Kernel</h2>
+<p><a target="_blank" rel="noopener" href="https://forum.xda-developers.com/t/kernel-oos-omega-kernel-oos11-march-4-2021.4096961/">[KERNEL] [OOS] Omega Kernel OOS11 [March 4, 2021] | XDA Developers Forums</a></p>
+<h2 id="CleanSlate-kernel">CleanSlate kernel</h2>
+<p><a target="_blank" rel="noopener" href="https://forum.xda-developers.com/t/kernel-cleanslate-r-2-6-3-kcal-dimmer-adblock-safetynet-flashlight-dtap-jan-31.4096065/">[KERNEL] CleanSlate 🚀 R 2.6.3 |KCal|Dimmer|AdBlock|SafetyNet|FlashLight|Dtap [Jan 31] | XDA Developers Forums</a></p>
+<h2 id="RADIOACTIVE-KERNEL">RADIOACTIVE KERNEL</h2>
+<p><a target="_blank" rel="noopener" href="https://forum.xda-developers.com/t/kernel-radioactive-kernel-v1-0-5-2020-07-13-unified-op8-op8pro.4127821/">[KERNEL]Radioactive Kernel V1.0.5 [2020.07.13][UNIFIED OP8/OP8Pro] | XDA Developers Forums</a></p>
+<h2 id="内核刷入疑问">内核刷入疑问</h2>
+<p>常见疑问的回答来自Kirisakura Kernel作者。</p>
+<p>刷入内核后root是否还在？</p>
+<p>对任何内核文件刷入后都会保持原来的权限不变，若有root，root维持不变。</p>
+<blockquote>
+<p><strong>Question:</strong> Is root preserved when flashing this kernel?<br>
+<strong>Answer:</strong> Yes, the AnyKernel.zip will detect root and keep it.</p>
+</blockquote>
+<p>刷内核需要准备什么</p>
+<blockquote>
+<p>解锁设备（即解锁了Bootloader）</p>
+<p>开启USB调试模式</p>
+<p>安装最新的adb和fastboot运行库并对他们进行环境设置</p>
+<p>手机已root（即刷入magisk root）</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>OnePlus8P内核使用教程(Kernel)</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://violet7pan.gitee.io/posts/254aaa4a/">https://violet7pan.gitee.io/posts/254aaa4a/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>violet7pan</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-03-05</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2021-06-14</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/OnePlus/">OnePlus</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/e27f917d/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-10.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">XYplorer快速入门指南</div></div></a></div><div class="next-post pull-right"><a href="/posts/6ef4b683/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-14.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">OnePlus8P降级教程(Degrade)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/6ef4b683/" title="OnePlus8P降级教程(Degrade)"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-14.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-04</div><div class="title">OnePlus8P降级教程(Degrade)</div></div></a></div><div><a href="/posts/4c3b19c/" title="OnePlus8/8Pro恢复模式(Recovery)"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-14.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-04</div><div class="title">OnePlus8/8Pro恢复模式(Recovery)</div></div></a></div><div><a href="/posts/89d90db1/" title="OnePlus8Pro使用"><img class="cover" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-7.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-04</div><div class="title">OnePlus8Pro使用</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">violet7pan</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/violet7pan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E5%8F%96OTA%E5%9B%BA%E4%BB%B6%E5%8C%85%E5%86%85%E6%A0%B8"><span class="toc-number">1.</span> <span class="toc-text">提取OTA固件包内核</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%8F%90%E5%8F%96%E5%86%85%E6%A0%B8"><span class="toc-number">1.1.</span> <span class="toc-text">为什么要提取内核</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B7%A5%E5%85%B7%E5%8F%AF%E7%94%A8%E4%BA%8E%E6%8F%90%E5%8F%96%E5%86%85%E6%A0%B8"><span class="toc-number">1.2.</span> <span class="toc-text">有哪些工具可用于提取内核</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8FKM-EXKM%E6%8F%90%E5%8F%96%E5%86%85%E6%A0%B8"><span class="toc-number">1.3.</span> <span class="toc-text">利用FKM&#x2F;EXKM提取内核</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%8F%96-%E5%A4%87%E4%BB%BD%E5%86%85%E6%A0%B8%E6%98%A0%E5%83%8F"><span class="toc-number">1.3.1.</span> <span class="toc-text">提取&#x2F;备份内核映像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%98%E5%8E%9F%E5%86%85%E6%A0%B8"><span class="toc-number">1.3.2.</span> <span class="toc-text">还原内核</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8payload-dumper%E6%8F%90%E5%8F%96OTA%E5%9B%BA%E4%BB%B6%E5%8C%85%E5%86%85%E6%A0%B8"><span class="toc-number">1.4.</span> <span class="toc-text">利用payload dumper提取OTA固件包内核</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDpayload-dumper"><span class="toc-number">1.4.1.</span> <span class="toc-text">下载payload_dumper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8payload-dumper"><span class="toc-number">1.4.2.</span> <span class="toc-text">为什么要使用payload dumper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android%E7%AB%AF%E8%BF%9B%E8%A1%8C%E6%8F%90%E5%8F%96"><span class="toc-number">1.4.3.</span> <span class="toc-text">Android端进行提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows%E7%AB%AF%E8%BF%9B%E8%A1%8C%E6%8F%90%E5%8F%96"><span class="toc-number">1.4.4.</span> <span class="toc-text">Windows端进行提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B7%E5%9B%9E%E5%AE%98%E6%96%B9%E5%86%85%E6%A0%B8"><span class="toc-number">1.4.5.</span> <span class="toc-text">刷回官方内核</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%B7%E5%85%A5%E5%86%85%E6%A0%B8"><span class="toc-number">2.</span> <span class="toc-text">刷入内核</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E5%BC%8F%E5%86%85%E6%A0%B8%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">有哪些方式内核的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%A1%E5%88%B7"><span class="toc-number">2.1.1.</span> <span class="toc-text">卡刷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flash%E6%96%B9%E5%BC%8F%E5%88%B7"><span class="toc-number">2.1.2.</span> <span class="toc-text">Flash方式刷</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%86%85%E6%A0%B8%E6%BA%90"><span class="toc-number">3.</span> <span class="toc-text">第三方内核源</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kirisakura-Kernel"><span class="toc-number">3.1.</span> <span class="toc-text">Kirisakura Kernel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Horizon-Kernel"><span class="toc-number">3.2.</span> <span class="toc-text">Horizon Kernel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FrankenKernel"><span class="toc-number">3.3.</span> <span class="toc-text">FrankenKernel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ElementalX-Kernel"><span class="toc-number">3.4.</span> <span class="toc-text">ElementalX Kernel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Omega-Kernel"><span class="toc-number">3.5.</span> <span class="toc-text">Omega Kernel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CleanSlate-kernel"><span class="toc-number">3.6.</span> <span class="toc-text">CleanSlate kernel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RADIOACTIVE-KERNEL"><span class="toc-number">3.7.</span> <span class="toc-text">RADIOACTIVE KERNEL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E6%A0%B8%E5%88%B7%E5%85%A5%E7%96%91%E9%97%AE"><span class="toc-number">3.8.</span> <span class="toc-text">内核刷入疑问</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/3b4634fc/" title="Hexo使用"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-20.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo使用"/></a><div class="content"><a class="title" href="/posts/3b4634fc/" title="Hexo使用">Hexo使用</a><time datetime="2021-06-07T12:08:35.000Z" title="发表于 2021-06-07 20:08:35">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/24caea6b/" title="Hexo常用命令"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-11.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo常用命令"/></a><div class="content"><a class="title" href="/posts/24caea6b/" title="Hexo常用命令">Hexo常用命令</a><time datetime="2021-06-07T06:10:13.000Z" title="发表于 2021-06-07 14:10:13">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo隐藏文章"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo隐藏文章"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo隐藏文章">Hexo隐藏文章</a><time datetime="2021-06-04T11:00:41.000Z" title="发表于 2021-06-04 19:00:41">2021-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-12.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo贴文Front-Matter用法"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法">Hexo贴文Front-Matter用法</a><time datetime="2021-06-01T11:37:37.000Z" title="发表于 2021-06-01 19:37:37">2021-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的Buttefly主题魔改历程"/></a><div class="content"><a class="title" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程">我的Buttefly主题魔改历程</a><time datetime="2021-06-01T08:52:32.000Z" title="发表于 2021-06-01 16:52:32">2021-06-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By violet7pan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/algolia.js"></script><div class="js-pjax"></div><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

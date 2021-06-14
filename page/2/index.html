@@ -1,0 +1,413 @@
+<!DOCTYPE html><html lang="[&quot;zh-CN&quot;,&quot;en&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>violet7pan Blog</title><meta name="author" content="violet7pan"><meta name="copyright" content="violet7pan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="violet7pan Blog">
+<meta property="og:url" content="https://violet7pan.gitee.io/page/2/index.html">
+<meta property="og:site_name" content="violet7pan Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://violet7pan.gitee.io/img/avatar.jpg">
+<meta property="article:author" content="violet7pan">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://violet7pan.gitee.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://violet7pan.gitee.io/page/2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"PKY3F5HAHD","apiKey":"5e175a241d1eb8b01147dbb78d77842d","indexName":"prod_blog","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'violet7pan Blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-06-14 11:47:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/custom.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MMengyiyu/HexoStaticFile@latest/css/index.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="//at.alicdn.com/t/font_2405210_6tovfl8ipqu.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/banner_img-tuya-tuya.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">violet7pan Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw iconfont icon-1mulu"></i><span> 目录</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/OnePlus"><i class="fa-fw fas fa-mobile-alt"></i><span> OnePlus</span></a></li><li><a class="site-page child" href="/categories/Linux"><i class="fa-fw fab fa-linux"></i><span> Linux</span></a></li><li><a class="site-page child" href="/categories/Hexo"><i class="fa-fw fas fa-blog"></i><span> Hexo</span></a></li><li><a class="site-page child" href="/categories/XYplorer"><i class="fa-fw fas fa-folder-open"></i><span> XYplorer</span></a></li><li><a class="site-page child" href="/categories/Building"><i class="fa-fw fas fa-archway"></i><span> Building</span></a></li><li><a class="site-page child" href="/categories/AutoCAD"><i class="fa-fw fas fa-draw-polygon"></i><span> AutoCAD</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">violet7pan Blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item"><a class="categoryBar-list-link" href="/categories/AutoCAD/">AutoCAD</a><span class="categoryBar-list-count">12</span></li><li class="categoryBar-list-item"><a class="categoryBar-list-link" href="/categories/Building/">Building</a><span class="categoryBar-list-count">1</span></li><li class="categoryBar-list-item"><a class="categoryBar-list-link" href="/categories/ElectricalCircuit/">ElectricalCircuit</a><span class="categoryBar-list-count">1</span></li><li class="categoryBar-list-item"><a class="categoryBar-list-link" href="/categories/Hexo/">Hexo</a><span class="categoryBar-list-count">11</span></li><li class="categoryBar-list-item"><a class="categoryBar-list-link" href="/categories/Linux/">Linux</a><span class="categoryBar-list-count">11</span></li><li class="categoryBar-list-item"><a class="categoryBar-list-link" href="/categories/OnePlus/">OnePlus</a><span class="categoryBar-list-count">4</span></li><li class="categoryBar-list-item"><a class="categoryBar-list-link" href="/categories/Windows/">Windows</a><span class="categoryBar-list-count">1</span></li><li class="categoryBar-list-item"><a class="categoryBar-list-link" href="/categories/XYplorer/">XYplorer</a><span class="categoryBar-list-count">15</span></li></ul></div></div><div class="recent-post-item" style="height:auto;width:100%;"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="/posts/8949c74c/" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/sliderbar_cover-1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt=""/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-3-9</span><a class="blog-slider__title" href="/posts/8949c74c/" alt="">XYplorer使用指南</a><div class="blog-slider__text">XYplorer文件管理器使用指南</div><a class="blog-slider__button" href="/posts/8949c74c/" alt="">🍡详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="/posts/89d90db1/" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/sliderbar_cover-2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt=""/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-3-9</span><a class="blog-slider__title" href="/posts/89d90db1/" alt="">📁一加8Pro使用</a><div class="blog-slider__text">一加8Pro使用指南</div><a class="blog-slider__button" href="/posts/89d90db1/" alt="">🍡详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="/categories/Linux/" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/sliderbar_cover-3.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt=""/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-3-9</span><a class="blog-slider__title" href="/categories/Linux/" alt="">🦋Linux分类</a><div class="blog-slider__text">Linux笔记</div><a class="blog-slider__button" href="/categories/Linux/" alt="">🍡详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div><script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.min.js"></script><script defer="defer" data-pjax="data-pjax" src="/js/swiper_init.js"></script></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/posts/7cfb72dd/" title="AutoCAD-测量">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-21.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AutoCAD-测量"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/7cfb72dd/" title="AutoCAD-测量">AutoCAD-测量</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-09T09:40:01.000Z" title="发表于 2021-05-09 17:40:01">2021-05-09</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.603Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AutoCAD/">AutoCAD</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/AutoCAD/">AutoCAD</a></span></div><div class="content">🔙AutoCAD导航贴
+AREA
+命令介绍AREA命令通过AA + Space调用。AREA命令可以获取规则或不规则对象的面积和周长。
+Boundary
+命令介绍[案例]测量对象 fa-laughBoundary命令用于从封闭区域创建面域或多段线。
+若对象不是封闭的，可以通过临时补线让它成为封闭对象，这样就可以使用Boundary命令。测量完成后，删除补线。
+Boundary命令通过BO + Space调用。测量的具体思路是将对象中需要测量的部分变为封闭面域，然后按下Ctrl + 1调出对象的特性面板，在该面板中查看周长和面积。
+
+填充命令：封闭图形，当前窗口要看到整个对象，少了一部分就不是封闭了。
+Hatch
+填充命令也要求对象为封闭面域，因此，对于非封闭对象，需要临时补线。对封闭面域填充图案后，按下Ctrl + 1一样能看到面域的面积，达到测量的目的。该命令在AutoCAD-绘图篇讲解。
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/posts/c85f7852/" title="AutoCAD-基础篇">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-19.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AutoCAD-基础篇"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/c85f7852/" title="AutoCAD-基础篇">AutoCAD-基础篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-09T09:33:11.000Z" title="发表于 2021-05-09 17:33:11">2021-05-09</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.555Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AutoCAD/">AutoCAD</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/AutoCAD/">AutoCAD</a></span></div><div class="content">🔙AutoCAD导航贴
+AutoCAD UI
+下图介绍用户界面每个区域的名称：
+
+此图来源于ATTILA G. HORVATH。
+应用状态栏
+栅格显示 F7
+在绘制窗口是否显示栅格。
+正交模式 F8
+在该模式下，鼠标移动只能沿水平或竖直方向移动。
+极轴追踪 F10
+ 增量角 
+              
+              90 45 30这些数值都是增量角的角度值。增量角改为45°后，F2输入L + Enter进入直线绘制，直线转动45°时会出现如下图所示的绿色虚线这代表了转动到45°了。同理转动到90°也会出现绿色虚线提示你此时转动到90°，如下图所示：
+              
+            
+ 附加角 
+              
+              此时附加角设置为37°，在绘制直线时鼠标转动到37°会出现如图所示的绿色虚线提示：
+              
+            
+捕捉模式 F9
+捕捉模式用于捕捉栅格端点。
+对象捕捉 F3
+开启对象捕捉后，鼠标会捕捉在图形上的特性点上。
+ 矩形等分线案例 
+               ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/posts/12466d65/" title="AutoCAD导航贴">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AutoCAD导航贴"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/12466d65/" title="AutoCAD导航贴">AutoCAD导航贴</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-09T08:29:15.000Z" title="发表于 2021-05-09 16:29:15">2021-05-09</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.611Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AutoCAD/">AutoCAD</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/AutoCAD/">AutoCAD</a></span></div><div class="content">贴文集合
+
+
+
+贴文名称
+说明
+
+
+
+
+天正建筑T20软件安装
+天正建筑CAD软件
+
+
+1.AutoCAD-基础篇
+AutoCAD图形界面，常用快捷键，应用状态栏
+
+
+2.AutoCAD-绘图篇
+基本绘图命令
+
+
+3.AutoCAD-修改篇
+图形的基本操作命令
+
+
+4.AutoCAD-图层篇
+图层命令，图层特性，特性匹配
+
+
+5.AutoCAD-图块
+Block，WBlock，属性
+
+
+6.AutoCAD-测量
+测量命令Area, Boundary, Hatch
+
+
+7.AutoCAD-文本篇
+单行文本，多行文本，缺少SHX字体文件的解决方法
+
+
+8.AutoCAD-设计中心
+利用设计中心制作模板文件和分享设计元素
+
+
+9.AutoCAD-标注篇
+标注图形
+
+
+
+资源
+
+
+
+资源名
+说明
+
+
+
+
+AutoCAD 语言包 - 官方提供
+AutoCAD 2013~2022语言包下载
+
+
+The Hitchhiker’s Guide to AutoCAD - 官方提供
+AutoCAD 2022官方教程
+
+
+AutoCAD 2019用户手册
+AutoCAD 2019版在线帮助手册
+
+
+
+如何查 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/posts/b0416564/" title="AutoCAD-文本篇">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-17.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AutoCAD-文本篇"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/b0416564/" title="AutoCAD-文本篇">AutoCAD-文本篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-08T06:21:53.000Z" title="发表于 2021-05-08 14:21:53">2021-05-08</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.615Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AutoCAD/">AutoCAD</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/AutoCAD/">AutoCAD</a></span></div><div class="content">🔙AutoCAD导航贴
+多行文本 MText
+T + Space调用多行文本命令。
+一般情况下，我们设置文字样式为Standard，字体就按需选择即可，在字体下拉列表中，有三种类型的字体，如图所示
+
+纵向字体、系统字体和AutoCAD字体。
+系统字体：若系统为Windows，那么这类字体是Windows自带的，如果需要更多字体，你也可以去下载更多的Windows字体。
+纵向字体(Vertically-oriented Fonts)：这类字体通常以@开头，这类字体由于是纵向分布，可用于垂直版面的打印。ref.
+AutoCAD字体：这类字体文件是以.shx为后缀，它们存放在AutoCAD安装目录下的Fonts文件夹中。当AutoCAD图纸有用到这些文字时，AutoCAD才会加载这类字体。
+多行文本的内容输入完成后，可以按下Ctrl + Enter进行确认。
+单行文本 Text
+单行文本默认没有设置文字样式的，单行文本如果想要有显示效果，需要手动设置文字样式。
+多行文本和单行文本的区别
+
+
+格式排版选项数量不一。
+
+单行文本命令可使用的选项比多行文本命令少。如果单行文本要设置字体，只能通过 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/posts/e930026c/" title="AutoCAD-图块">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-15.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AutoCAD-图块"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/e930026c/" title="AutoCAD-图块">AutoCAD-图块</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-07T13:44:26.000Z" title="发表于 2021-05-07 21:44:26">2021-05-07</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.563Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AutoCAD/">AutoCAD</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/AutoCAD/">AutoCAD</a></span></div><div class="content">🔙AutoCAD导航贴
+块 Block
+块命令调用
+块命令通过B + Space调用。
+在工具栏修改中也可以找到该命令：
+
+块的创建
+块定义即为块创建。
+
+基点：指定基点后。每次插入块时，光标就在块的基点上。可以通过拾取点来确定块的基点。
+允许分解：勾选后，插入的块都可以使用爆破命令进行分解。
+按统一比例缩放：等比缩放。
+保留 / 转化为块 / 删除：选定的对象在创建块后是否要保留，转化为块，或删除。
+图块的插入
+可以使用插入命令，插入创建的图块。通过I调用该命令。
+也可以通过工具栏“插入”中找到插入命令。
+
+图块的缩放
+图块的缩放可以通过特性面板，或者使用缩放命令。其中特性面板可以用来进行非等比或等比缩放，而缩放命令只能进行等比缩放。
+图块参与修剪
+图块与其他基本对象进行修剪，若图块为参考修剪的对象，可以用于修剪基本对象，反过来，无法利用基本对象来修剪图层。我们可以把图块分解，然后再使用修剪命令。
+图块的编辑
+图块创建后，这个图块依附于所在的CAD文件，若更换新文件，这个图块就无法使用，若在让图块的使用范围变大，应该创建全局图块。
+粘贴为块
+Ctrl + Shift + V：粘贴为 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/posts/5a8a6c8d/" title="AutoCAD-图层篇">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-19.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AutoCAD-图层篇"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/5a8a6c8d/" title="AutoCAD-图层篇">AutoCAD-图层篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-06T08:07:55.000Z" title="发表于 2021-05-06 16:07:55">2021-05-06</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.591Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AutoCAD/">AutoCAD</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/AutoCAD/">AutoCAD</a></span></div><div class="content">🔙AutoCAD导航贴
+图层介绍
+AutoCAD图层快捷键使用（分享给大家，捕捉更新） - Autodesk Community - International Forums
+图层面板：
+
+图层工具栏：
+
+绘图次序：
+
+该工具栏项目用于控制图形中的重叠对象的显示次序。
+ 修改重叠直线的绘图次序 
+              
+              先绘制的对象先显示，后绘制的对象若与先绘制的对象发生重叠，那么后绘制的对象会覆盖先绘制的对象。下面例子演示修改对象绘制次序后对图形显示产生了什么影响：通过绘图次序相关命令，可以改变直线的绘制次序，进而改变显示次序。
+              
+            
+图层下拉列表：
+
+图层按钮：
+
+开/关图层：选择是否让图层的对象可见或不可见。关闭图层并不是删除图层的对象，而是让图层暂时看不见。
+冻结/解冻图层：冻结/解冻图层包括了开/关图层的功能。冻结图层除了会关闭图层外，还多了一个无法创建对象的特性。
+
+我们知道当前图层上是可以创建对象的，而冻结图层无法创建对象，这意味着①当前图层是无法被冻结的，②冻结图层无法切换到当前图层。 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/posts/751a9a73/" title="AutoCAD-绘图篇">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-17.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AutoCAD-绘图篇"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/751a9a73/" title="AutoCAD-绘图篇">AutoCAD-绘图篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-06T07:11:55.000Z" title="发表于 2021-05-06 15:11:55">2021-05-06</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.571Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AutoCAD/">AutoCAD</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/AutoCAD/">AutoCAD</a></span></div><div class="content">🔙AutoCAD导航贴
+绘制基础
+Space / Enter：表示确认。当确认空白内容时，表示重复上一次命令。
+Space + Space / Enter + Enter：第一次确认空白内容表示重复上一次命令，第二次确认表示在上一次命令结束时的位置继续绘制
+举例：Line命令绘制一条直线确定后，若想要继续在直线的结束时的端点上继续绘制直线，那么可以按下两下空格。
+坐标系
+AutoCAD中有两个坐标系，一个是直角坐标系，一个是极坐标系。任意一点在直角坐标系中的坐标值为(x,y,z)(x,y,z)(x,y,z)；任意一点在极坐标系中的坐标值为(ρ,θ)(\rho,\theta)(ρ,θ)。
+以二维AutoCAD平面图为例，下图展示平面直角坐标系和极坐标系在AutoCAD中的应用：
+
+你可以以x,yx,yx,y或@x,y@x,y@x,y的方式输入坐标值，也可以在确定极坐标原点后，以ρ&lt;θ\rho&lt;\thetaρ&lt;θ输入长度和角度来确定点A。
+通过下面例子观察200,200200,200200,200和300&lt;37300&lt;37300&lt;37表示的含义
+
+注意 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/posts/9a7de5e2/" title="AutoCAD-修改篇">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-13.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AutoCAD-修改篇"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/9a7de5e2/" title="AutoCAD-修改篇">AutoCAD-修改篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-05T12:59:04.000Z" title="发表于 2021-05-05 20:59:04">2021-05-05</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.603Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/AutoCAD/">AutoCAD</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/AutoCAD/">AutoCAD</a></span></div><div class="content">🔙AutoCAD导航贴
+移动 Move
+先选中对象，然后按M + Space，确定某个基点（基点可以选取对象上的点，或对象外的某点），然后随意移动，也可以打开正交，然后输入移动距离。
+移动对象贴近另外一个对象，可以开启对象捕捉，可以选择捕捉“最近点”。
+精确移动，可以在选中对象后，按M + Space后，再按下 D + Space，输入位移量。
+拷贝 Copy
+先选中对象，然后按CO + Space。
+等距的四条平线直线，依次相距80，有以下几种做法：
+
+使用偏移命令
+使用拷贝命令中的位移功能。拷贝第一条直线对象，然后在直线下方选择基点，然后输入80，拷贝，位移量为160（因为是依据第一条线点距离做参照点），拷贝位移量为240，拷贝。
+使用拷贝命令中的阵列功能。阵列项目数为4，然后输入80。
+
+旋转 Rotate
+使用介绍[案例]改变旋转参考线RO +  Space调出旋转命令。
+旋转命令中可以使用复制。
+在这样一个倾斜的矩形进行旋转，要求将矩形逆时针旋转到垂直方向。
+
+
+首先选中对象，然后调出旋转命令
+
+
+指定基点。
+
+
+
+指定旋转角度。
+
+
+
+指定参照角（通过指定两个端点来确定） ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/posts/279da5bd/" title="在Windows端上的Hexo使用技巧">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-18.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在Windows端上的Hexo使用技巧"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/279da5bd/" title="在Windows端上的Hexo使用技巧">在Windows端上的Hexo使用技巧</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-04T01:05:34.000Z" title="发表于 2021-05-04 09:05:34">2021-05-04</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.623Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Hexo/">Hexo</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Hexo/">Hexo</a></span></div><div class="content">自动化启动Hexo本地服务器脚本
+正常使用CMD[Terminal]自动化脚本[CMD]自动化脚本命令解析和参考正常我们是这样启动Hexo本地服务器的：
+
+
+Win + R，在以运行窗口输入cmd。
+
+
+假设我的Hexo博客在D:\WorkLib\HexoBlogSource\，那么cmd命令如下
+打开一个cmd
+123d:cd D:\WorkLib\HexoBlogSource\Hexo g -w
+打开另一个cmd
+123d:cd D:\WorkLib\HexoBlogSource\Hexo s
+如果使用Windows Terminal，那么你只需要在一个wt实例中，新建两个标签页分别进入D:\WorkLib\HexoBlogSource\后再执行hexo相关命令。
+这些繁琐的操作，可以利用Windows Batch File来解决。
+
+请先下载Windows Terminal，再使用脚本。
+
+WT-StartHexoServer.bat
+脚本功能：启动一个Windows Terminal，新建第一个Tab，进入到HexoBlogRoot，然后执行hexo clean和hexo g  ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/posts/2ed71984/" title="Windows使用集合">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-8.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows使用集合"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/2ed71984/" title="Windows使用集合">Windows使用集合</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-02T05:03:09.000Z" title="发表于 2021-05-02 13:03:09">2021-05-02</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-14T03:47:35.643Z" title="更新于 2021-06-14 11:47:35">2021-06-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Windows/">Windows</a></span></div><div class="content">Windows技巧篇
+设置程序开机启动
+使用Task Scheduler这个方式启动程序是应该不会启动失败的。
+ 1.创建基本任务 
+              
+              按Win + R后，输入taskschd.msc创建新文件夹，文件夹可以取名为&quot;MyTasks&quot;利用&quot;Create Basic Task…&quot;向导创建基本任务新建向导任务名称如下选择什么时候开启这项任务选择在开始此任务时，哪些动作需要执行添加动作所需要的程序或脚本点击完成按钮，完成基本任务的建立。
+              
+            
+ 2.基本任务的微调 
+              
+              接下来可以对这个任务进行一些微调：打开属性隐藏任务[可选]如下图所示Configure for：根据自己的操作系统选择配置方式启动失败后进行多次尝试[可选]
+              
+            
+ 脚本开机启动应用举例 
+              
+              如果利用Task Schedule ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">violet7pan</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/violet7pan"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/3b4634fc/" title="Hexo使用"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-20.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo使用"/></a><div class="content"><a class="title" href="/posts/3b4634fc/" title="Hexo使用">Hexo使用</a><time datetime="2021-06-07T12:08:35.000Z" title="发表于 2021-06-07 20:08:35">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/24caea6b/" title="Hexo常用命令"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-11.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo常用命令"/></a><div class="content"><a class="title" href="/posts/24caea6b/" title="Hexo常用命令">Hexo常用命令</a><time datetime="2021-06-07T06:10:13.000Z" title="发表于 2021-06-07 14:10:13">2021-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo隐藏文章"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-4.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo隐藏文章"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo隐藏文章">Hexo隐藏文章</a><time datetime="2021-06-04T11:00:41.000Z" title="发表于 2021-06-04 19:00:41">2021-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-12.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo贴文Front-Matter用法"/></a><div class="content"><a class="title" href="/posts/82079eb1/" title="Hexo贴文Front-Matter用法">Hexo贴文Front-Matter用法</a><time datetime="2021-06-01T11:37:37.000Z" title="发表于 2021-06-01 19:37:37">2021-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程"><img src="https://cdn.jsdelivr.net/gh/MMengyiyu/PicHosting/pic/post_cover-2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的Buttefly主题魔改历程"/></a><div class="content"><a class="title" href="/posts/b757e37c/" title="我的Buttefly主题魔改历程">我的Buttefly主题魔改历程</a><time datetime="2021-06-01T08:52:32.000Z" title="发表于 2021-06-01 16:52:32">2021-06-01</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/AutoCAD/"><span class="card-category-list-name">AutoCAD</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Building/"><span class="card-category-list-name">Building</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/ElectricalCircuit/"><span class="card-category-list-name">ElectricalCircuit</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/"><span class="card-category-list-name">Hexo</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">11</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/Command/"><span class="card-category-list-name">Command</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/Docker/"><span class="card-category-list-name">Docker</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/OnePlus/"><span class="card-category-list-name">OnePlus</span><span class="card-category-list-count">4</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/AutoCAD/" style="font-size: 1.42em; color: #99a6b7">AutoCAD</a> <a href="/tags/AutoHotkey/" style="font-size: 1.1em; color: #999">AutoHotkey</a> <a href="/tags/Buttefly%E4%B8%BB%E9%A2%98/" style="font-size: 1.1em; color: #999">Buttefly主题</a> <a href="/tags/Butterfly%E4%B8%BB%E9%A2%98/" style="font-size: 1.1em; color: #999">Butterfly主题</a> <a href="/tags/Docker/" style="font-size: 1.1em; color: #999">Docker</a> <a href="/tags/Hexo/" style="font-size: 1.26em; color: #999fa8">Hexo</a> <a href="/tags/Linux/" style="font-size: 1.34em; color: #99a3b0">Linux</a> <a href="/tags/OnePlus/" style="font-size: 1.18em; color: #999ca1">OnePlus</a> <a href="/tags/XYplorer/" style="font-size: 1.5em; color: #99a9bf">XYplorer</a> <a href="/tags/%E7%94%B5%E8%B7%AF%E5%8E%9F%E7%90%86/" style="font-size: 1.1em; color: #999">电路原理</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">六月 2021</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/05/"><span class="card-archive-list-date">五月 2021</span><span class="card-archive-list-count">14</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">四月 2021</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">三月 2021</span><span class="card-archive-list-count">22</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/02/"><span class="card-archive-list-date">二月 2021</span><span class="card-archive-list-count">12</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">59</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-06-14T03:47:54.578Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By violet7pan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/algolia.js"></script><div class="js-pjax"></div><script defer src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
